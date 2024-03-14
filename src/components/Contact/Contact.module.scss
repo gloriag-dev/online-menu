@@ -1,0 +1,16 @@
+.cover {
+  background-image: url("../../assets/hero-bg-img-desktop.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100vw;
+  min-height: 50vh;
+
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+}

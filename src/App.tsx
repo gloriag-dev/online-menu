@@ -1,10 +1,12 @@
 import styles from "./App.module.scss";
-import Hero from "./components/Hero";
+import Routing from "./Routing";
+import { Navbar } from "./components/Navbar";
 
 function App() {
   return (
     <div className={styles.root}>
-      <Hero />
+      <Navbar />
+      <Routing />
     </div>
   );
 }
