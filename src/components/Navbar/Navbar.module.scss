@@ -15,6 +15,8 @@
   padding-right: 20px;
   align-items: center;
   .icon {
+    margin-top: 4px;
+    margin-left: 3px;
     svg {
       width: 23px;
     }
@@ -26,6 +28,8 @@
 
     .link {
       color: black;
+      background-color: transparent;
+
       &:hover {
         color: gold;
       }
@@ -35,9 +39,27 @@
       border: 2px solid black;
       padding: 15px 15px;
       display: flex;
+      align-items: center;
 
       &:hover {
         background-color: gold;
+      }
+    }
+  }
+
+  .dropdown {
+    background-color: gold;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    padding: 16px;
+    border-radius: 20px;
+    gap: 10px;
+    .submenu {
+      color: black;
+      &:hover {
+        color: white;
       }
     }
   }
