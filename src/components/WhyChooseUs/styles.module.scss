@@ -1,0 +1,26 @@
+.container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  background-color: #f7f4ed;
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h2 {
+      font-size: 40px;
+    }
+    .carousel {
+      display: flex;
+      justify-content: space-between;
+      .transparentCard {
+        background-color: transparent;
+        max-width: 400px;
+      }
+      .card {
+        background-color: white;
+        max-width: 400px;
+      }
+    }
+  }
+}
