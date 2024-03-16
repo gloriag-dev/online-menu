@@ -4,6 +4,10 @@
   margin-left: 30px;
   justify-content: center;
   gap: 30px;
+  @media (max-width: 765px) {
+    display: flex;
+    flex-direction: column;
+  }
   .imgWrapper {
     display: flex;
 
@@ -51,14 +55,39 @@
     border: 2px solid black;
     padding: 15px 15px;
     display: flex;
-
+    align-items: center;
     &:hover {
       background-color: gold;
     }
     .icon {
+      margin-top: 3px;
+      margin-left: 4px;
       svg {
         width: 23px;
       }
     }
+  }
+}
+.capitalizedTitleContainer {
+  display: flex;
+  align-items: flex-end;
+  .capitalizedTitle {
+    font-weight: 500;
+    margin-bottom: 9px;
+  }
+  .dot {
+    font-size: 40px;
+    color: gold;
+    margin-left: 3px;
+  }
+}
+.wavy {
+  animation: flip 6s infinite;
+  animation-delay: calc(0.6s * var(--i));
+}
+@keyframes flip {
+  0%,
+  80% {
+    transform: rotateY(360deg);
   }
 }

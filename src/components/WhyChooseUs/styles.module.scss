@@ -12,15 +12,44 @@
     }
     .carousel {
       display: flex;
+      gap: 30px;
       justify-content: space-between;
       .transparentCard {
         background-color: transparent;
         max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .icon {
+          margin-top: 10px;
+        }
       }
       .card {
         background-color: white;
         max-width: 400px;
+        border-radius: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 15px;
+
+        .icon {
+          margin-top: 10px;
+        }
       }
     }
+  }
+}
+.capitalizedTitleContainer {
+  display: flex;
+  align-items: flex-end;
+  .capitalizedTitle {
+    font-weight: 500;
+    margin-bottom: 9px;
+  }
+  .dot {
+    font-size: 40px;
+    color: gold;
+    margin-left: 3px;
   }
 }

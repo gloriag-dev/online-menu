@@ -20,10 +20,12 @@ export const AboutRestaurant = () => {
         </div>
       </section>
       <section>
-        <p>
-          About restaurant <span>.</span>
-          <h2>Living Well Begins With Eating Well</h2>
-        </p>
+        <div className={styles.capitalizedTitleContainer}>
+          <p className={styles.capitalizedTitle}>ABOUT RESTAURANT</p>
+          <span className={styles.dot}>.</span>
+        </div>
+        <h2 className={styles.wavy}>Living Well Begins With Eating Well</h2>
+
         <section className={styles.cardContainer}>
           <div className={styles.card}>
             <OrderIcon />

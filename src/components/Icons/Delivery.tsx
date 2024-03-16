@@ -1,9 +1,10 @@
-export const Delivery = () => {
+export const Delivery = ({ className }) => {
   return (
     <svg
       width='94'
       height='81'
       viewBox='0 0 94 81'
+      className={className}
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
     >

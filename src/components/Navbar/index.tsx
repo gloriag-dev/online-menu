@@ -16,7 +16,7 @@ export const Navbar = () => {
     <div className={styles.sticky}>
       <div className={styles.nav}>
         <div className={styles.logo}>
-          <Logo width={106} height={106} />
+          <Logo width={106} height={80} />
         </div>
         <div className={styles.links}>
           <Link to='/home' className={styles.link}>
