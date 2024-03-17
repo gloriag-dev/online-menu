@@ -1,6 +1,6 @@
 import { AboutRestaurant } from "../AboutRestaurant/AboutRestaurant";
 import Hero from "../Hero";
-import { Menu } from "../Menu/Menu";
+import { Pricing } from "../Pricing/Pricing";
 import { ScrollTicker } from "../ScrollTicker/ScrollTicker";
 import { WhyChooseUs } from "../WhyChooseUs/WhyChooseUs";
 
@@ -10,7 +10,8 @@ export const Home = () => {
       <Hero />
       <AboutRestaurant />
       <WhyChooseUs />
-      <Menu />
+      {/* <Menu /> */}
+      <Pricing />
       <ScrollTicker />
     </>
   );

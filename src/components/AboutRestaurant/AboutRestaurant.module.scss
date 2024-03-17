@@ -81,13 +81,3 @@
     margin-left: 3px;
   }
 }
-.wavy {
-  animation: flip 6s infinite;
-  animation-delay: calc(0.6s * var(--i));
-}
-@keyframes flip {
-  0%,
-  80% {
-    transform: rotateY(360deg);
-  }
-}

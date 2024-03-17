@@ -24,7 +24,7 @@ export const AboutRestaurant = () => {
           <p className={styles.capitalizedTitle}>ABOUT RESTAURANT</p>
           <span className={styles.dot}>.</span>
         </div>
-        <h2 className={styles.wavy}>Living Well Begins With Eating Well</h2>
+        <h2>Living Well Begins With Eating Well</h2>
 
         <section className={styles.cardContainer}>
           <div className={styles.card}>
