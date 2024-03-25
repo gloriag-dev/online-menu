@@ -1,19 +1,33 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./components/Home/Home";
-import { AboutUs } from "./components/AboutUs/AboutUs";
-import { Gallery } from "./components/Gallery/Gallery";
-import { Menu } from "./components/Menu/Menu";
-import { Contact } from "./components/Contact/Contact";
+import Home from "./pages/Home/Home";
+import { AboutUs } from "./pages/AboutUs/AboutUs";
+
+import { Menu } from "./pages/Menu/Menu";
+import { Contact } from "./pages/Contact/Contact";
+import { AuthLoginCallback } from "./auth/AuthLoginCallback/AuthLoginCallBack";
+import { Order } from "./pages/Order/Order";
+
+import { Wrapper } from "./components/Wrapper/Wrapper";
+import Wizard from "./components/Wizard/Wizard";
 
 const Routing = () => {
   return (
     <main>
       <Routes>
-        <Route path='/home' element={<Home />} />
+        <Route path='/auth/login/callback' element={<AuthLoginCallback />} />
+        <Route path='/*' element={<Home />} />
         <Route path='/about-us' element={<AboutUs />} />
-        <Route path='/gallery' element={<Gallery />} />
         <Route path='/menu' element={<Menu />} />
         <Route path='/contact-us' element={<Contact />} />
+        <Route path='/order' element={<Order />} />
+        <Route
+          path='/checkout-wizard*'
+          element={
+            <Wrapper>
+              <Wizard />
+            </Wrapper>
+          }
+        />
       </Routes>
     </main>
   );

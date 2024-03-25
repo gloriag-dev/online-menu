@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import MockWrapper from "./mocks/MockWrapper.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Auth0Wrapper } from "./auth/Auth0Wrapper/Auth0Wrapper.tsx";
 
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(
@@ -12,12 +13,16 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <MockWrapper>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </QueryClientProvider>
-    </MockWrapper>
+    <Auth0Wrapper>
+      <MockWrapper>
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </QueryClientProvider>
+      </MockWrapper>
+    </Auth0Wrapper>
   </React.StrictMode>
 );
+
+//in menu aggiung ai preferiti che mette l'id del piatto nello store di redux

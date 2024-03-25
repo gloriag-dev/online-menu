@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Logo } from "../Icons/Logo";
-import RightArrow from "../Icons/RightArrow";
 import styles from "./Navbar.module.scss";
 import { useState } from "react";
 export const Navbar = () => {
@@ -22,12 +21,7 @@ export const Navbar = () => {
           <Link to='/home' className={styles.link}>
             Home
           </Link>
-          <Link to='/about-us' className={styles.link}>
-            About us
-          </Link>
-          <Link to='/gallery' className={styles.link}>
-            Gallery
-          </Link>
+
           <Link to='/menu' className={styles.link}>
             Menu
           </Link>
@@ -56,15 +50,12 @@ export const Navbar = () => {
               </div>
             )}
           </div>
-          <Link to='/contact-us' className={styles.link}>
-            Contact Us
+          <Link to='/checkout-wizard' className={styles.link}>
+            Reserved Area
           </Link>
-          <button className={styles.primaryBtn}>
-            Book Now
-            <div className={styles.icon}>
-              <RightArrow />
-            </div>
-          </button>
+          <Link to='/order' className={styles.link}>
+            Go to Order
+          </Link>
         </div>
       </div>
     </div>

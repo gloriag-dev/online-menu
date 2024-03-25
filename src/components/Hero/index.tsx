@@ -1,7 +1,9 @@
+import { AuthorizationGateway } from "../../auth/AuthorizationGateway/AuthorizationGateway";
 import styles from "./Hero.module.scss";
 export const Hero = () => {
   return (
     <div className={styles.hero}>
+      <AuthorizationGateway />
       <div className={styles.capitalizedTitleContainer}>
         <p className={styles.capitalizedTitle}>WELCOME TO FWIZZ</p>
         <span className={styles.dot}>.</span>
