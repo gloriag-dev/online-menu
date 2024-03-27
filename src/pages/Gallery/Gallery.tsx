@@ -1,4 +1,4 @@
-import styles from "./Gallery.module.scss";
+import styles from "./Gallery.module.scss"
 export const Gallery = () => {
-  return <div className={styles.cover}>gallery</div>;
-};
+    return <div className={styles.cover}>gallery</div>
+}

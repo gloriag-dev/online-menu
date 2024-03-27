@@ -1,12 +1,13 @@
 .main {
   margin-top: 50px;
   display: flex;
-  margin-left: 30px;
+  padding-left: 30px;
   justify-content: center;
   gap: 30px;
+  
   @media (max-width: 765px) {
-    display: flex;
     flex-direction: column;
+    padding-left: 0px;
   }
   .imgWrapper {
     display: flex;
@@ -16,7 +17,7 @@
   img {
     border-radius: 20px;
   }
-  .roundYellow {
+  .roundgold {
     border: 10px solid white;
     background-color: gold;
     max-width: 84px;
@@ -27,7 +28,7 @@
     padding: 30px;
     margin-left: -124px;
     margin-top: -35px;
-    .roundYellowText {
+    .roundgoldText {
       color: white;
       font-size: 23px;
       margin-left: 15px;

@@ -1,14 +1,14 @@
-import styles from "./App.module.scss";
-import Routing from "./Routing";
-import { Navbar } from "./components/Navbar";
+import styles from "./App.module.scss"
+import Routing from "./Routing"
+import { Navbar } from "./components/Navbar"
 
 function App() {
-  return (
-    <div className={styles.root}>
-      <Navbar />
-      <Routing />
-    </div>
-  );
+    return (
+        <main className={styles.root}>
+            <Navbar />
+            <Routing />
+        </main>
+    )
 }
 
-export default App;
+export default App
