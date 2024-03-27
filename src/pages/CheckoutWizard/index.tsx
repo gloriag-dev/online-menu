@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom"
-import { Address } from "../../pages/Address/Address"
-import { Checkout } from "../../pages/Checkout"
-import { Wrapper } from "../Wrapper/Wrapper"
+import { Address } from "./Address/Address"
+import { Checkout } from "./Checkout"
+import { Wrapper } from "../../components/Wrapper/Wrapper"
 
 const Wizard = () => {
     const navigate = useNavigate()
@@ -33,13 +33,18 @@ const Wizard = () => {
     ]
 
     return (
-        <Routes>
-            {steps.map(step => {
-                return <Route key={step.path} path={step.path} element={step.element} />
-            })}
-            <Route index element={<Navigate to={steps[0].path} />} /> // Quando entro vado subito allo step 0
-            <Route path="*" element={<Navigate to={steps[0].path} />} /> // Se esco dal funnel -- vado subito allo step 0
-        </Routes>
+        <div style={{display:"flex", flexDirection: "row"}}>
+            <Routes>
+                {steps.map(step => {
+                    return <Route key={step.path} path={step.path} element={step.element} />
+                })}
+                <Route index element={<Navigate to={steps[0].path} />} /> // Quando entro vado subito allo step 0
+                <Route path="*" element={<Navigate to={steps[0].path} />} /> // Se esco dal funnel -- vado subito allo step 0
+            </Routes>
+            <div>
+                Ciao io ci sono sempre
+            </div>
+        </div>
     )
 }
 

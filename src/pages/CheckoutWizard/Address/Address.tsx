@@ -3,7 +3,7 @@ import style from "./address.module.scss"
 import { FormLabel, MenuItem, Select, TextField } from "@mui/material"
 import axios from "axios"
 import { useMutation, useQuery } from "@tanstack/react-query"
-import useAddressStore from "../../stores/addressStore"
+import useAddressStore from "../../../stores/addressStore"
 export type AddressData = {
     provincia: string
     city: string

@@ -1,6 +1,6 @@
 import { Controller, FormProvider, useForm } from "react-hook-form"
 import styles from "./Checkout.module.scss"
-import useAddressStore from "../../stores/addressStore"
+import useAddressStore from "../../../stores/addressStore"
 import { Button, FormLabel, TextField } from "@mui/material"
 
 interface CheckoutData {

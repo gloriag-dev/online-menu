@@ -8,7 +8,7 @@ import { AuthLoginCallback } from "./auth/AuthLoginCallback/AuthLoginCallBack"
 import { Order } from "./pages/Order/Order"
 
 import { Wrapper } from "./components/Wrapper/Wrapper"
-import Wizard from "./components/Wizard/Wizard"
+import Wizard from "./pages/CheckoutWizard"
 
 const Routing = () => {
     return (
