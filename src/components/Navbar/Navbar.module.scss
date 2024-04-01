@@ -6,9 +6,7 @@
   align-items: center;
   min-width: 100vw;
 }
-.sticky {
-  
-}
+
 .nav {
   background-color: white;
   min-height: 70px;
@@ -20,10 +18,18 @@
   gap: 14px;
   padding-right: 20px;
   align-items: center;
+    @media (max-width: 765px) {
+  min-width: 280px;
+  display: flex;
+  justify-content: space-around;
+  }
   .icon {
     margin-top: 4px;
     margin-left: 3px;
     max-height: 90px;
+       @media (max-width: 765px) {
+    margin-left: 10px;
+  }
     svg {
       width: 23px;
     }
@@ -72,3 +78,32 @@
     }
   }
 }
+.narrowScreen{
+  .burgerButton{
+    background-color: transparent;
+    font-size: 30px;
+    font-weight: 700;
+    color: gold;
+    padding: 5px;
+  }
+
+}
+  .burgerDropdown {
+    background-color: gold;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    cursor: pointer;
+    border-radius: 20px;
+      min-width: 280px;
+    padding: 20px;
+    margin-right:20px;
+    gap: 10px;
+  .minilink{
+    color: black;
+     &:hover {
+        color:gold;
+      }
+  }
+  }

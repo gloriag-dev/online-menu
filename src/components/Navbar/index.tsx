@@ -5,6 +5,12 @@ import { useState } from "react"
 export const Navbar = () => {
     const [openDropdown, setOpenDropdown] = useState(false)
 
+    const isNarrowScreen = window.matchMedia("(max-width: 765px)").matches
+    const [open, setOpen] = useState(false)
+
+    const toggleMenu = () => {
+        setOpen(!open)
+    }
     const showDropdown = () => {
         setOpenDropdown(true)
     }
@@ -18,44 +24,72 @@ export const Navbar = () => {
                     <div className={styles.logo}>
                         <Logo width={106} height={80} />
                     </div>
-                    <div className={styles.links}>
-                        <Link to="/home" className={styles.link}>
-                            Home
-                        </Link>
 
-                        <Link to="/menu" className={styles.link}>
-                            Menu
-                        </Link>
-                        <div className={styles.dropdownLink}>
-                            <button className={styles.link} onMouseEnter={showDropdown}>
-                                Pages
-                            </button>
-                            {openDropdown && (
-                                <div className={styles.dropdown} onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
-                                    <Link to="/blog" className={styles.submenu}>
-                                        Blog
+                    {!isNarrowScreen && (
+                        <div className={styles.links}>
+                            <Link to="/home" className={styles.link}>
+                                Home
+                            </Link>
+
+                            <Link to="/menu" className={styles.link}>
+                                Menu
+                            </Link>
+                            <div className={styles.dropdownLink}>
+                                <button className={styles.link} onMouseEnter={showDropdown}>
+                                    Pages
+                                </button>
+                                {openDropdown && (
+                                    <div className={styles.dropdown} onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
+                                        <Link to="/blog" className={styles.submenu}>
+                                            Blog
+                                        </Link>
+                                        <Link to="/blog-details" className={styles.submenu}>
+                                            Blog Details
+                                        </Link>
+                                        <Link to="/faq" className={styles.submenu}>
+                                            FAQ
+                                        </Link>
+                                        <Link to="/404" className={styles.submenu}>
+                                            404
+                                        </Link>
+                                    </div>
+                                )}
+                            </div>
+                            <Link to="/checkout-wizard" className={styles.link}>
+                                Reserved Area
+                            </Link>
+                            <Link to="/order" className={styles.link}>
+                                Go to Order
+                            </Link>
+                        </div>
+                        
+                    )}
+                 
+                    {isNarrowScreen && (
+                        <div className={styles.narrowScreen}>
+                            <button onClick={toggleMenu} className={styles.burgerButton}>☰</button>
+                        </div>
+                    )}
+                    
+                </div>
+            </div>
+                 {open && (
+                                <div className={styles.burgerDropdown} onMouseLeave={() =>setOpen(!open)}>
+                                    <Link to="/home" className={styles.minilink} onClick={() =>setOpen(!open)}>
+                                        Home
                                     </Link>
-                                    <Link to="/blog-details" className={styles.submenu}>
-                                        Blog Details
+
+                                    <Link to="/menu" className={styles.minilink} onClick={() =>setOpen(!open)}>
+                                        Menu
                                     </Link>
-                                    <Link to="/faq" className={styles.submenu}>
-                                        FAQ
+                                    <Link to="/checkout-wizard" className={styles.minilink}onClick={() =>setOpen(!open)}>
+                                        Reserved Area
                                     </Link>
-                                    <Link to="/404" className={styles.submenu}>
-                                        404
+                                    <Link to="/order" className={styles.minilink} onClick={() =>setOpen(!open)}>
+                                        Go to Order
                                     </Link>
                                 </div>
                             )}
-                        </div>
-                        <Link to="/checkout-wizard" className={styles.link}>
-                            Reserved Area
-                        </Link>
-                        <Link to="/order" className={styles.link}>
-                            Go to Order
-                        </Link>
-                    </div>
-                </div>
-            </div>
         </div>
     )
 }

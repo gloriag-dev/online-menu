@@ -2,13 +2,16 @@ import OrderIcon from "../../../../components/Icons/OrderIcon"
 import RightArrow from "../../../../components/Icons/RightArrow"
 import ServicesIcon from "../../../../components/Icons/ServicesIcon"
 import styles from "./AboutRestaurant.module.scss"
+import img1 from "../../../../assets/aboutus1.jpg"
+import img2 from "../../../../assets/aboutus2.jpg"
+
 export const AboutRestaurant = () => {
     return (
         <div className={styles.main}>
             <section className={styles.imgWrapper}>
-                <img src="https://demo.awaikenthemes.com/html-preview/fwizz/html/images/about-us-1.jpg" alt="cook" />
+                <img src={img1} alt="cook" />
 
-                <img src="https://demo.awaikenthemes.com/html-preview/fwizz/html/images/about-us-2.jpg" alt="cook" />
+                <img src={img2} alt="cook" />
                 <div className={styles.roundgold}>
                     <p className={styles.roundgoldText}>Since 1870</p>
                 </div>

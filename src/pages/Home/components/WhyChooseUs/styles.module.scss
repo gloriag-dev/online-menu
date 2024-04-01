@@ -4,6 +4,7 @@
   justify-content: center;
   background-color: #f7f4ed;
 
+
   .main {
     display: flex;
     flex-direction: column;
@@ -16,6 +17,11 @@
       gap: 30px;
       justify-content: space-between;
       margin-bottom: 30px;
+  @media (max-width: 765px) {
+    flex-direction: column;
+    padding-left: 0px;
+    align-items: center;
+  }
       .transparentCard {
         background-color: transparent;
         max-width: 400px;
@@ -33,7 +39,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-left: 15px;
 
         .icon {
           margin-top: 10px;
