@@ -24,11 +24,10 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.1",
     "react-router-dom": "^6.22.3",
+    "zod": "^3.22.4",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
-    "msw": "^2.2.3",
-    "gh-pages": "^6.1.1",
     "@types/node": "^20.11.27",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
@@ -38,6 +37,8 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "gh-pages": "^6.1.1",
+    "msw": "^2.2.3",
     "postcss": "^8.4.35",
     "prettier": "1.19.1",
     "sass": "^1.71.1",

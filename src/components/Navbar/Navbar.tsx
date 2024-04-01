@@ -1,13 +1,26 @@
 import { Link } from "react-router-dom"
 import { Logo } from "../Icons/Logo"
 import styles from "./Navbar.module.scss"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 export const Navbar = () => {
     const [openDropdown, setOpenDropdown] = useState(false)
 
     const isNarrowScreen = window.matchMedia("(max-width: 765px)").matches
     const [open, setOpen] = useState(false)
+     const newRef = useRef<HTMLDivElement>();
 
+
+       useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  });
+const handleOutsideClick = (e) => {
+  if (newRef.current && !newRef.current.contains(e.target)) {
+    setOpen(false);
+  }
+};
     const toggleMenu = () => {
         setOpen(!open)
     }
@@ -74,7 +87,7 @@ export const Navbar = () => {
                 </div>
             </div>
             {open && (
-                <div className={styles.burgerDropdown} onMouseLeave={() => setOpen(!open)}>
+                <div className={styles.burgerDropdown} ref={newRef}>
                     <Link to="/home" className={styles.minilink} onClick={() => setOpen(!open)}>
                         Home
                     </Link>

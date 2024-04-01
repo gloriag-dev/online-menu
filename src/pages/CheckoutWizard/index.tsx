@@ -33,15 +33,14 @@ const Wizard = () => {
     ]
 
     return (
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        <div style={{ display: "flex", flexDirection: "row", justifyContent: "center"}}>
             <Routes>
                 {steps.map(step => {
                     return <Route key={step.path} path={step.path} element={step.element} />
                 })}
-                <Route index element={<Navigate to={steps[0].path} />} /> // Quando entro vado subito allo step 0
-                <Route path="*" element={<Navigate to={steps[0].path} />} /> // Se esco dal funnel -- vado subito allo step 0
+                <Route index element={<Navigate to={steps[0].path} />}/>
+                <Route path="*" element={<Navigate to={steps[0].path} />} />
             </Routes>
-            <div>Ciao io ci sono sempre</div>
         </div>
     )
 }

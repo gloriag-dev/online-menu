@@ -1,5 +1,4 @@
 import OrderIcon from "../../../../components/Icons/OrderIcon"
-import RightArrow from "../../../../components/Icons/RightArrow"
 import ServicesIcon from "../../../../components/Icons/ServicesIcon"
 import styles from "./AboutRestaurant.module.scss"
 import img1 from "../../../../assets/aboutus1.jpg"
@@ -27,12 +26,6 @@ export const AboutRestaurant = () => {
                     <CardWithIcon className={styles.card} icon={<OrderIcon />} iconContainerClassname={styles.iconContainer} title="Online Order" description="Duis nec semper ligula" />
                     <CardWithIcon className={styles.card} icon={<ServicesIcon />} iconContainerClassname={styles.iconContainer} title="24X7 Services" description="Duis nec semper ligula" />
                 </section>
-                <button className={styles.primaryBtn}>
-                    Book Now
-                    <div className={styles.icon}>
-                        <RightArrow />
-                    </div>
-                </button>
             </section>
         </div>
     )
