@@ -62,34 +62,34 @@ export const Navbar = () => {
                                 Go to Order
                             </Link>
                         </div>
-                        
                     )}
-                 
+
                     {isNarrowScreen && (
                         <div className={styles.narrowScreen}>
-                            <button onClick={toggleMenu} className={styles.burgerButton}>☰</button>
+                            <button onClick={toggleMenu} className={styles.burgerButton}>
+                                ☰
+                            </button>
                         </div>
                     )}
-                    
                 </div>
             </div>
-                 {open && (
-                                <div className={styles.burgerDropdown} onMouseLeave={() =>setOpen(!open)}>
-                                    <Link to="/home" className={styles.minilink} onClick={() =>setOpen(!open)}>
-                                        Home
-                                    </Link>
+            {open && (
+                <div className={styles.burgerDropdown} onMouseLeave={() => setOpen(!open)}>
+                    <Link to="/home" className={styles.minilink} onClick={() => setOpen(!open)}>
+                        Home
+                    </Link>
 
-                                    <Link to="/menu" className={styles.minilink} onClick={() =>setOpen(!open)}>
-                                        Menu
-                                    </Link>
-                                    <Link to="/checkout-wizard" className={styles.minilink}onClick={() =>setOpen(!open)}>
-                                        Reserved Area
-                                    </Link>
-                                    <Link to="/order" className={styles.minilink} onClick={() =>setOpen(!open)}>
-                                        Go to Order
-                                    </Link>
-                                </div>
-                            )}
+                    <Link to="/menu" className={styles.minilink} onClick={() => setOpen(!open)}>
+                        Menu
+                    </Link>
+                    <Link to="/checkout-wizard" className={styles.minilink} onClick={() => setOpen(!open)}>
+                        Reserved Area
+                    </Link>
+                    <Link to="/order" className={styles.minilink} onClick={() => setOpen(!open)}>
+                        Go to Order
+                    </Link>
+                </div>
+            )}
         </div>
     )
 }

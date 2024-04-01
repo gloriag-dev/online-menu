@@ -1,6 +1,6 @@
 import styles from "./App.module.scss"
 import Routing from "./Routing"
-import { Navbar } from "./components/Navbar"
+import { Navbar } from "./components/Navbar/Navbar"
 
 function App() {
     return (
