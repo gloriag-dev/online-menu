@@ -33,12 +33,12 @@ const Wizard = () => {
     ]
 
     return (
-        <div style={{ display: "flex", flexDirection: "row", justifyContent: "center"}}>
+        <div style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
             <Routes>
                 {steps.map(step => {
                     return <Route key={step.path} path={step.path} element={step.element} />
                 })}
-                <Route index element={<Navigate to={steps[0].path} />}/>
+                <Route index element={<Navigate to={steps[0].path} />} />
                 <Route path="*" element={<Navigate to={steps[0].path} />} />
             </Routes>
         </div>

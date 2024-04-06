@@ -7,20 +7,19 @@ export const Navbar = () => {
 
     const isNarrowScreen = window.matchMedia("(max-width: 765px)").matches
     const [open, setOpen] = useState(false)
-     const newRef = useRef<HTMLDivElement>();
+    const newRef = useRef<HTMLDivElement>()
 
-
-       useEffect(() => {
-    document.addEventListener("mousedown", handleOutsideClick);
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  });
-const handleOutsideClick = (e) => {
-  if (newRef.current && !newRef.current.contains(e.target)) {
-    setOpen(false);
-  }
-};
+    useEffect(() => {
+        document.addEventListener("mousedown", handleOutsideClick)
+        return () => {
+            document.removeEventListener("mousedown", handleOutsideClick)
+        }
+    })
+    const handleOutsideClick = e => {
+        if (newRef.current && !newRef.current.contains(e.target)) {
+            setOpen(false)
+        }
+    }
     const toggleMenu = () => {
         setOpen(!open)
     }

@@ -4,6 +4,7 @@ import { FormLabel, MenuItem, Select, TextField } from "@mui/material"
 import axios from "axios"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import useAddressStore from "../../../stores/addressStore"
+import { ZodError, z } from "zod"
 export type AddressData = {
     provincia: string
     city: string
@@ -30,13 +31,29 @@ export const Address = ({ onNext }: AddressProps) => {
             return axios.post("/address", values)
         }
     })
-
+    const AddressData = z
+        .object({
+            provincia: z.string().trim(),
+            city: z.string(),
+            cap: z.string().trim(),
+            via: z.string(),
+            number: z.string()
+        })
+        .strict()
     const onSubmit = async (values: AddressData) => {
-        form.reset()
+        try {
+            const data = AddressData.parse(values)
+        } catch (e) {
+            if (e instanceof ZodError) {
+            } else {
+                throw e
+            }
+        }
         const { via, cap, city, provincia, number } = values
-        addressStore.setAddress(provincia, city, cap, via, number)
+        addressStore.setAddress(values)
         await mutation.mutateAsync(values)
         onNext()
+        form.reset()
     }
     return (
         <div className={style.main}>

@@ -1,4 +1,4 @@
-import { HttpResponse, http } from "msw"
+import { HttpResponse, delay, http } from "msw"
 
 export const handlers = [
     http.get("/province", async () => {
@@ -9,6 +9,7 @@ export const handlers = [
         return Response.json({})
     }),
     http.get("/dishes", async () => {
+        delay(2000)
         return HttpResponse.json({
             dishes: [
                 {

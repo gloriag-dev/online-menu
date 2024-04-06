@@ -1,6 +1,7 @@
 import { ReactNode } from "react"
 import styles from "./DishCard.module.scss"
 import { DishComplete } from "../../pages/Menu/Menu"
+import Button from "@mui/material/Button"
 
 export type DishCardProps = {
     dish: DishComplete
@@ -11,6 +12,14 @@ export type DishCardProps = {
     toggleFavouriteDish: (dishId: number, favorite: boolean) => void
     favouriteIds: number[]
 }
+
+declare module "@mui/material/Button" {
+    interface ButtonPropsColorOverrides {
+        gold: true
+        black: true
+    }
+}
+
 export const DishCard = ({ dish, starRating, handleAdd, favouriteIds, handleRemove, disableRemove, toggleFavouriteDish }: DishCardProps) => {
     return (
         <div className={styles.menuItem} key={dish.id}>
@@ -30,11 +39,13 @@ export const DishCard = ({ dish, starRating, handleAdd, favouriteIds, handleRemo
                     }}
                 />
             </div>
-            <div className={styles.flex}>
-                <button onClick={() => handleAdd(dish)}>Aggiungi al carrello</button>
-                <button onClick={() => handleRemove(dish)} disabled={!disableRemove(dish.id)}>
+            <div className={styles.flexBtn}>
+                <Button variant="contained" onClick={() => handleAdd(dish)} className={styles.primary} color="gold">
+                    Aggiungi al carrello
+                </Button>
+                <Button variant="outlined" onClick={() => handleRemove(dish)} disabled={!disableRemove(dish.id)} color="black">
                     Rimuovi dal carrello
-                </button>
+                </Button>
             </div>
         </div>
     )

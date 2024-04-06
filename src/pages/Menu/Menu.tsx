@@ -6,6 +6,7 @@ import useDishStore from "../../stores/dishStore"
 import useOrderStore from "../../stores/orderStore"
 import { OrderBar } from "../../components/OrderBar/OrderBar"
 import DishCard from "../../components/DishCard/DishCard"
+import Loader from "../Home/components/Loader/Loader"
 
 export interface DishComplete {
     id: number
@@ -52,7 +53,7 @@ export const Menu = () => {
         removeFromOrder(dish.id)
     }
     if (dishesQuery.isLoading) {
-        return <p>loading </p>
+        return <Loader />
     }
     return (
         <>
