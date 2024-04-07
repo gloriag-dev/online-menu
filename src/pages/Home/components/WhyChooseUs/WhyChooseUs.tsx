@@ -15,17 +15,17 @@ export const WhyChooseUs = () => {
                     <div className={styles.transparentCard}>
                         <Food className={styles.icon} />
                         <p>Quality Food</p>
-                        <p>Sit amet, consectetur adipiscing elit quisque eget maximus velit, non eleifend libero curabitur dapibus mauris.</p>
+                        <p className={styles.description}>Sit amet, consectetur adipiscing elit quisque eget maximus velit, non eleifend libero curabitur dapibus mauris.</p>
                     </div>
                     <div className={styles.card}>
                         <Delivery className={styles.icon} />
                         <p>Fastest Delivery</p>
-                        <p>Sit amet, consectetur adipiscing elit quisque eget maximus velit, non eleifend libero curabitur dapibus mauris.</p>
+                        <p className={styles.description}>Sit amet, consectetur adipiscing elit quisque eget maximus velit, non eleifend libero curabitur dapibus mauris.</p>
                     </div>
                     <div className={styles.transparentCard}>
                         <Recipes className={styles.icon} />
                         <p>Original Recipes</p>
-                        <p>Sit amet, consectetur adipiscing elit quisque eget maximus velit, non eleifend libero curabitur dapibus mauris.</p>
+                        <p className={styles.description}>Sit amet, consectetur adipiscing elit quisque eget maximus velit, non eleifend libero curabitur dapibus mauris.</p>
                     </div>
                 </div>
             </div>

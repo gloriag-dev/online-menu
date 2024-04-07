@@ -1,9 +1,10 @@
 import { useAuth0 } from "@auth0/auth0-react"
 import { useLocation } from "react-router-dom"
 import { setUrl } from "../utils"
+import Button from "@mui/material/Button"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const AuthorizationGateway = (props: any) => {
+export const AuthorizationGateway = (props: any, className: string) => {
     const auth0 = useAuth0()
     const location = useLocation()
     const onLogin = () => {
@@ -17,14 +18,16 @@ export const AuthorizationGateway = (props: any) => {
     if (auth0.isAuthenticated) {
         return (
             <div>
-                <button onClick={onLogout}>logout</button>
+                <Button onClick={onLogout} variant="contained" color="gold">
+                    logout
+                </Button>
                 {props.children}
             </div>
         )
     }
     return (
-        <button title="login" onClick={onLogin}>
+        <Button title="login" onClick={onLogin} variant="contained" color="gold">
             login
-        </button>
+        </Button>
     )
 }

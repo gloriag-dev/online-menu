@@ -1,65 +1,67 @@
 .hero {
-  background-image: url("../../assets/hero-bg-img-desktop.jpg");
-  background-size: cover;
-  background-position: center;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  box-shadow: inset 0 0 0 99999px rgba(0, 0, 0, 0.5);
-  
-
-  .capitalizedTitleContainer {
+    background-image: url("../../assets/hero-bg-img-desktop.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
     display: flex;
-    align-items: flex-end;
-    .capitalizedTitle {
-      font-weight: 500;
-      margin-bottom: 9px;
-    }
-    .dot {
-      font-size: 40px;
-      color: gold;
-      margin-left: -12px;
-    }
-  }
-  h1 {
-    text-align: center;
-    font-family: "Crimson Pro", serif;
-    font-size: 70px;
-    font-weight: 600;
-    margin: 0;
-  }
-  p {
-   margin: 0 20px;
-   text-align: center;
-  }
-  .downArrow {
-    position: absolute;
-    top: auto;
-    left: 50%;
-    bottom: 30px;
-    width: 24px;
-    height: 36px;
-    border: 2px solid white;
-    border-radius: 100px;
-    display: inline-flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    transform: translate(-50%);
-    animation: jumpInfinite 1.5s infinite;
-  }
+    align-items: center;
+    min-height: 100vh;
+    box-shadow: inset 0 0 0 99999px rgba(0, 0, 0, 0.5);
+    .login {
+        margin-top: 20px;
+    }
+    .capitalizedTitleContainer {
+        display: flex;
+        align-items: flex-end;
+        .capitalizedTitle {
+            font-weight: 500;
+            margin-bottom: 9px;
+        }
+        .dot {
+            font-size: 40px;
+            color: gold;
+            margin-left: -12px;
+        }
+    }
+    h1 {
+        text-align: center;
+        font-family: "Crimson Pro", serif;
+        font-size: 70px;
+        font-weight: 600;
+        margin: 0;
+    }
+    p {
+        margin: 0 20px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .downArrow {
+        position: absolute;
+        top: auto;
+        left: 50%;
+        bottom: 30px;
+        width: 24px;
+        height: 36px;
+        border: 2px solid white;
+        border-radius: 100px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transform: translate(-50%);
+        animation: jumpInfinite 1.5s infinite;
+    }
 }
 
 @keyframes jumpInfinite {
-  0% {
-    margin-bottom: 0;
-  }
-  50% {
-    margin-bottom: 20px;
-  }
-  100% {
-    margin-bottom: 0;
-  }
+    0% {
+        margin-bottom: 0;
+    }
+    50% {
+        margin-bottom: 20px;
+    }
+    100% {
+        margin-bottom: 0;
+    }
 }

@@ -2,6 +2,7 @@ import { ReactNode } from "react"
 import styles from "./DishCard.module.scss"
 import { DishComplete } from "../../pages/Menu/Menu"
 import Button from "@mui/material/Button"
+import { Checkbox, checkboxClasses } from "@mui/material"
 
 export type DishCardProps = {
     dish: DishComplete
@@ -30,9 +31,15 @@ export const DishCard = ({ dish, starRating, handleAdd, favouriteIds, handleRemo
                 <span>{dish.description}</span>
             </div>
             <div className={styles.flex}>
-                <p>Aggiungi a preferiti</p>
-                <input
-                    type="checkbox"
+                {favouriteIds.includes?.(dish.id) && <p>Rimuovi dai preferiti</p>}
+                {!favouriteIds.includes?.(dish.id) && <p>Aggiungi ai preferiti</p>}
+                <Checkbox
+                    sx={{
+                        [`&, &.${checkboxClasses.checked}`]: {
+                            color: "orange"
+                        }
+                    }}
+                    className={styles.checkbox}
                     checked={favouriteIds?.includes?.(dish.id)}
                     onChange={e => {
                         toggleFavouriteDish(dish.id, e.target.checked)
