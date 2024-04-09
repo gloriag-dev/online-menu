@@ -7,13 +7,15 @@ export const OrderBar = () => {
     console.log(orderStore.order)
 
     const getNames = () => {
-        const names = orderStore.order.map(single => single.name)
-        return names
+        const names = orderStore.order.map(single => single.name + " - ")
+        return <p className={styles.namesbar}>{names}</p>
     }
     return (
-        <div className={styles.bar}>
-            totale: <p>{orderStore.total.toFixed(2)}</p>
-            <p>{getNames()}</p>
-        </div>
+        <section className={styles.bar}>
+            <div className={styles.format}>
+                TOTAL: <p>{orderStore.total.toFixed(2) + "$"}</p>
+            </div>
+            <div className={styles.namesbar}>{getNames()}</div>
+        </section>
     )
 }

@@ -3,6 +3,8 @@ import styles from "./DishCard.module.scss"
 import { DishComplete } from "../../pages/Menu/Menu"
 import Button from "@mui/material/Button"
 import { Checkbox, checkboxClasses } from "@mui/material"
+import useOrderStore from "../../stores/orderStore"
+import { useNavigate } from "react-router-dom"
 
 export type DishCardProps = {
     dish: DishComplete
@@ -22,6 +24,8 @@ declare module "@mui/material/Button" {
 }
 
 export const DishCard = ({ dish, starRating, handleAdd, favouriteIds, handleRemove, disableRemove, toggleFavouriteDish }: DishCardProps) => {
+    const { order } = useOrderStore()
+    const navigate = useNavigate()
     return (
         <div className={styles.menuItem} key={dish.id}>
             <img alt={dish.name} src={dish.imgUrl} className={styles.img} />
@@ -49,6 +53,9 @@ export const DishCard = ({ dish, starRating, handleAdd, favouriteIds, handleRemo
             <div className={styles.flexBtn}>
                 <Button variant="contained" onClick={() => handleAdd(dish)} className={styles.primary} color="gold">
                     Aggiungi al carrello
+                </Button>
+                <Button variant="contained" color="gold" onClick={() => navigate("/order")} disabled={order.length === 0}>
+                    Vai all'ordine
                 </Button>
                 <Button variant="outlined" onClick={() => handleRemove(dish)} disabled={!disableRemove(dish.id)} color="black">
                     Rimuovi dal carrello

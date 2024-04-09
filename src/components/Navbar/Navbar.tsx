@@ -2,13 +2,14 @@ import { Link } from "react-router-dom"
 import { Logo } from "../Icons/Logo"
 import styles from "./Navbar.module.scss"
 import { useEffect, useRef, useState } from "react"
+import useOrderStore from "../../stores/orderStore"
 export const Navbar = () => {
     const [openDropdown, setOpenDropdown] = useState(false)
 
     const isNarrowScreen = window.matchMedia("(max-width: 765px)").matches
     const [open, setOpen] = useState(false)
     const newRef = useRef<HTMLDivElement>()
-
+    const { order } = useOrderStore()
     useEffect(() => {
         document.addEventListener("mousedown", handleOutsideClick)
         return () => {
@@ -29,6 +30,8 @@ export const Navbar = () => {
     const hideDropdown = () => {
         setOpenDropdown(false)
     }
+
+    console.log(order.length, "hwbduwv")
     return (
         <div className={styles.stickyWrapper}>
             <div className={styles.sticky}>
@@ -70,9 +73,6 @@ export const Navbar = () => {
                             <Link to="/checkout-wizard" className={styles.link}>
                                 Reserved Area
                             </Link>
-                            <Link to="/order" className={styles.link}>
-                                Go to Order
-                            </Link>
                         </div>
                     )}
 
@@ -96,9 +96,6 @@ export const Navbar = () => {
                     </Link>
                     <Link to="/checkout-wizard" className={styles.minilink} onClick={() => setOpen(!open)}>
                         Reserved Area
-                    </Link>
-                    <Link to="/order" className={styles.minilink} onClick={() => setOpen(!open)}>
-                        Go to Order
                     </Link>
                 </div>
             )}

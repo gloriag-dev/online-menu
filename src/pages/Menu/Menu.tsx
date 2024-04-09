@@ -7,6 +7,8 @@ import useOrderStore from "../../stores/orderStore"
 import { OrderBar } from "../../components/OrderBar/OrderBar"
 import DishCard from "../../components/DishCard/DishCard"
 import Loader from "../Home/components/Loader/Loader"
+import { Button } from "@mui/material"
+import { useNavigate } from "react-router-dom"
 
 export interface DishComplete {
     id: number
@@ -20,7 +22,7 @@ export interface DishComplete {
 export const Menu = () => {
     const { favouriteIds, toggleFavouriteDish } = useDishStore()
     const { addToOrder, removeFromOrder, order } = useOrderStore()
-
+    const navigate = useNavigate()
     const fetchDishes = async (): Promise<DishComplete[]> => {
         const res = await axios.get("/dishes")
         return res.data.dishes
@@ -55,6 +57,7 @@ export const Menu = () => {
     if (dishesQuery.isLoading) {
         return <Loader />
     }
+
     return (
         <>
             <div className={styles.cover}></div>
@@ -70,7 +73,13 @@ export const Menu = () => {
                         <p>- Fast Foods</p>
                         <p>- Dessert</p>
                     </section>
+                    <div className={styles.btnContainer}>
+                        <Button variant="contained" color="gold" onClick={() => navigate("/order")} disabled={order.length === 0}>
+                            Vai all'ordine
+                        </Button>
+                    </div>
                 </div>
+
                 <section className={styles.menu}>
                     {dishesQuery?.data?.map?.(dish => (
                         <DishCard
@@ -90,3 +99,4 @@ export const Menu = () => {
         </>
     )
 }
+export default Menu

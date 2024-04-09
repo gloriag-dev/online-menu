@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query"
 import useOrderStore from "../../stores/orderStore"
 import { DishComplete } from "../Menu/Menu"
 import { Link } from "react-router-dom"
+import Loader from "../Home/components/Loader/Loader"
 
 export const Order = () => {
     const orderStore = useOrderStore()
@@ -29,6 +30,9 @@ export const Order = () => {
                 <Link to="/menu">Menu</Link>
             </div>
         )
+    }
+    if (dishesQuery.isLoading) {
+        return <Loader />
     }
     return (
         <>

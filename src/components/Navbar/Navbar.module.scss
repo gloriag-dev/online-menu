@@ -1,94 +1,94 @@
 .stickyWrapper {
-  position: fixed;
-  display: flex;
-  margin-top: 1em;
-  flex-direction: column;
-  align-items: center;
-  min-width: 100vw;
+    position: fixed;
+    display: flex;
+    margin-top: 1em;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100vw;
+    z-index: 999999999999999;
 }
 
 .nav {
-  background-color: white;
-  min-height: 70px;
-  border-radius: 2000px;
-  min-width: 1000px;
-  display: flex;
-  align-content: center;
-  justify-content: space-around;
-  gap: 14px;
-  padding-right: 20px;
-  align-items: center;
-    @media (max-width: 765px) {
-  min-width: 280px;
-  display: flex;
-  justify-content: space-around;
-  }
-  .icon {
-    margin-top: 4px;
-    margin-left: 3px;
-    max-height: 90px;
-       @media (max-width: 765px) {
-    margin-left: 10px;
-  }
-    svg {
-      width: 23px;
-    }
-  }
-  .links {
+    background-color: white;
+    min-height: 70px;
+    border-radius: 2000px;
+    min-width: 1000px;
     display: flex;
+    align-content: center;
+    justify-content: space-around;
+    gap: 14px;
+    padding-right: 20px;
     align-items: center;
-    gap: 20px;
-
-    .link {
-      color: black;
-      background-color: transparent;
-
-      &:hover {
-        color: gold;
-      }
+    @media (max-width: 765px) {
+        min-width: 280px;
+        display: flex;
+        justify-content: space-around;
     }
-    .primaryBtn {
-      border-radius: 6000px;
-      border: 2px solid black;
-      padding: 15px 15px;
-      display: flex;
-      align-items: center;
+    .icon {
+        margin-top: 4px;
+        margin-left: 3px;
+        max-height: 90px;
+        @media (max-width: 765px) {
+            margin-left: 10px;
+        }
+        svg {
+            width: 23px;
+        }
+    }
+    .links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
 
-      &:hover {
+        .link {
+            color: black;
+            background-color: transparent;
+
+            &:hover {
+                color: gold;
+            }
+        }
+        .primaryBtn {
+            border-radius: 6000px;
+            border: 2px solid black;
+            padding: 15px 15px;
+            display: flex;
+            align-items: center;
+
+            &:hover {
+                background-color: gold;
+            }
+        }
+    }
+
+    .dropdown {
         background-color: gold;
-      }
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        padding: 16px;
+        cursor: pointer;
+        border-radius: 20px;
+        gap: 10px;
+        .submenu {
+            color: black;
+            &:hover {
+                color: white;
+            }
+        }
     }
-  }
-
-  .dropdown {
-    background-color: gold;
-    margin-top: 16px;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    padding: 16px;
-    cursor: pointer;
-    border-radius: 20px;
-    gap: 10px;
-    .submenu {
-      color: black;
-      &:hover {
-        color: white;
-      }
+}
+.narrowScreen {
+    .burgerButton {
+        background-color: transparent;
+        font-size: 30px;
+        font-weight: 700;
+        color: gold;
+        padding: 5px;
     }
-  }
 }
-.narrowScreen{
-  .burgerButton{
-    background-color: transparent;
-    font-size: 30px;
-    font-weight: 700;
-    color: gold;
-    padding: 5px;
-  }
-
-}
-  .burgerDropdown {
+.burgerDropdown {
     background-color: gold;
     margin-top: 16px;
     display: flex;
@@ -96,14 +96,19 @@
     padding: 16px;
     cursor: pointer;
     border-radius: 20px;
-      min-width: 280px;
+    min-width: 280px;
     padding: 20px;
-    margin-right:20px;
+    margin-right: 20px;
     gap: 10px;
-  .minilink{
-    color: black;
-     &:hover {
-        color:gold;
-      }
-  }
-  }
+    .minilink {
+        color: black;
+        &:hover {
+            color: gold;
+        }
+    }
+}
+
+.fakeBtn {
+    border: none;
+    background-color: transparent;
+}
