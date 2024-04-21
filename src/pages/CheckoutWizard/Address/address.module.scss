@@ -1,27 +1,29 @@
 .main {
-  padding: 40px;
-  background-color: #f7f4ed;
-  border-radius: 8px;
-        @media (max-width: 765px) {
-  padding: 15px;
-  }
-
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    min-width: 350px;
-
-    .select {
-      background-color: white;
-      width: 100px;
+    padding: 40px;
+    border-radius: 8px;
+    border: 3px solid gold;
+    @media (max-width: 765px) {
+        padding: 15px;
     }
-  }
-  .field {
-    display: flex;
-    flex-direction: column;
-    .textfield {
-      background-color: white;
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        min-width: 350px;
+
+        .select {
+            background-color: white;
+            width: 100px;
+            border-bottom: 2px solid gold;
+        }
     }
-  }
+    .field {
+        display: flex;
+        flex-direction: column;
+        .textfield {
+            background-color: white;
+            border-bottom: 2px solid gold;
+        }
+    }
 }

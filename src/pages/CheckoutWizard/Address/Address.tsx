@@ -1,6 +1,6 @@
 import { Controller, FormProvider, useForm } from "react-hook-form"
 import style from "./address.module.scss"
-import { FormLabel, MenuItem, Select, TextField } from "@mui/material"
+import { Button, FormLabel, MenuItem, Select, TextField } from "@mui/material"
 import axios from "axios"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import useAddressStore from "../../../stores/addressStore"
@@ -15,6 +15,13 @@ export type AddressData = {
 
 export type AddressProps = {
     onNext: () => void
+}
+
+declare module "@mui/material/Button" {
+    interface ButtonPropsColorOverrides {
+        gold: true
+        black: true
+    }
 }
 export const Address = ({ onNext }: AddressProps) => {
     const addressStore = useAddressStore()
@@ -152,7 +159,9 @@ export const Address = ({ onNext }: AddressProps) => {
                             )
                         }}
                     />
-                    <button type="submit">Go to checkout</button>
+                    <Button variant="contained" type="submit" color="gold">
+                        Go to checkout
+                    </Button>
                 </form>
             </FormProvider>
         </div>
