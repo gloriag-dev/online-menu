@@ -2,7 +2,12 @@ import { HttpResponse, delay, http } from "msw"
 
 export const handlers = [
     http.get("/province", async () => {
-        return Response.json(["RM", "MI", "AS", "LU"])
+        return Response.json([
+            {
+                province: "Rome",
+                code: "RM"
+            }
+        ])
     }),
 
     http.post("/address", async () => {
@@ -18,7 +23,7 @@ export const handlers = [
                     description: "so yummy!!",
                     categories: ["lunches", "dinner"],
                     price: 25.99,
-                    rating: 5,
+                    rating: 1,
                     imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-1.jpg"
                 },
                 {
@@ -36,7 +41,7 @@ export const handlers = [
                     description: "so yummy!!",
                     category: ["lunches", "dinner"],
                     price: 23.99,
-                    rating: 5,
+                    rating: 3,
                     imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-3.jpg"
                 },
                 {

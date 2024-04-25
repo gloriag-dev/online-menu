@@ -24,14 +24,7 @@ export const Navbar = () => {
     const toggleMenu = () => {
         setOpen(!open)
     }
-    const showDropdown = () => {
-        setOpenDropdown(true)
-    }
-    const hideDropdown = () => {
-        setOpenDropdown(false)
-    }
 
-    console.log(order.length, "hwbduwv")
     return (
         <div className={styles.stickyWrapper}>
             <div className={styles.sticky}>
@@ -49,27 +42,7 @@ export const Navbar = () => {
                             <Link to="/menu" className={styles.link}>
                                 Menu
                             </Link>
-                            <div className={styles.dropdownLink}>
-                                <button className={styles.link} onMouseEnter={showDropdown}>
-                                    Pages
-                                </button>
-                                {openDropdown && (
-                                    <div className={styles.dropdown} onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
-                                        <Link to="/blog" className={styles.submenu}>
-                                            Blog
-                                        </Link>
-                                        <Link to="/blog-details" className={styles.submenu}>
-                                            Blog Details
-                                        </Link>
-                                        <Link to="/faq" className={styles.submenu}>
-                                            FAQ
-                                        </Link>
-                                        <Link to="/404" className={styles.submenu}>
-                                            404
-                                        </Link>
-                                    </div>
-                                )}
-                            </div>
+
                             <Link to="/checkout-wizard" className={styles.link}>
                                 Reserved Area
                             </Link>

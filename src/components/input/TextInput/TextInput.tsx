@@ -21,11 +21,11 @@ export const TextInput = ({ error, label, format, onChange, value, disabled, req
         const value = format?.(event.target.value) || event.target.value
         onChange?.(value, event)
     }
+
     return (
         <GenericInputWrapper error={error} label={label} disabled={disabled} required={required}>
             <TextField error={Boolean(error)} className={clsx("text-input", styles.root)} variant="outlined" disabled={disabled} value={value} onChange={onChangeInt} />
         </GenericInputWrapper>
     )
 }
-
 export default TextInput

@@ -5,6 +5,7 @@ import useOrderStore from "../../stores/orderStore"
 import { DishComplete } from "../Menu/Menu"
 import { Link } from "react-router-dom"
 import Loader from "../Home/components/Loader/Loader"
+import OrderCard from "../../components/OrderCard/OrderCard"
 
 export const Order = () => {
     const orderStore = useOrderStore()
@@ -47,14 +48,7 @@ export const Order = () => {
                     {orderStore.order.map(single => {
                         const singleDish = getenrivhedData(single.id)
 
-                        return (
-                            <div className={styles.card}>
-                                <img alt={singleDish?.name} src={singleDish?.imgUrl} className={styles.img} />
-                                <span>
-                                    {singleDish?.name} -{singleDish?.price}
-                                </span>
-                            </div>
-                        )
+                        return <OrderCard imgAlt={singleDish?.name} imgUrl={singleDish?.imgUrl} name={singleDish?.name} price={singleDish?.price} />
                     })}
                 </div>
             </div>

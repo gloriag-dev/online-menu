@@ -3,9 +3,8 @@ import styles from "./DishCard.module.scss"
 import { DishComplete } from "../../pages/Menu/Menu"
 import Button from "@mui/material/Button"
 import {} from "@mui/material"
-import useOrderStore from "../../stores/orderStore"
-import { useNavigate } from "react-router-dom"
-import CheckBoxInput from "../input/CheckBoxInput/CheckBoxInput"
+import {  } from "react-router-dom"
+import AddToFavoritesButton from "../AddToFavoritesButton/AddToFavoritesButton"
 
 export type DishCardProps = {
     dish: DishComplete
@@ -25,8 +24,7 @@ declare module "@mui/material/Button" {
 }
 
 export const DishCard = ({ dish, starRating, handleAdd, favouriteIds, handleRemove, disableRemove, toggleFavouriteDish }: DishCardProps) => {
-    const { order } = useOrderStore()
-    const navigate = useNavigate()
+ 
     return (
         <div className={styles.menuItem} key={dish.id}>
             <img alt={dish.name} src={dish.imgUrl} className={styles.img} />
@@ -36,11 +34,10 @@ export const DishCard = ({ dish, starRating, handleAdd, favouriteIds, handleRemo
                 <span>{dish.description}</span>
             </div>
             <div className={styles.flex}>
-                {favouriteIds.includes?.(dish.id) && <p>Rimuovi dai preferiti</p>}
-                {!favouriteIds.includes?.(dish.id) && <p>Aggiungi ai preferiti</p>}
-                <CheckBoxInput
-                    checked={favouriteIds?.includes?.(dish.id)}
-                    onChange={e => {
+                <AddToFavoritesButton
+                    className={styles.addToFavoriteButton}
+                    clicked={favouriteIds?.includes?.(dish.id)}
+                    onClick={e => {
                         toggleFavouriteDish(dish.id, e)
                     }}
                 />
@@ -48,9 +45,6 @@ export const DishCard = ({ dish, starRating, handleAdd, favouriteIds, handleRemo
             <div className={styles.flexBtn}>
                 <Button variant="contained" onClick={() => handleAdd(dish)} className={styles.primary} color="gold">
                     Aggiungi al carrello
-                </Button>
-                <Button variant="contained" color="gold" onClick={() => navigate("/order")} disabled={order.length === 0}>
-                    Vai all'ordine
                 </Button>
                 <Button variant="outlined" onClick={() => handleRemove(dish)} disabled={!disableRemove(dish.id)} color="black">
                     Rimuovi dal carrello

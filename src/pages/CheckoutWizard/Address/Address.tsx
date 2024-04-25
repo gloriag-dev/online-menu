@@ -4,7 +4,7 @@ import { Button } from "@mui/material"
 import axios from "axios"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import useAddressStore from "../../../stores/addressStore"
-import { ZodError, z } from "zod"
+import {} from "zod"
 import TextInputRHF from "../../../components/input/TextInput/TextInput.rhf"
 import SelectInputRHF from "../../../components/input/SelectInput/SelectInput.rhf"
 export type AddressData = {
@@ -19,6 +19,10 @@ export type AddressProps = {
     onNext: () => void
 }
 
+export interface IProvince {
+    province: string
+    code: string
+}
 declare module "@mui/material/Button" {
     interface ButtonPropsColorOverrides {
         gold: true
@@ -27,9 +31,12 @@ declare module "@mui/material/Button" {
 }
 export const Address = ({ onNext }: AddressProps) => {
     const addressStore = useAddressStore()
-    const form = useForm<AddressData>()
+    const form = useForm<AddressData>({
+        mode: "onBlur",
+        reValidateMode: "onBlur"
+    })
 
-    const getProvince = async (): Promise<string[]> => {
+    const getProvince = async (): Promise<IProvince[]> => {
         const response = await axios.get("/province")
         return response.data
     }
@@ -40,30 +47,15 @@ export const Address = ({ onNext }: AddressProps) => {
             return axios.post("/address", values)
         }
     })
-    const AddressData = z
-        .object({
-            provincia: z.string().trim(),
-            city: z.string(),
-            cap: z.string().trim(),
-            via: z.string(),
-            number: z.string()
-        })
-        .strict()
+
     const onSubmit = async (values: AddressData) => {
-        try {
-            const data = AddressData.parse(values)
-        } catch (e) {
-            if (e instanceof ZodError) {
-            } else {
-                throw e
-            }
-        }
         const { via, cap, city, provincia, number } = values
-        addressStore.setAddress(values)
+        addressStore.setAddress(provincia, cap, city, via, number)
         await mutation.mutateAsync(values)
         onNext()
         form.reset()
     }
+
     return (
         <div className={style.main}>
             <FormProvider {...form}>
@@ -73,15 +65,15 @@ export const Address = ({ onNext }: AddressProps) => {
                         label="Provincia"
                         values={query.data?.map?.(provincia => {
                             return {
-                                value: provincia,
-                                label: provincia
+                                value: provincia.code,
+                                label: provincia.province
                             }
                         })}
                     />
-                    <TextInputRHF name="city" label="Città" />
+                    <TextInputRHF name="city" label="City" />
                     <TextInputRHF name="cap" label="CAP" />
-                    <TextInputRHF name="via" label="Via" />
-                    <TextInputRHF name="number" label="Numero" />
+                    <TextInputRHF name="via" label="Adress" />
+                    <TextInputRHF name="number" label="Number" />
                     <Button variant="contained" type="submit" color="gold">
                         Go to checkout
                     </Button>
