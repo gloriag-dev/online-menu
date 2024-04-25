@@ -1,10 +1,10 @@
-import {} from "console"
-import GenericInputWrapper from "../GenericInputWrapper.tsx/GenericInputWrapper"
+import GenericInputWrapper, { GenericInputWrapperProps } from "../GenericInputWrapper.tsx/GenericInputWrapper"
 import { ChangeEvent } from "react"
+import { TextField } from "@mui/material"
+import clsx from "clsx"
+import styles from "./TextInput.module.scss"
 
-export interface ITextInputProps {
-    error?: string
-    disabled?: boolean
+export interface ITextInputProps extends Omit<GenericInputWrapperProps, "onChange"> {
     maxLength?: number
     minLength?: number
     value?: string
@@ -15,14 +15,14 @@ export interface ITextInputProps {
     onClick?: () => void
     onBlur?: (e: ChangeEvent) => void
 }
-export const TextInput = ({ error, label, format, onChange, value, disabled, ...props }: ITextInputProps) => {
+export const TextInput = ({ error, label, format, onChange, value, disabled, required }: ITextInputProps) => {
     const onChangeInt = (event: ChangeEvent<HTMLInputElement>) => {
         const value = format?.(event.target.value) || event.target.value
         onChange?.(value, event)
     }
     return (
-        <GenericInputWrapper error={error} label={label} disabled={disabled}>
-            <input onChange={onChangeInt} value={value || ""} {...props} />
+        <GenericInputWrapper error={error} label={label} disabled={disabled} required={required}>
+            <TextField error={Boolean(error)} className={clsx("text-input", styles.root)} variant="outlined" disabled={disabled} value={value} onChange={onChangeInt} />
         </GenericInputWrapper>
     )
 }

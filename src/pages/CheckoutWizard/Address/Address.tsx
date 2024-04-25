@@ -1,10 +1,12 @@
-import { Controller, FormProvider, useForm } from "react-hook-form"
+import { FormProvider, useForm } from "react-hook-form"
 import style from "./address.module.scss"
-import { Button, FormLabel, MenuItem, Select, TextField } from "@mui/material"
+import { Button } from "@mui/material"
 import axios from "axios"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import useAddressStore from "../../../stores/addressStore"
 import { ZodError, z } from "zod"
+import TextInputRHF from "../../../components/input/TextInput/TextInput.rhf"
+import SelectInputRHF from "../../../components/input/SelectInput/SelectInput.rhf"
 export type AddressData = {
     provincia: string
     city: string
@@ -66,99 +68,20 @@ export const Address = ({ onNext }: AddressProps) => {
         <div className={style.main}>
             <FormProvider {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className={style.form}>
-                    <Controller
+                    <SelectInputRHF
                         name="provincia"
-                        render={({ field }) => {
-                            return (
-                                <div className={style.field}>
-                                    <FormLabel>Provincia</FormLabel>
-                                    <Select className={style.select} disabled={field.disabled} name={field.name} onBlur={field.onBlur} value={field.value} onChange={field.onChange}>
-                                        {query.data?.map?.((provincia: string) => (
-                                            <MenuItem key={provincia} value={provincia}>
-                                                {provincia}
-                                            </MenuItem>
-                                        ))}
-                                    </Select>
-                                </div>
-                            )
-                        }}
+                        label="Provincia"
+                        values={query.data?.map?.(provincia => {
+                            return {
+                                value: provincia,
+                                label: provincia
+                            }
+                        })}
                     />
-                    <Controller
-                        name="city"
-                        render={({ field }) => {
-                            return (
-                                <div className={style.field}>
-                                    <FormLabel>Città</FormLabel>
-                                    <TextField
-                                        variant="outlined"
-                                        disabled={field.disabled}
-                                        name={field.name}
-                                        className={style.textfield}
-                                        onBlur={field.onBlur}
-                                        value={field.value}
-                                        onChange={field.onChange}
-                                    />
-                                </div>
-                            )
-                        }}
-                    />
-                    <Controller
-                        name="cap"
-                        render={({ field }) => {
-                            return (
-                                <div className={style.field}>
-                                    <FormLabel>CAP</FormLabel>
-                                    <TextField
-                                        variant="outlined"
-                                        disabled={field.disabled}
-                                        name={field.name}
-                                        className={style.textfield}
-                                        onBlur={field.onBlur}
-                                        value={field.value}
-                                        onChange={field.onChange}
-                                    />
-                                </div>
-                            )
-                        }}
-                    />
-                    <Controller
-                        name="via"
-                        render={({ field }) => {
-                            return (
-                                <div className={style.field}>
-                                    <FormLabel>Via</FormLabel>
-                                    <TextField
-                                        variant="outlined"
-                                        className={style.textfield}
-                                        disabled={field.disabled}
-                                        name={field.name}
-                                        onBlur={field.onBlur}
-                                        value={field.value}
-                                        onChange={field.onChange}
-                                    />
-                                </div>
-                            )
-                        }}
-                    />
-                    <Controller
-                        name="number"
-                        render={({ field }) => {
-                            return (
-                                <div className={style.field}>
-                                    <FormLabel>Numero</FormLabel>
-                                    <TextField
-                                        className={style.textfield}
-                                        variant="outlined"
-                                        disabled={field.disabled}
-                                        name={field.name}
-                                        onBlur={field.onBlur}
-                                        value={field.value}
-                                        onChange={field.onChange}
-                                    />
-                                </div>
-                            )
-                        }}
-                    />
+                    <TextInputRHF name="city" label="Città" />
+                    <TextInputRHF name="cap" label="CAP" />
+                    <TextInputRHF name="via" label="Via" />
+                    <TextInputRHF name="number" label="Numero" />
                     <Button variant="contained" type="submit" color="gold">
                         Go to checkout
                     </Button>

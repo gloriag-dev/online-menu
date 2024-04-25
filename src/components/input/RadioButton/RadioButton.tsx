@@ -1,5 +1,7 @@
 import GenericInputWrapper from "../GenericInputWrapper.tsx/GenericInputWrapper"
 import {} from "react"
+import Radio from "@mui/material/Radio"
+import { FormLabel } from "@mui/material"
 
 export interface IRadioValue {
     label: string
@@ -25,10 +27,10 @@ export const RadioInput = ({ error, label, onChange, values, value }: IRadioProp
                 {values?.map?.(single => {
                     const isSelected = single.value === value
                     return (
-                        <label key={single.value}>
-                            <input type="radio" checked={isSelected} onClick={onChangeSingle(single)} />
+                        <FormLabel key={single.value}>
+                            <Radio checked={isSelected} onClick={onChangeSingle(single)} />
                             {single.label}
-                        </label>
+                        </FormLabel>
                     )
                 })}
             </div>

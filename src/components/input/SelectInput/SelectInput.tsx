@@ -1,5 +1,8 @@
+import { MenuItem, Select, SelectChangeEvent } from "@mui/material"
 import GenericInputWrapper from "../GenericInputWrapper.tsx/GenericInputWrapper"
 import { ChangeEvent } from "react"
+import clsx from "clsx"
+import styles from "./SelectInput.module.scss"
 
 export interface ISelectValue {
     label: string
@@ -8,7 +11,7 @@ export interface ISelectValue {
 
 export interface ISelectInputProps {
     error?: string
-    values: ISelectValue[]
+    values?: ISelectValue[]
     disabled?: boolean
     maxLength?: number
     minLength?: number
@@ -16,25 +19,25 @@ export interface ISelectInputProps {
     label?: string
     placeholder?: string
     format?: (value: string) => string
-    onChange?: (event: ChangeEvent<HTMLSelectElement>, value: string) => void
+    onChange?: (event: SelectChangeEvent<string>, value: string) => void
     onClick?: () => void
     onBlur?: (e: ChangeEvent) => void
 }
-export const SelectInput = ({ error, label, format, onChange, value, values, ...props }: ISelectInputProps) => {
-    const onChangeInt = (event: ChangeEvent<HTMLSelectElement>) => {
+export const SelectInput = ({ error, label, onChange, value, values, ...props }: ISelectInputProps) => {
+    const onChangeInt = (event: SelectChangeEvent<string>) => {
         onChange?.(event, event.target.value)
     }
     return (
         <GenericInputWrapper error={error} label={label}>
-            <select value={value || ""} {...props} onChange={onChangeInt}>
+            <Select value={value || ""} {...props} onChange={onChangeInt} className={(clsx("select"), styles.root)}>
                 {values?.map?.(value => {
                     return (
-                        <option key={value.value} value={value.value}>
+                        <MenuItem key={value.value} value={value.value}>
                             {value.label}
-                        </option>
+                        </MenuItem>
                     )
                 })}
-            </select>
+            </Select>
         </GenericInputWrapper>
     )
 }

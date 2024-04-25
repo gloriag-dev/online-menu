@@ -28,6 +28,6 @@ const Template : React.FC<ICheckBoxProps> = (props) =>{
 export const Primary: Story = {
   render: args => <Template {...args} />,
   args: {
-    label: 'Input Label',
+    label: '',
   },
 };

@@ -6,7 +6,7 @@ export interface ICheckBoxInputRHFProps extends Omit<ICheckBoxProps, "value"> {
     name: string
     rules?: any
     defaultValue?: boolean
-    disabled: boolean
+    disabled?: boolean
 }
 
 const CheckBoxInputRHF: React.FC<ICheckBoxInputRHFProps> = ({ name, rules, defaultValue, disabled, ...props }) => {

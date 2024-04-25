@@ -1,3 +1,4 @@
+import { Checkbox } from "@mui/material"
 import GenericInputWrapper from "../GenericInputWrapper.tsx/GenericInputWrapper"
 import { ChangeEvent } from "react"
 
@@ -15,7 +16,7 @@ export const CheckBoxInput = ({ error, label, onChange, checked }: ICheckBoxProp
     }
     return (
         <GenericInputWrapper error={error} label={label}>
-            <input type="checkbox" onChange={onChangeInt} checked={checked} />
+            <Checkbox onChange={onChangeInt} checked={checked} />
         </GenericInputWrapper>
     )
 }

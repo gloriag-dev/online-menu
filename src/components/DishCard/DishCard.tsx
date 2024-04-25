@@ -2,9 +2,10 @@ import { ReactNode } from "react"
 import styles from "./DishCard.module.scss"
 import { DishComplete } from "../../pages/Menu/Menu"
 import Button from "@mui/material/Button"
-import { Checkbox, checkboxClasses } from "@mui/material"
+import {} from "@mui/material"
 import useOrderStore from "../../stores/orderStore"
 import { useNavigate } from "react-router-dom"
+import CheckBoxInput from "../input/CheckBoxInput/CheckBoxInput"
 
 export type DishCardProps = {
     dish: DishComplete
@@ -37,16 +38,10 @@ export const DishCard = ({ dish, starRating, handleAdd, favouriteIds, handleRemo
             <div className={styles.flex}>
                 {favouriteIds.includes?.(dish.id) && <p>Rimuovi dai preferiti</p>}
                 {!favouriteIds.includes?.(dish.id) && <p>Aggiungi ai preferiti</p>}
-                <Checkbox
-                    sx={{
-                        [`&, &.${checkboxClasses.checked}`]: {
-                            color: "orange"
-                        }
-                    }}
-                    className={styles.checkbox}
+                <CheckBoxInput
                     checked={favouriteIds?.includes?.(dish.id)}
                     onChange={e => {
-                        toggleFavouriteDish(dish.id, e.target.checked)
+                        toggleFavouriteDish(dish.id, e)
                     }}
                 />
             </div>
