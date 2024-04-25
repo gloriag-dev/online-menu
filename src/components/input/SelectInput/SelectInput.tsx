@@ -25,6 +25,7 @@ export interface ISelectInputProps {
 }
 export const SelectInput = ({ error, label, onChange, value, values, ...props }: ISelectInputProps) => {
     const onChangeInt = (event: SelectChangeEvent<string>) => {
+        event.preventDefault()
         onChange?.(event, event.target.value)
     }
     return (

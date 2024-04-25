@@ -12,6 +12,7 @@ export interface ICheckBoxProps {
 }
 export const CheckBoxInput = ({ error, label, onChange, checked }: ICheckBoxProps) => {
     const onChangeInt = (event: ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault()
         onChange?.(event.target.checked)
     }
     return (
