@@ -4,7 +4,7 @@ import { setUrl } from "../utils"
 import Button from "@mui/material/Button"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const AuthorizationGateway = (props: any, className: string) => {
+export const AuthorizationGateway = (props: any) => {
     const auth0 = useAuth0()
     const location = useLocation()
     const onLogin = () => {

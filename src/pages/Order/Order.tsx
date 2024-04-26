@@ -6,6 +6,7 @@ import { DishComplete } from "../Menu/Menu"
 import { Link } from "react-router-dom"
 import Loader from "../Home/components/Loader/Loader"
 import OrderCard from "../../components/OrderCard/OrderCard"
+import { OrderSummary } from "../../components/OrderSummary/OrderSummary"
 
 export const Order = () => {
     const orderStore = useOrderStore()
@@ -13,6 +14,7 @@ export const Order = () => {
         const res = await axios.get("/dishes")
         return res.data.dishes
     }
+
     const dishesQuery = useQuery({
         queryKey: ["/dishes"],
         queryFn: fetchDishes
@@ -35,22 +37,33 @@ export const Order = () => {
     if (dishesQuery.isLoading) {
         return <Loader />
     }
+
+    const handleRemove = (id: number) => {
+        orderStore.removeFromOrder(id)
+    }
     return (
         <>
             <div className={styles.cover}></div>
-            <div className={styles.flexCol}>
-                <div>RIEPILOGO ORDINE:</div>
-                <div>totale:{orderStore.total}</div>
-                <Link to="/checkout-wizard/address">paga</Link>
-            </div>
-            <div className={styles.centerer}>
-                <div className={styles.layout}>
+
+            <div className={styles.layout}>
+                <div className={styles.cardsContainer}>
                     {orderStore.order.map(single => {
                         const singleDish = getenrivhedData(single.id)
 
-                        return <OrderCard imgAlt={singleDish?.name} imgUrl={singleDish?.imgUrl} name={singleDish?.name} price={singleDish?.price} />
+                        return (
+                            <OrderCard
+                                quantity={single.quantity}
+                                imgAlt={singleDish?.name}
+                                imgUrl={singleDish?.imgUrl}
+                                name={singleDish?.name}
+                                price={singleDish?.price}
+                                handleRemove={handleRemove}
+                                id={singleDish?.id}
+                            />
+                        )
                     })}
                 </div>
+                <OrderSummary />
             </div>
         </>
     )

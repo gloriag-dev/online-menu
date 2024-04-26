@@ -10,6 +10,7 @@ interface CheckoutData {
 }
 type CheckoutProps = {
     onPrevious: () => void
+    onNext: () => void
 }
 export const Checkout = ({ onPrevious }: CheckoutProps) => {
     const form = useForm<CheckoutData>()

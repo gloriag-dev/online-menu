@@ -26,9 +26,13 @@ const Wizard = () => {
             path: "checkout",
             element: (
                 <Wrapper>
-                    <Checkout onPrevious={onPrevious(1)} />
+                    <Checkout onPrevious={onPrevious(1)} onNext={onNext(1)} />
                 </Wrapper>
             )
+        },
+        {
+            path: "complete",
+            element: <Wrapper>{/* <Checkout onPrevious={onPrevious(2)} /> */}</Wrapper>
         }
     ]
 

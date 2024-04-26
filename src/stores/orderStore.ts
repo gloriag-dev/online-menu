@@ -35,17 +35,21 @@ const useOrderStore = create<OrderType>()(set => ({
     },
     removeFromOrder: (id: number) => {
         set(state => {
-            const updatedOrder = state.order.filter(dish => dish.id !== id)
-            const deletedDish = state.order.find(dish => dish.id === id)
-
-            if (deletedDish) {
-                return {
-                    total: state.total - deletedDish.price * deletedDish.quantity,
-                    order: updatedOrder
-                }
+            const selectedOrder = state.order.find(order => order.id === id)
+            if (!selectedOrder) return { ...state }
+            // We found the order
+            selectedOrder.quantity -= 1 // ne tolgo uno
+            let updatedOrder = state.order
+            // se ne ho meno di 1 lo tolgo
+            if (selectedOrder.quantity < 1) {
+                updatedOrder = state.order.filter(order => order.id !== id)
             }
 
-            return { ...state }
+            return {
+                total: state.total - selectedOrder.price,
+                order: updatedOrder,
+                quantity: state.quantity - 1
+            }
         })
     }
 }))
