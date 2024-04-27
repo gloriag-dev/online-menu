@@ -14,6 +14,8 @@
 
     --order-botton-height: 100px;
     --color-main: gold;
+    --color-secondary: #f7f4ed;
+    --color-secondary-light: white;
 }
 
 body {

@@ -16,27 +16,19 @@ export const Navbar = () => {
                         <Logo width={106} height={80} />
                     </div>
 
-                    {!isNarrowScreen && (
-                        <div className={styles.links}>
-                            <Link to="/home" className={styles.link}>
-                                Home
-                            </Link>
+                    <div className={styles.links}>
+                        <Link to="/home" className={styles.link}>
+                            Home
+                        </Link>
 
-                            <Link to="/menu" className={styles.link}>
-                                Menu
-                            </Link>
+                        <Link to="/menu" className={styles.link}>
+                            Menu
+                        </Link>
 
-                            <Link to="/reserved-area" className={styles.link}>
-                                Reserved Area
-                            </Link>
-                        </div>
-                    )}
-
-                    {isNarrowScreen && (
-                        <div className={styles.narrowScreen}>
-                            <button className={styles.burgerButton}>☰</button>
-                        </div>
-                    )}
+                        <Link to="/reserved-area" className={styles.link}>
+                            Reserved Area
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>

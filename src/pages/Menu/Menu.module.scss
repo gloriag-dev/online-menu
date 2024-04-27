@@ -2,7 +2,7 @@
     background-image: url("../../assets/hero-bg-img-desktop.jpg");
     background-size: cover;
     background-position: center;
-    color: white;
+    color: var(--color-secondary-light);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,7 +52,7 @@
             align-items: center;
         }
         .menuItem {
-            background-color: #f7f4ed;
+            background-color: var(--color-secondary);
             display: flex;
             max-width: 295px;
             flex-direction: column;

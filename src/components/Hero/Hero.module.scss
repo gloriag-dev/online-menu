@@ -2,7 +2,7 @@
     background-image: url("../../assets/hero-bg-img-desktop.jpg");
     background-size: cover;
     background-position: center;
-    color: white;
+    color: var(--color-secondary-light);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -44,7 +44,7 @@
         bottom: 30px;
         width: 24px;
         height: 36px;
-        border: 2px solid white;
+        border: 2px solid var(--color-secondary-light);
         border-radius: 100px;
         display: inline-flex;
         align-items: center;

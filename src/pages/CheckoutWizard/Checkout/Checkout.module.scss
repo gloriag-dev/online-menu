@@ -1,19 +1,19 @@
 .main {
-  .addressData {
-    background-color: cornsilk;
-  }
-  .form {
-    background-color: aquamarine;
-    display: flex;
-    flex-direction: column;
-    padding: 45px;
-    .field {
-      display: flex;
-      flex-direction: column;
-      width: 414px;
-      .textfield {
-        background-color: white;
-      }
+    .addressData {
+        background-color: var(--color-secondary);
     }
-  }
+    .form {
+        background-color: aquamarine;
+        display: flex;
+        flex-direction: column;
+        padding: 45px;
+        .field {
+            display: flex;
+            flex-direction: column;
+            width: 414px;
+            .textfield {
+                background-color: var(--color-secondary-light);
+            }
+        }
+    }
 }
