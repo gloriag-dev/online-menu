@@ -7,8 +7,42 @@ import useOrderStore from "../../stores/orderStore"
 import { OrderBar } from "../../components/OrderBar/OrderBar"
 import DishCard from "../../components/DishCard/DishCard"
 import Loader from "../Home/components/Loader/Loader"
-import { Button } from "@mui/material"
-import { useNavigate } from "react-router-dom"
+import {} from "@mui/material"
+import {} from "react-router-dom"
+import { useState } from "react"
+import { Selector } from "../../components/Selector/Selector"
+
+export type Category = {
+    label: string
+    id: string
+}
+
+const categories = [
+    {
+        label: "Breakfasts",
+        id: "breakfasts"
+    },
+    {
+        label: "Lunches",
+        id: "lunches"
+    },
+    {
+        label: "Dinners",
+        id: "dinners"
+    },
+    {
+        label: "Drinks",
+        id: "drinks"
+    },
+    {
+        label: "Fast foods",
+        id: "fast foods"
+    },
+    {
+        label: "Desserts",
+        id: "desserts"
+    }
+]
 
 export interface DishComplete {
     id: number
@@ -20,15 +54,15 @@ export interface DishComplete {
 }
 
 export const Menu = () => {
+    const [categoryId, setCategoryId] = useState("")
     const { favouriteIds, toggleFavouriteDish } = useDishStore()
     const { addToOrder, removeFromOrder, order } = useOrderStore()
-    const navigate = useNavigate()
     const fetchDishes = async (): Promise<DishComplete[]> => {
-        const res = await axios.get("/dishes")
+        const res = await axios.get("/dishes", { params: { categoryId } })
         return res.data.dishes
     }
     const dishesQuery = useQuery({
-        queryKey: ["/dishes"],
+        queryKey: ["/dishes", categoryId],
         queryFn: fetchDishes
     })
 
@@ -63,39 +97,26 @@ export const Menu = () => {
             <div className={styles.cover}></div>
 
             <div className={styles.layout}>
-                <div className={styles.leftCol}>
-                    <section className={styles.selector}>
-                        <p>- All Popular Dishes</p>
-                        <p>- Breakfast</p>
-                        <p>- Lunches</p>
-                        <p>- Dinner</p>
-                        <p>- Drinks</p>
-                        <p>- Fast Foods</p>
-                        <p>- Dessert</p>
-                    </section>
-                    <div className={styles.btnContainer}>
-                        <Button variant="contained" color="gold" onClick={() => navigate("/order")} disabled={order.length === 0}>
-                            Vai all'ordine
-                        </Button>
-                    </div>
-                </div>
+                <div className={styles.centeredWrapper}>
+                    <Selector setCategoryId={setCategoryId} categories={categories} />
 
-                <section className={styles.menu}>
-                    {dishesQuery?.data?.map?.(dish => (
-                        <DishCard
-                            key={dish.id}
-                            dish={dish}
-                            disableRemove={disableRemove}
-                            favouriteIds={favouriteIds}
-                            handleAdd={handleAdd(dish)}
-                            handleRemove={() => handleRemove(dish)}
-                            starRating={() => starRating(dish.rating)}
-                            toggleFavouriteDish={toggleFavouriteDish}
-                        />
-                    ))}
-                </section>
+                    <section className={styles.menu}>
+                        {dishesQuery?.data?.map?.(dish => (
+                            <DishCard
+                                key={dish.id}
+                                dish={dish}
+                                disableRemove={disableRemove}
+                                favouriteIds={favouriteIds}
+                                handleAdd={handleAdd(dish)}
+                                handleRemove={() => handleRemove(dish)}
+                                starRating={() => starRating(dish.rating)}
+                                toggleFavouriteDish={toggleFavouriteDish}
+                            />
+                        ))}
+                    </section>
+                </div>
             </div>
-            <OrderBar />
+            <OrderBar open={order.length > 0} />
         </>
     )
 }

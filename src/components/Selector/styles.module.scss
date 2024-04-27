@@ -1,0 +1,23 @@
+.leftCol {
+    flex: none;
+    .selector {
+        background-color: #f7f4ed;
+        border-radius: 40px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        gap: 24px;
+        margin: 0 15px;
+        button {
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 0;
+            background-color: transparent;
+            border: none;
+
+            &:hover {
+                color: var(--color-main);
+            }
+        }
+    }
+}

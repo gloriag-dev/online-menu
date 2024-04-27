@@ -18,15 +18,27 @@
     display: flex;
     gap: 30px;
     margin-top: 30px;
+    margin-bottom: calc(var(--order-botton-height) + 30px);
     justify-content: center;
     background-image: url(https://demo.awaikenthemes.com/html-preview/fwizz/html/images/most-popular-dises-bg.png);
     background-repeat: no-repeat;
     @media (max-width: 760px) {
         flex-direction: column;
     }
+
+    .centeredWrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        max-width: 1200px;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
     .menu {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+        flex: 1;
         grid-row-gap: 20px;
         grid-column-gap: 20px;
         justify-items: center;
@@ -50,21 +62,6 @@
                 border-radius: 30px 30px 0 0;
                 margin-bottom: 5px;
             }
-        }
-    }
-
-    .selector {
-        background-color: #f7f4ed;
-        border-radius: 40px;
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-        gap: 24px;
-        margin: 0 15px;
-        p {
-            font-weight: 700;
-            margin-top: 0;
-            margin-bottom: 0;
         }
     }
 }

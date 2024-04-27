@@ -1,38 +1,38 @@
 .capitalizedTitleContainer {
-  display: flex;
-  align-items: flex-end;
-  .capitalizedTitle {
-    font-weight: 500;
-    margin-bottom: 9px;
-  }
-  .dot {
-    font-size: 40px;
-    color: gold;
-    margin-left: 3px;
-  }
+    display: flex;
+    align-items: flex-end;
+    .capitalizedTitle {
+        font-weight: 500;
+        margin-bottom: 9px;
+    }
+    .dot {
+        font-size: 40px;
+        color: var(--color-main);
+        margin-left: 3px;
+    }
 }
 .layout {
-  display: flex;
-  .pricing {
-    background-color: black;
-    max-width: 630px;
-    margin-left: 30px;
-    border-radius: 30px;
-    padding: 40px;
-    gap: 15px;
     display: flex;
-    flex-direction: column;
-    .dishName {
-      color: white;
-      font-family: "Crimson Pro", serif;
-      font-size: 22px;
-      font-weight: 500;
+    .pricing {
+        background-color: black;
+        max-width: 630px;
+        margin-left: 30px;
+        border-radius: 30px;
+        padding: 40px;
+        gap: 15px;
+        display: flex;
+        flex-direction: column;
+        .dishName {
+            color: white;
+            font-family: "Crimson Pro", serif;
+            font-size: 22px;
+            font-weight: 500;
+        }
+        .dishPrice {
+            color: var(--color-main);
+            font-family: "Crimson Pro", serif;
+            font-size: 22px;
+            font-weight: 500;
+        }
     }
-    .dishPrice {
-      color: gold;
-      font-family: "Crimson Pro", serif;
-      font-size: 22px;
-      font-weight: 500;
-    }
-  }
 }

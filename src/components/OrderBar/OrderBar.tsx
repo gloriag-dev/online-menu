@@ -1,21 +1,19 @@
+import clsx from "clsx"
 import useOrderStore from "../../stores/orderStore"
 import styles from "./OrderBar.module.scss"
 
-export const OrderBar = () => {
+interface OrderBarProps {
+    open: boolean
+}
+
+export const OrderBar: React.FC<OrderBarProps> = ({ open }) => {
     const orderStore = useOrderStore()
 
-    console.log(orderStore.order)
-
-    const getNames = () => {
-        const names = orderStore.order.map(single => single.name + " - ")
-        return <p className={styles.namesbar}>{names}</p>
-    }
     return (
-        <section className={styles.bar}>
+        <section className={clsx(styles.bar, { [styles.open]: open })}>
             <div className={styles.format}>
-                TOTAL: <p>{orderStore.total.toFixed(2) + "$"}</p>
+                TOTAL: <p>{orderStore.total.toFixed(2) + "€"}</p>
             </div>
-            <div className={styles.namesbar}>{getNames()}</div>
         </section>
     )
 }

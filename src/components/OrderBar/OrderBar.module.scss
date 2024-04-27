@@ -1,6 +1,16 @@
 .bar {
-    margin-top: 30px;
-    background-color: gold;
+    background-color: var(--color-main);
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: var(--order-botton-height);
+    bottom: calc(var(--order-botton-height) * -1);
+    transition: bottom 0.3s ease-in-out;
+
+    &.open {
+        bottom: 0px;
+    }
+
     .format {
         margin-left: 20px;
         margin-top: 20px;

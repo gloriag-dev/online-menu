@@ -1,15 +1,15 @@
 .orderSummary {
     background-color: white;
-    border: 2px solid gold;
+    border: 2px solid var(--color-main);
     max-height: 200px;
     .layout {
         padding: 30px;
     }
     .btn {
-        background-color: gold;
+        background-color: var(--color-main);
         color: black;
         &:hover {
-            background-color: gold;
+            background-color: var(--color-main);
             color: black;
         }
     }

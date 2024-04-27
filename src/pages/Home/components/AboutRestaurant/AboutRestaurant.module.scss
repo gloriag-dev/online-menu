@@ -36,7 +36,7 @@
     }
     .roundgold {
         border: 10px solid white;
-        background-color: gold;
+        background-color: var(--color-main);
         max-width: 84px;
         max-height: 91px;
         border-radius: 999999px;
@@ -96,7 +96,7 @@
         display: flex;
         align-items: center;
         &:hover {
-            background-color: gold;
+            background-color: var(--color-main);
         }
         .icon {
             margin-top: 3px;
@@ -116,7 +116,7 @@
     }
     .dot {
         font-size: 40px;
-        color: gold;
+        color: var(--color-main);
         margin-left: 3px;
     }
 }
