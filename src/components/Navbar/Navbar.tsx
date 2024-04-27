@@ -1,14 +1,18 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Logo } from "../Icons/Logo"
 import styles from "./Navbar.module.scss"
 export const Navbar = () => {
     const isNarrowScreen = window.matchMedia("(max-width: 765px)").matches
+    const navigate = useNavigate()
 
+    const handleNavigateHome = () => {
+        navigate("./home")
+    }
     return (
         <div className={styles.stickyWrapper}>
             <div className={styles.sticky}>
                 <div className={styles.nav}>
-                    <div className={styles.logo}>
+                    <div className={styles.logo} onClick={handleNavigateHome}>
                         <Logo width={106} height={80} />
                     </div>
 

@@ -7,8 +7,6 @@ import useOrderStore from "../../stores/orderStore"
 import { OrderBar } from "../../components/OrderBar/OrderBar"
 import DishCard from "../../components/DishCard/DishCard"
 import Loader from "../Home/components/Loader/Loader"
-import {} from "@mui/material"
-import {} from "react-router-dom"
 import { useState } from "react"
 import { Selector } from "../../components/Selector/Selector"
 
@@ -54,7 +52,7 @@ export interface DishComplete {
 }
 
 export const Menu = () => {
-    const [categoryId, setCategoryId] = useState("")
+    const [categoryId, setCategoryId] = useState<string>("")
     const { favouriteIds, toggleFavouriteDish } = useDishStore()
     const { addToOrder, removeFromOrder, order } = useOrderStore()
     const fetchDishes = async (): Promise<DishComplete[]> => {
@@ -98,7 +96,9 @@ export const Menu = () => {
 
             <div className={styles.layout}>
                 <div className={styles.centeredWrapper}>
-                    <Selector setCategoryId={setCategoryId} categories={categories} />
+                    <div className={styles.leftCol}>
+                        <Selector onSetCategory={setCategoryId} categories={categories} />
+                    </div>
 
                     <section className={styles.menu}>
                         {dishesQuery?.data?.map?.(dish => (

@@ -1,20 +1,18 @@
-import { Dispatch, SetStateAction } from "react"
+import {} from "react"
 import { Category } from "../../pages/Menu/Menu"
 import styles from "./styles.module.scss"
 
 type SelectorProps = {
     categories: Category[]
-    setCategoryId: Dispatch<SetStateAction<string>>
+    onSetCategory?: (categoryId: string) => void
 }
-export const Selector = ({ categories, setCategoryId }: SelectorProps) => {
+export const Selector = ({ categories, onSetCategory }: SelectorProps) => {
     return (
-        <div className={styles.leftCol}>
-            <section className={styles.selector}>
-                <button onClick={() => setCategoryId("")}>All Dishes</button>
-                {categories.map(category => {
-                    return <button onClick={() => setCategoryId(category.id)}>{category.label}</button>
-                })}
-            </section>
-        </div>
+        <section className={styles.selector}>
+            <button onClick={() => onSetCategory?.("")}>All Dishes</button>
+            {categories.map(category => {
+                return <button onClick={() => onSetCategory?.(category.id)}>{category.label}</button>
+            })}
+        </section>
     )
 }

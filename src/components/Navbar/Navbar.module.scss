@@ -43,8 +43,14 @@
         gap: 40px;
 
         .link {
+            font-size: 1.2em;
+            text-decoration: none;
+            font-weight: 500;
             color: black;
             background-color: transparent;
+            @media (max-width: 765px) {
+                font-size: 0.8em;
+            }
 
             &:hover {
                 color: var(--color-main);
@@ -104,6 +110,7 @@
     gap: 10px;
     .minilink {
         color: black;
+        text-decoration: none;
         &:hover {
             color: var(--color-main);
         }
