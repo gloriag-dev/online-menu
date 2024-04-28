@@ -1,13 +1,10 @@
 import { Route, Routes } from "react-router-dom"
 import Home from "./pages/Home/Home"
 import { AboutUs } from "./pages/AboutUs/AboutUs"
-
 import { Menu } from "./pages/Menu/Menu"
 import { Contact } from "./pages/Contact/Contact"
 import { AuthLoginCallback } from "./auth/AuthLoginCallback/AuthLoginCallBack"
 import { Order } from "./pages/Order/Order"
-
-import { Wrapper } from "./components/Wrapper/Wrapper"
 import Wizard from "./pages/CheckoutWizard"
 
 const Routing = () => {
@@ -19,14 +16,7 @@ const Routing = () => {
             <Route path="/menu" element={<Menu />} />
             <Route path="/contact-us" element={<Contact />} />
             <Route path="/order" element={<Order />} />
-            <Route
-                path="/checkout-wizard*"
-                element={
-                    <Wrapper>
-                        <Wizard />
-                    </Wrapper>
-                }
-            />
+            <Route path="/checkout-wizard*" element={<Wizard />} />
         </Routes>
     )
 }

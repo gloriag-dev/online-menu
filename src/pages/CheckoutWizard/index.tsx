@@ -16,28 +16,20 @@ const Wizard = () => {
     const steps = [
         {
             path: "address",
-            element: (
-                <Wrapper>
-                    <Address onNext={onNext(0)} />
-                </Wrapper>
-            )
+            element: <Address onNext={onNext(0)} />
         },
         {
             path: "checkout",
-            element: (
-                <Wrapper>
-                    <Checkout onPrevious={onPrevious(1)} onNext={onNext(1)} />
-                </Wrapper>
-            )
+            element: <Checkout onPrevious={onPrevious(1)} onNext={onNext(1)} />
         },
         {
             path: "complete",
-            element: <Wrapper>{/* <Checkout onPrevious={onPrevious(2)} /> */}</Wrapper>
+            element: <div></div>
         }
     ]
 
     return (
-        <div style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
+        <Wrapper>
             <Routes>
                 {steps.map(step => {
                     return <Route key={step.path} path={step.path} element={step.element} />
@@ -45,7 +37,7 @@ const Wizard = () => {
                 <Route index element={<Navigate to={steps[0].path} />} />
                 <Route path="*" element={<Navigate to={steps[0].path} />} />
             </Routes>
-        </div>
+        </Wrapper>
     )
 }
 

@@ -35,6 +35,9 @@
         right: 10px;
         height: 40px;
         box-shadow: var(--shadow);
+        @media (max-width: 760px) {
+            width: 200px;
+        }
         &:hover {
             background-color: var(--color-secondary-light);
         }
