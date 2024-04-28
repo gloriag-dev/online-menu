@@ -8,7 +8,7 @@ export interface ITextInputRHFProps extends ITextInputProps {
     defaultValue?: string
 }
 
-const TextInputRHF: React.FC<ITextInputRHFProps> = ({ name, rules, disabled, defaultValue, ...props }) => {
+const TextInputRHF: React.FC<ITextInputRHFProps> = ({ name, rules, disabled, defaultValue, onChange, onBlur, ...props }) => {
     const context = useFormContext()
     return (
         <Controller
@@ -25,14 +25,11 @@ const TextInputRHF: React.FC<ITextInputRHFProps> = ({ name, rules, disabled, def
                         error={fieldState.error?.message}
                         onBlur={e => {
                             field.onBlur()
-                            props.onBlur?.(e)
+                            onBlur?.(e)
                         }}
                         onChange={(value: string, event: ChangeEvent<HTMLInputElement>) => {
                             field.onChange(value) //React hook form
-                            props.onChange?.(value, event)
-                        }}
-                        onClick={() => {
-                            props.onClick?.()
+                            onChange?.(value, event)
                         }}
                     />
                 )

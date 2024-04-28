@@ -18,7 +18,7 @@ export interface ITextInputProps extends Omit<GenericInputWrapperProps, "onChang
 export const TextInput = ({ error, label, format, onChange, value, disabled, required }: ITextInputProps) => {
     const onChangeInt = (event: ChangeEvent<HTMLInputElement>) => {
         event.preventDefault()
-        const value = format?.(event.target.value) || event.target.value
+        const value = format?.(event.target.value) ?? event.target.value
         onChange?.(value, event)
     }
 

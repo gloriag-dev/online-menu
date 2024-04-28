@@ -7,6 +7,7 @@ import useAddressStore from "../../../stores/addressStore"
 import {} from "zod"
 import TextInputRHF from "../../../components/input/TextInput/TextInput.rhf"
 import SelectInputRHF from "../../../components/input/SelectInput/SelectInput.rhf"
+import {} from "react"
 export type AddressData = {
     provincia: string
     city: string
@@ -32,7 +33,7 @@ declare module "@mui/material/Button" {
 export const Address = ({ onNext }: AddressProps) => {
     const addressStore = useAddressStore()
     const form = useForm<AddressData>({
-        mode: "onBlur",
+        mode: "all",
         reValidateMode: "onBlur"
     })
 
@@ -55,7 +56,7 @@ export const Address = ({ onNext }: AddressProps) => {
         onNext()
         form.reset()
     }
-
+    console.log(form.watch)
     return (
         <div className={style.main}>
             <FormProvider {...form}>
@@ -63,6 +64,9 @@ export const Address = ({ onNext }: AddressProps) => {
                     <SelectInputRHF
                         name="provincia"
                         label="Provincia"
+                        rules={{
+                            required: "This field is required"
+                        }}
                         values={query.data?.map?.(provincia => {
                             return {
                                 value: provincia.code,
@@ -70,11 +74,41 @@ export const Address = ({ onNext }: AddressProps) => {
                             }
                         })}
                     />
-                    <TextInputRHF name="city" label="City" />
-                    <TextInputRHF name="cap" label="CAP" />
-                    <TextInputRHF name="via" label="Adress" />
-                    <TextInputRHF name="number" label="Number" />
-                    <Button variant="contained" type="submit" color="gold">
+                    <TextInputRHF
+                        name="city"
+                        label="City"
+                        rules={{
+                            required: "This field is required",
+                            message: "MESSAGE"
+                        }}
+                        format={value => value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?1234567890]/g, "")}
+                    />
+                    <TextInputRHF
+                        name="cap"
+                        label="CAP"
+                        rules={{
+                            required: "This field is required"
+                        }}
+                        format={value => value.replaceAll(/\D/g, "").slice(0, 5)}
+                    />
+
+                    <TextInputRHF
+                        name="via"
+                        label="Address"
+                        rules={{
+                            required: "This field is required"
+                        }}
+                        format={value => value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, "")}
+                    />
+                    <TextInputRHF
+                        name="number"
+                        label="Number"
+                        rules={{
+                            required: "This field is required"
+                        }}
+                        format={value => value.replaceAll(/\D/g, "").slice(0, 4)}
+                    />
+                    <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid}>
                         Go to checkout
                     </Button>
                 </form>
