@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px -1px 10px 1px #6f6f6f;
+    box-shadow: var(--shadow);
     path {
         stroke: red !important;
     }

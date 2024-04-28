@@ -10,7 +10,7 @@
         justify-content: center;
         align-items: center;
         h2 {
-            font-size: 40px;
+            font-size: var(--title-size);
             margin: 5px 15px 5px 25px;
         }
         .carousel {
@@ -63,7 +63,7 @@
         margin-bottom: 9px;
     }
     .dot {
-        font-size: 40px;
+        font-size: var(--title-size);
         color: var(--color-main);
         margin-left: 3px;
     }
