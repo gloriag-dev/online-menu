@@ -9,6 +9,7 @@ export const Navbar = () => {
         navigate("./home")
     }
     return (
+        <div className={styles.navRoot}>
         <div className={styles.stickyWrapper}>
             <div className={styles.sticky}>
                 <div className={styles.nav}>
@@ -31,6 +32,7 @@ export const Navbar = () => {
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

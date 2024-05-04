@@ -11,7 +11,7 @@ export const Selector = ({ categories, onSetCategory }: SelectorProps) => {
         <section className={styles.selector}>
             <button onClick={() => onSetCategory?.("")}>All Dishes</button>
             {categories.map(category => {
-                return <button onClick={() => onSetCategory?.(category.id)}>{category.label}</button>
+                return <button key={category.id} onClick={() => onSetCategory?.(category.id)}>{category.label}</button>
             })}
         </section>
     )

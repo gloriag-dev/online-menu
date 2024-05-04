@@ -23,8 +23,8 @@ export const AboutRestaurant = () => {
                 <h2 className={styles.h2}>Living Well Begins With Eating Well</h2>
 
                 <section className={styles.cardContainer}>
-                    <CardWithIcon className={styles.card} icon={<OrderIcon />} iconContainerClassname={styles.iconContainer} title="Online Order" description="Duis nec semper ligula" />
-                    <CardWithIcon className={styles.card} icon={<ServicesIcon />} iconContainerClassname={styles.iconContainer} title="24X7 Services" description="Duis nec semper ligula" />
+                    <CardWithIcon className={styles.card} icon={<OrderIcon />} iconContainerClassname={styles.iconContainer} title="Online Order" description="Order from your couch..." />
+                    <CardWithIcon className={styles.card} icon={<ServicesIcon />} iconContainerClassname={styles.iconContainer} title="24X7 Services" description="and get our finest meals withi 20 minutes" />
                 </section>
             </section>
         </div>

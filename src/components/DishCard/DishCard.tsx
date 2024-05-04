@@ -26,6 +26,7 @@ declare module "@mui/material/Button" {
 export const DishCard = ({ dish, starRating, handleAdd, favouriteIds, handleRemove, disableRemove, toggleFavouriteDish }: DishCardProps) => {
     return (
         <div className={styles.menuItem} key={dish.id}>
+            <div className={styles.flexGrow}>
             <img alt={dish.name} src={dish.imgUrl} className={styles.img} />
             <div className={styles.itemText}>
                 {starRating(dish.rating)}
@@ -40,6 +41,7 @@ export const DishCard = ({ dish, starRating, handleAdd, favouriteIds, handleRemo
                         toggleFavouriteDish(dish.id, e)
                     }}
                 />
+            </div>
             </div>
             <div className={styles.flexBtn}>
                 <Button variant="contained" onClick={() => handleAdd(dish)} className={styles.primary} color="gold">

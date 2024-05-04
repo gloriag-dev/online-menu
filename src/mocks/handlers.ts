@@ -18,8 +18,8 @@ export const handlers = [
         let dishes = [
             {
                 id: 1,
-                name: "Grilled Marinated",
-                description: "so yummy!!",
+                name: "Grilled Marinated chicken",
+                description: "Succulent chicken marinated in a blend of herbs and spices, expertly grilled to perfection, offering a juicy and aromatic dish that is sure to satisfy your cravings.",
                 categories: ["lunches", "dinners"],
                 price: 25.99,
                 rating: 1,
@@ -28,8 +28,8 @@ export const handlers = [
             {
                 id: 2,
                 name: "Fried Egg",
-                category: ["lunches", "dinners"],
-                description: "so yummy!!",
+                category: ["breakfasts"],
+                description: "A classic breakfast staple, a fried egg cooked to golden perfection, with a runny yolk that adds a rich and satisfying touch to any meal.",
                 price: 12.99,
                 rating: 4,
                 imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-2.jpg"
@@ -37,7 +37,7 @@ export const handlers = [
             {
                 id: 3,
                 name: "Sardine Spaghetti",
-                description: "so yummy!!",
+                description: "Indulge in a flavorful fusion of tender spaghetti noodles tossed in a savory sardine-infused sauce, creating a seafood delight that will tantalize your taste buds.",
                 category: ["lunches", "dinners"],
                 price: 23.99,
                 rating: 3,
@@ -46,7 +46,7 @@ export const handlers = [
             {
                 id: 4,
                 name: "Ice Waffle",
-                description: "so yummy!!",
+                description: "A delightful treat of crispy, golden waffles served chilled, topped with a scoop of creamy ice cream and drizzled with decadent syrups, creating a refreshing and indulgent dessert.",
                 category: ["breakfasts", "desserts"],
                 price: 6.99,
                 rating: 4,
@@ -55,7 +55,7 @@ export const handlers = [
             {
                 id: 5,
                 name: "Egg Omelet",
-                description: "so yummy!!",
+                description: "Fluffy eggs folded over a medley of fillings such as cheese, vegetables, and meats, creating a versatile and satisfying dish perfect for any time of day.",
                 category: ["breakfasts"],
                 price: 10.99,
                 rating: 5,
@@ -64,7 +64,7 @@ export const handlers = [
             {
                 id: 6,
                 name: "Gourmet Meal",
-                description: "so yummy!!",
+                description: "Elevate your dining experience with a gourmet meal crafted with the finest ingredients and culinary expertise, offering a symphony of flavors and textures that will delight your senses and leave you craving more.",
                 category: ["breakfasts"],
                 price: 17.99,
                 rating: 5,

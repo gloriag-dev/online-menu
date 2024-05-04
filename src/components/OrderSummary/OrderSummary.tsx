@@ -12,11 +12,11 @@ export const OrderSummary = ({ className }: OrderSummaryProps) => {
     return (
         <div className={clsx("order-summary", className, styles.orderSummary)}>
             <div className={styles.layout}>
-                <p>RIEPILOGO ORDINE</p>
-                <p>Totale: {orderStore.total.toFixed(2)}€</p>
+                <p>YOUR ORDER:</p>
+                <p>Total: {orderStore.total.toFixed(2)}€</p>
                 <Link to="/checkout-wizard">
                     <Button variant="contained" className={styles.btn}>
-                        Vai al pagamento
+                        Go to checkout
                     </Button>
                 </Link>
             </div>

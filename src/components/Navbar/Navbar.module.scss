@@ -1,3 +1,7 @@
+.navRoot{
+    display: flex;
+    justify-content: center;
+}
 .stickyWrapper {
     position: fixed;
     display: flex;
@@ -17,6 +21,7 @@
     background-color: var(--color-secondary-light);
     min-height: 70px;
     border-radius: 2000px;
+    padding-left: 10px;
     min-width: 1000px;
     display: flex;
     align-content: center;
