@@ -91,7 +91,7 @@ export const Address = ({ onNext }: AddressProps) => {
                         }}
                         format={value => value.replaceAll(/\D/g, "").slice(0, 5)}
                     />
-
+<div className={style.flex}>
                     <TextInputRHF
                         name="via"
                         label="Address"
@@ -108,6 +108,7 @@ export const Address = ({ onNext }: AddressProps) => {
                         }}
                         format={value => value.replaceAll(/\D/g, "").slice(0, 4)}
                     />
+                    </div>
                     <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid}>
                         Go to checkout
                     </Button>

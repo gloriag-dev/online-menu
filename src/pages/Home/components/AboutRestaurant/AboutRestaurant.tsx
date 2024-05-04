@@ -24,7 +24,7 @@ export const AboutRestaurant = () => {
 
                 <section className={styles.cardContainer}>
                     <CardWithIcon className={styles.card} icon={<OrderIcon />} iconContainerClassname={styles.iconContainer} title="Online Order" description="Order from your couch..." />
-                    <CardWithIcon className={styles.card} icon={<ServicesIcon />} iconContainerClassname={styles.iconContainer} title="24X7 Services" description="and get our finest meals within 20 minutes!" />
+                    <CardWithIcon className={styles.card} icon={<ServicesIcon />} iconContainerClassname={styles.iconContainer} title="24X7 Services" description="...and get our finest meals within 20 minutes!" />
                 </section>
             </section>
         </div>

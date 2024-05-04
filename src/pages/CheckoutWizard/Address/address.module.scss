@@ -28,4 +28,13 @@
             border-bottom: 2px solid var(--color-main);
         }
     }
+    .flex{
+        display: flex;
+        flex-direction: row;
+        gap:10px;
+        .civicInput{
+            max-width: 100px;
+        }
+    }
+    
 }
