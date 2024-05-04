@@ -1,16 +1,44 @@
 .main {
+    display: flex;
+    justify-content: space-around;
+    @media (max-width: 765px) {
+        flex-direction: column;
+        justify-content: center;
+    }
     .addressData {
         background-color: var(--color-secondary);
+        padding: 10px 40px 0px 40px;
+        max-height: 25vh;
+        border-radius: 8px;
+        margin-top: 50px;
+        @media (max-width: 765px) {
+            width: 80vw;
+           }
+        .billingData{
+            font-family: var(--font-brand);
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        .backBtn{
+            @media (max-width: 765px) {
+               margin-bottom: 30px;
+               }
+        }
     }
     .form {
         display: flex;
         flex-direction: column;
         padding: 45px;
         margin-bottom: 100px;
+        gap:30px;
         .field {
             display: flex;
             flex-direction: column;
             width: 414px;
+            @media (max-width: 765px) {
+             width: 80vw;
+            }
             .textfield {
                 background-color: var(--color-secondary-light);
             }

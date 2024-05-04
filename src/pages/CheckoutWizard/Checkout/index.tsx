@@ -29,12 +29,15 @@ export const Checkout = ({ onPrevious }: CheckoutProps) => {
         <div className={styles.main}>
             <div className={styles.addressData}>
                 <section className={styles.addressCard}>
-                    <p>
-                        {addressStore.via}-{addressStore.number}
+                    <span className={styles.billingData}>
+                       Address:  {addressStore.number}, {addressStore.via}
+                    </span>
+                    <p className={styles.billingData}>
+                        City: {addressStore.cap}, {addressStore.city}
                     </p>
-                    <p>
-                        {addressStore.city}-{addressStore.cap}
-                    </p>
+                    <Button variant="contained" type="submit" color="gold" onClick={handleClick} className={styles.backBtn}>
+                       Edit billing address
+                    </Button>
                 </section>
             </div>
             <FormProvider {...form}>
@@ -66,7 +69,9 @@ export const Checkout = ({ onPrevious }: CheckoutProps) => {
                         label="CVV"
                         rules={{
                             required: "This field is required",
-                            message: "MESSAGE"
+                            pattern: {
+                                value: /^\d{3}$/
+                            }
                         }}
                         format={value => value.replaceAll(/\D/g, "").slice(0, 3)}
                     />
@@ -90,7 +95,6 @@ export const Checkout = ({ onPrevious }: CheckoutProps) => {
                             </div>
                         )}
                     />
-                    <Button onClick={handleClick}>Indietro</Button>
                     <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid}>
                         Submit
                     </Button>
