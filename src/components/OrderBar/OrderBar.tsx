@@ -1,7 +1,7 @@
 import clsx from "clsx"
 import useOrderStore from "../../stores/orderStore"
 import styles from "./OrderBar.module.scss"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { Button } from "@mui/material"
 
 interface OrderBarProps {
@@ -15,14 +15,17 @@ export const OrderBar: React.FC<OrderBarProps> = ({ open }) => {
     const handleClick = () => {
         navigate("/order")
     }
+    const location = useLocation()
+    console.log(location.pathname.includes('/checkout'))
     return (
         <section className={clsx(styles.bar, { [styles.open]: open })}>
             <div className={styles.format}>
                 TOTAL: <p>{orderStore.total.toFixed(2) + "€"}</p>
             </div>
-            <Button onClick={handleClick} className={styles.goToOrderBtn}>
+{!location.pathname.includes('/checkout') && <Button onClick={handleClick} className={styles.goToOrderBtn}>
                 COMPLETE ORDER
-            </Button>
+            </Button>}
+            
         </section>
     )
 }

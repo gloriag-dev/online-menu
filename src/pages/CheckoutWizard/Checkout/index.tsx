@@ -2,6 +2,7 @@ import { Controller, FormProvider, useForm } from "react-hook-form"
 import styles from "./Checkout.module.scss"
 import useAddressStore from "../../../stores/addressStore"
 import { Button, FormLabel, TextField } from "@mui/material"
+import TextInputRHF from "../../../components/input/TextInput/TextInput.rhf"
 
 interface CheckoutData {
     cardNumber: string
@@ -38,20 +39,21 @@ export const Checkout = ({ onPrevious }: CheckoutProps) => {
             </div>
             <FormProvider {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className={styles.form}>
-                    <Controller
-                        name="cardNumber"
+                <Controller
+                        name="card number"
                         render={({ field }) => (
                             <div className={styles.field}>
-                                <FormLabel>CARD NUMBER</FormLabel>
-                                <TextField
-                                    className={styles.textfield}
-                                    variant="outlined"
-                                    disabled={field.disabled}
-                                    name={field.name}
-                                    onBlur={field.onBlur}
-                                    value={field.value}
-                                    onChange={field.onChange}
-                                />
+                                <TextInputRHF
+                        name="card number"
+                        label="Card Number"
+                        rules={{
+                            required: "This field is required",
+                            pattern: {
+                                value: /^\d{16}$/
+                            }
+                        }}
+                        format={value => value.replaceAll(/\D/g, "").slice(0, 16)}
+                    />
                             </div>
                         )}
                     />
@@ -59,16 +61,15 @@ export const Checkout = ({ onPrevious }: CheckoutProps) => {
                         name="cvv"
                         render={({ field }) => (
                             <div className={styles.field}>
-                                <FormLabel>CVV</FormLabel>
-                                <TextField
-                                    className={styles.textfield}
-                                    variant="outlined"
-                                    disabled={field.disabled}
-                                    name={field.name}
-                                    onBlur={field.onBlur}
-                                    value={field.value}
-                                    onChange={field.onChange}
-                                />
+                                <TextInputRHF
+                        name="cvv"
+                        label="CVV"
+                        rules={{
+                            required: "This field is required",
+                            message: "MESSAGE"
+                        }}
+                        format={value => value.replaceAll(/\D/g, "").slice(0, 3)}
+                    />
                             </div>
                         )}
                     />
@@ -90,7 +91,10 @@ export const Checkout = ({ onPrevious }: CheckoutProps) => {
                         )}
                     />
                     <Button onClick={handleClick}>Indietro</Button>
-                    <Button>Submit</Button>
+                    <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid}>
+                        Submit
+                    </Button>
+                 
                 </form>
             </FormProvider>
         </div>

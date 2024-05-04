@@ -4,6 +4,7 @@
     padding: 40px;
     border-radius: 8px;
     background-color: var(--color-secondary);
+    bottom:300px;
     @media (max-width: 765px) {
         padding: 15px;
     }
@@ -13,7 +14,7 @@
         flex-direction: column;
         gap: 30px;
         min-width: 350px;
-
+        margin-bottom: 100px;
         .select {
             background-color: var(--color-secondary-light);
             width: 100px;

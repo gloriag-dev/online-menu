@@ -3,10 +3,10 @@
         background-color: var(--color-secondary);
     }
     .form {
-        background-color: aquamarine;
         display: flex;
         flex-direction: column;
         padding: 45px;
+        margin-bottom: 100px;
         .field {
             display: flex;
             flex-direction: column;

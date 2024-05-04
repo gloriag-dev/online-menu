@@ -56,7 +56,7 @@ export const Address = ({ onNext }: AddressProps) => {
         onNext()
         form.reset()
     }
-    console.log(form.watch)
+
     return (
         <div className={style.main}>
             <FormProvider {...form}>
@@ -64,6 +64,7 @@ export const Address = ({ onNext }: AddressProps) => {
                     <SelectInputRHF
                         name="provincia"
                         label="Provincia"
+                        defaultValue={addressStore.provincia}
                         rules={{
                             required: "This field is required"
                         }}
@@ -76,6 +77,7 @@ export const Address = ({ onNext }: AddressProps) => {
                     />
                     <TextInputRHF
                         name="city"
+                        defaultValue={addressStore.city}
                         label="City"
                         rules={{
                             required: "This field is required",
@@ -86,15 +88,20 @@ export const Address = ({ onNext }: AddressProps) => {
                     <TextInputRHF
                         name="cap"
                         label="CAP"
+                        defaultValue={addressStore.cap}
                         rules={{
-                            required: "This field is required"
+                            required: "This field is required",
+                            pattern: {
+                                value: /^\d{5}$/
+                            }
                         }}
                         format={value => value.replaceAll(/\D/g, "").slice(0, 5)}
                     />
-<div className={style.flex}>
+                    <div className={style.flex}>
                     <TextInputRHF
                         name="via"
                         label="Address"
+                        defaultValue={addressStore.via}
                         rules={{
                             required: "This field is required"
                         }}
@@ -103,6 +110,7 @@ export const Address = ({ onNext }: AddressProps) => {
                     <TextInputRHF
                         name="number"
                         label="Number"
+                        defaultValue={addressStore.number}
                         rules={{
                             required: "This field is required"
                         }}
