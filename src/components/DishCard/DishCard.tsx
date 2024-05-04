@@ -31,7 +31,7 @@ export const DishCard = ({ dish, starRating, handleAdd, favouriteIds, handleRemo
             <div className={styles.itemText}>
                 {starRating(dish.rating)}
                 <p className={styles.name}>{dish.name}</p>
-                <span>{dish.description}</span>
+                <span className={styles.description}>{dish.description}</span>
             </div>
             <div className={styles.flex}>
                 <AddToFavoritesButton

@@ -74,13 +74,16 @@ export const handlers = [
 
         // Filter by category
         const url = new URL(request.url)
+
         const categoryId = url.searchParams.get("categoryId")
         if (categoryId) {
             dishes = dishes.filter(singleDish => singleDish.category?.includes(categoryId))
+            
         }
 
         return HttpResponse.json({
-            dishes: dishes
+            dishes: dishes,
+          selected: categoryId
         })
     })
 ]

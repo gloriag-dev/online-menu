@@ -14,17 +14,17 @@ export const WhyChooseUs = () => {
                 <div className={styles.carousel}>
                     <div className={styles.transparentCard}>
                         <Food className={styles.icon} />
-                        <p>Quality Food</p>
+                        <p className={styles.title}>Quality Food</p>
                         <p className={styles.description}>Enjoy a variety of meal options, from world cuisines to family favorites.</p>
                     </div>
                     <div className={styles.card}>
                         <Delivery className={styles.icon} />
-                        <p>Fastest Delivery</p>
+                        <p className={styles.title}>Fastest Delivery</p>
                         <p className={styles.description}>Choose a delivery slot and have your meals delivered to your door.</p>
                     </div>
                     <div className={styles.transparentCard}>
                         <Recipes className={styles.icon} />
-                        <p>Original Recipes</p>
+                        <p className={styles.title}>Original Recipes</p>
                         <p className={styles.description}>Explore a diverse range of food options to satisfy your cravings.</p>
                     </div>
                 </div>

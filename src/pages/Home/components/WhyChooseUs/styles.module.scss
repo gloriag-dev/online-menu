@@ -11,6 +11,7 @@
         align-items: center;
         h2 {
             font-size: var(--title-size);
+            font-family: var(--font-brand);
             margin: 5px 15px 5px 25px;
         }
         .carousel {
@@ -36,6 +37,11 @@
                 .description {
                     padding: 20px;
                 }
+                .title{
+                    font-family: var(--font-brand);
+                    font-weight: bold;
+                    font-size: 20px;
+                }
             }
             .card {
                 background-color: var(--color-secondary-light);
@@ -45,6 +51,11 @@
                 flex-direction: column;
                 align-items: center;
                 margin: 20px;
+                .title{
+                    font-family: var(--font-brand);
+                    font-weight: bold;
+                    font-size: 20px;
+                }
                 .description {
                     padding: 20px;
                 }

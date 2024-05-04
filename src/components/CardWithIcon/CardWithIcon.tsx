@@ -1,4 +1,5 @@
 import { ReactNode } from "react"
+import styles from './CardWithIcon.module.scss'
 
 type CardWithIconProps = {
     className: string
@@ -12,7 +13,7 @@ export const CardWithIcon = ({ className, icon, title, description, iconContaine
     return (
         <div className={className}>
             <div className={iconContainerClassname}>{icon}</div>
-            <p>{title}</p>
+            <p className={styles.title}>{title}</p>
             <p>{description}</p>
         </div>
     )

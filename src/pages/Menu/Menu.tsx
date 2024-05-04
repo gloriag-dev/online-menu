@@ -9,6 +9,7 @@ import DishCard from "../../components/DishCard/DishCard"
 import Loader from "../Home/components/Loader/Loader"
 import { useState } from "react"
 import { Selector } from "../../components/Selector/Selector"
+import clsx from "clsx"
 
 export type Category = {
     label: string
@@ -97,7 +98,7 @@ export const Menu = () => {
             <div className={styles.layout}>
                 <div className={styles.centeredWrapper}>
                     <div className={styles.leftCol}>
-                        <Selector onSetCategory={setCategoryId} categories={categories} />
+                        <Selector onSetCategory={setCategoryId} categories={categories} categoryId={categoryId}/>
                     </div>
 
                     <section className={styles.menu}>
