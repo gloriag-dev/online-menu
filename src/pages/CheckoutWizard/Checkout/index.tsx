@@ -3,6 +3,7 @@ import styles from "./Checkout.module.scss"
 import useAddressStore from "../../../stores/addressStore"
 import { Button, FormLabel, TextField } from "@mui/material"
 import TextInputRHF from "../../../components/input/TextInput/TextInput.rhf"
+import DateInput from "../../../components/input/DateInput/DateInput"
 
 interface CheckoutData {
     cardNumber: string
@@ -83,15 +84,7 @@ export const Checkout = ({ onPrevious }: CheckoutProps) => {
                         render={({ field }) => (
                             <div className={styles.field}>
                                 <FormLabel>Expiry</FormLabel>
-                                <TextField
-                                    className={styles.textfield}
-                                    variant="outlined"
-                                    disabled={field.disabled}
-                                    name={field.name}
-                                    onBlur={field.onBlur}
-                                    value={field.value}
-                                    onChange={field.onChange}
-                                />
+                               <DateInput />
                             </div>
                         )}
                     />
