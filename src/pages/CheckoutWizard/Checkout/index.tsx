@@ -1,6 +1,6 @@
 import { Controller, FormProvider, useForm } from "react-hook-form"
 import styles from "./Checkout.module.scss"
-import useAddressStore from "../../../stores/addressStore"
+import useUserStore from "../../../stores/userStore"
 import { Button, FormLabel} from "@mui/material"
 import TextInputRHF from "../../../components/input/TextInput/TextInput.rhf"
 import DateInput from "../../../components/input/DateInput/DateInput"
@@ -17,7 +17,7 @@ type CheckoutProps = {
 }
 export const Checkout = ({ onPrevious }: CheckoutProps) => {
     const form = useForm<CheckoutData>()
-    const addressStore = useAddressStore()
+    const userStore = useUserStore()
     const navigate = useNavigate()
     const onSubmit = (values: CheckoutData) => {
         console.log(values)
@@ -29,16 +29,17 @@ export const Checkout = ({ onPrevious }: CheckoutProps) => {
     const handleComplete = () => {
 navigate("./thank-you")
     }
-
+const fullName = `${userStore.name}` + ' ' + `${userStore.surname}`
     return (
         <div className={styles.main}>
             <div className={styles.addressData}>
+                <h2>{fullName}</h2>
                 <section className={styles.addressCard}>
                     <span className={styles.billingData}>
-                       Address:  {addressStore.number}, {addressStore.via}
+                       Address:  {userStore.number}, {userStore.via}
                     </span>
                     <p className={styles.billingData}>
-                        City: {addressStore.cap}, {addressStore.city}
+                        City: {userStore.cap}, {userStore.city}
                     </p>
                     <Button variant="contained" type="submit" color="gold" onClick={handleClick} className={styles.backBtn}>
                        Edit billing address

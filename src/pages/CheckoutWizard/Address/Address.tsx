@@ -3,7 +3,7 @@ import style from "./address.module.scss"
 import { Button } from "@mui/material"
 import axios from "axios"
 import { useMutation, useQuery } from "@tanstack/react-query"
-import useAddressStore from "../../../stores/addressStore"
+import useUserStore from "../../../stores/userStore"
 import {} from "zod"
 import TextInputRHF from "../../../components/input/TextInput/TextInput.rhf"
 import SelectInputRHF from "../../../components/input/SelectInput/SelectInput.rhf"
@@ -14,6 +14,8 @@ export type AddressData = {
     cap: string
     via: string
     number: string
+    name: string,
+    surname: string
 }
 
 export type AddressProps = {
@@ -31,7 +33,7 @@ declare module "@mui/material/Button" {
     }
 }
 export const Address = ({ onNext }: AddressProps) => {
-    const addressStore = useAddressStore()
+    const userStore = useUserStore()
     const form = useForm<AddressData>({
         mode: "all",
         reValidateMode: "onBlur"
@@ -50,8 +52,8 @@ export const Address = ({ onNext }: AddressProps) => {
     })
 
     const onSubmit = async (values: AddressData) => {
-        const { via, cap, city, provincia, number } = values
-        addressStore.setAddress(provincia, cap, city, via, number)
+        const { via, cap, city, provincia, number, name, surname } = values
+        userStore.setUserData(provincia, cap, city, via, number, name, surname)
         await mutation.mutateAsync(values)
         onNext()
         form.reset()
@@ -61,10 +63,28 @@ export const Address = ({ onNext }: AddressProps) => {
         <div className={style.main}>
             <FormProvider {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className={style.form}>
+                <TextInputRHF
+                        name="name"
+                        label="Name "
+                        defaultValue={userStore.name}
+                        rules={{
+                            required: "This field is required"
+                        }}
+                        format={value => value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, "")}
+                    />
+                        <TextInputRHF
+                        name="surname"
+                        label="Surname"
+                        defaultValue={userStore.surname}
+                        rules={{
+                            required: "This field is required"
+                        }}
+                        format={value => value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, "")}
+                    />
                     <SelectInputRHF
                         name="provincia"
                         label="Provincia"
-                        defaultValue={addressStore.provincia}
+                        defaultValue={userStore.provincia}
                         rules={{
                             required: "This field is required"
                         }}
@@ -77,7 +97,7 @@ export const Address = ({ onNext }: AddressProps) => {
                     />
                     <TextInputRHF
                         name="city"
-                        defaultValue={addressStore.city}
+                        defaultValue={userStore.city}
                         label="City"
                         rules={{
                             required: "This field is required",
@@ -88,7 +108,7 @@ export const Address = ({ onNext }: AddressProps) => {
                     <TextInputRHF
                         name="cap"
                         label="CAP"
-                        defaultValue={addressStore.cap}
+                        defaultValue={userStore.cap}
                         rules={{
                             required: "This field is required",
                             pattern: {
@@ -101,7 +121,7 @@ export const Address = ({ onNext }: AddressProps) => {
                     <TextInputRHF
                         name="via"
                         label="Address"
-                        defaultValue={addressStore.via}
+                        defaultValue={userStore.via}
                         rules={{
                             required: "This field is required"
                         }}
@@ -110,7 +130,7 @@ export const Address = ({ onNext }: AddressProps) => {
                     <TextInputRHF
                         name="number"
                         label="Number"
-                        defaultValue={addressStore.number}
+                        defaultValue={userStore.number}
                         rules={{
                             required: "This field is required"
                         }}

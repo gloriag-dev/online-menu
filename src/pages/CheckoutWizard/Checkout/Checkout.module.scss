@@ -11,6 +11,9 @@
         max-height: 25vh;
         border-radius: 8px;
         margin-top: 50px;
+        h2{
+            text-transform: capitalize;
+        }
         @media (max-width: 765px) {
             width: 80vw;
            }
