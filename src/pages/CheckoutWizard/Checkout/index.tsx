@@ -1,9 +1,10 @@
 import { Controller, FormProvider, useForm } from "react-hook-form"
 import styles from "./Checkout.module.scss"
 import useAddressStore from "../../../stores/addressStore"
-import { Button, FormLabel, TextField } from "@mui/material"
+import { Button, FormLabel} from "@mui/material"
 import TextInputRHF from "../../../components/input/TextInput/TextInput.rhf"
 import DateInput from "../../../components/input/DateInput/DateInput"
+import { useNavigate } from "react-router-dom"
 
 interface CheckoutData {
     cardNumber: string
@@ -17,13 +18,16 @@ type CheckoutProps = {
 export const Checkout = ({ onPrevious }: CheckoutProps) => {
     const form = useForm<CheckoutData>()
     const addressStore = useAddressStore()
-
+    const navigate = useNavigate()
     const onSubmit = (values: CheckoutData) => {
         console.log(values)
     }
 
     const handleClick = () => {
         onPrevious()
+    }
+    const handleComplete = () => {
+navigate("./thank-you")
     }
 
     return (
@@ -84,11 +88,11 @@ export const Checkout = ({ onPrevious }: CheckoutProps) => {
                         render={({ field }) => (
                             <div className={styles.field}>
                                 <FormLabel>Expiry</FormLabel>
-                               <DateInput />
+                               <DateInput/>
                             </div>
                         )}
                     />
-                    <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid}>
+                    <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid} onClick={handleComplete}>
                         Submit
                     </Button>
                  

@@ -1,7 +1,7 @@
 import clsx from "clsx"
 import styles from "./OrderCard.module.scss"
 
-type OrderCardProps = {
+export type OrderCardProps = {
     imgAlt?: string
     imgUrl?: string
     name?: string

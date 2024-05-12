@@ -23,7 +23,7 @@ const Wizard = () => {
             element: <Checkout onPrevious={onPrevious(1)} onNext={onNext(1)} />
         },
         {
-            path: "complete",
+            path: "thank-you",
             element: <div></div>
         }
     ]

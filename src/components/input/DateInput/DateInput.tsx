@@ -19,7 +19,7 @@ export const DateInput = ({ error, label, disabled, required }: IDateInputProps)
     
     return (
         <GenericInputWrapper error={error} label={label} disabled={disabled} required={required}>
-            <DatePicker selected={startDate} onChange={(date: Date) =>setStartDate(date)} dateFormat="MM/dd/yyyy" className={clsx("date-input", styles.root)}/>
+            <DatePicker selected={startDate}  openToDate={new Date()} onChange={(date: Date) =>setStartDate(date)} dateFormat="MM/dd/yyyy" className={clsx("date-input", styles.root)}/>
         </GenericInputWrapper>
     )
 }

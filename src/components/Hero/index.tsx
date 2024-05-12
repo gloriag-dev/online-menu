@@ -10,8 +10,8 @@ export const Hero = () => {
 
             <h1 className={styles.heroTitle}>Taste flavours from</h1>
             <h1 className={styles.heroTitle}> Around the world</h1>
-            <p>Treat yourself to a culinary journey like no other with Flizz! Whether you're looking for a quick and delicious meal or planning a special occasion, we have the perfect dish for every moment.</p>
-            <p>Order now and savor the exquisite flavors of Flizz!</p>
+            <p>Treat yourself to a culinary journey like no other with Fwizz! Whether you're looking for a quick and delicious meal or planning a special occasion, we have the perfect dish for every moment.</p>
+            <p>Order now and savor the exquisite flavors of Fwizz!</p>
             <AuthorizationGateway />
             <div className={styles.downArrow}> &darr;</div>
         </div>
