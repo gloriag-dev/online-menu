@@ -4,6 +4,7 @@ import { Menu } from "./pages/Menu/Menu"
 import { AuthLoginCallback } from "./auth/AuthLoginCallback/AuthLoginCallBack"
 import { Order } from "./pages/Order/Order"
 import Wizard from "./pages/CheckoutWizard"
+import ReservedArea from "./pages/ReservedArea/ReservedArea"
 
 const Routing = () => {
     return (
@@ -12,6 +13,7 @@ const Routing = () => {
             <Route path="/*" element={<Home />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/order" element={<Order />} />
+            <Route path="/reserved-area" element={<ReservedArea />} />
             <Route path="/checkout-wizard*" element={<Wizard />} />
         </Routes>
     )

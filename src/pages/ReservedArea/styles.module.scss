@@ -1,0 +1,38 @@
+
+.cover {
+    background-image: url("../../assets/hero-bg-img-desktop.jpg");
+    background-size: cover;
+    background-position: center;
+    color: var(--color-secondary-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    box-shadow: inset 0 0 0 99999px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+    h1 {
+        font-size: 2rem;
+        text-align: center;
+    }
+}
+.flex{
+    display: flex;
+    justify-content: center;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    border-radius: 10px;
+    background-color: var(--color-main);
+    min-width: 45vw;
+    h2, h4{
+        margin: 20px;
+        .btn{
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+}

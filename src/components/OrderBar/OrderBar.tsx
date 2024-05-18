@@ -16,7 +16,6 @@ export const OrderBar: React.FC<OrderBarProps> = ({ open }) => {
         navigate("/order")
     }
     const location = useLocation()
-    console.log(location.pathname.includes('/checkout'))
     return (
         <section className={clsx(styles.bar, { [styles.open]: open })}>
             <div className={styles.format}>

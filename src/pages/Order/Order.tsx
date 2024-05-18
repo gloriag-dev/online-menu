@@ -24,7 +24,6 @@ export const Order = () => {
         return dishesQuery.data?.find(singleDish => singleDish.id === id)
     }
 
-    console.log(orderStore.order)
     if (orderStore.total <= 0) {
         return (
             <div>
