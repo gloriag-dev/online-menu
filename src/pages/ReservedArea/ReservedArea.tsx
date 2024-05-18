@@ -1,4 +1,3 @@
-import { useState } from "react";
 import useUserStore from "../../stores/userStore"
 import styles from "./styles.module.scss"
 import {Pencil} from '../../components/Icons/Pencil'

@@ -7,39 +7,52 @@ import useOrderStore from "../../stores/orderStore"
 import { OrderBar } from "../../components/OrderBar/OrderBar"
 import DishCard from "../../components/DishCard/DishCard"
 import Loader from "../Home/components/Loader/Loader"
-import { useState } from "react"
+import { ReactNode, useState } from "react"
 import { Selector } from "../../components/Selector/Selector"
-import clsx from "clsx"
+import Breakfasts from "../../components/Icons/Breakfast"
+import Lunches from "../../components/Icons/Lunches"
+import Dinners from "../../components/Icons/Dinners"
+import Drinks from "../../components/Icons/Drinks"
+import FastFoods from "../../components/Icons/FastFoods"
+import Desserts from "../../components/Icons/Desserts"
+
 
 export type Category = {
     label: string
     id: string
+    icon?: ReactNode
 }
 
 const categories = [
     {
         label: "Breakfasts",
-        id: "breakfasts"
+        id: "breakfasts",
+        icon: <Breakfasts />
     },
     {
         label: "Lunches",
-        id: "lunches"
+        id: "lunches",
+        icon: <Lunches />
     },
     {
         label: "Dinners",
-        id: "dinners"
+        id: "dinners",
+        icon: <Dinners />
     },
     {
         label: "Drinks",
-        id: "drinks"
+        id: "drinks",
+        icon: <Drinks />
     },
     {
         label: "Fast foods",
-        id: "fast foods"
+        id: "fast foods",
+        icon: <FastFoods />
     },
     {
         label: "Desserts",
-        id: "desserts"
+        id: "desserts",
+        icon: <Desserts />
     }
 ]
 
