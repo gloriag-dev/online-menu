@@ -1,6 +1,7 @@
 import { FormProvider, useForm } from "react-hook-form"
 import style from "./address.module.scss"
 import { Button } from "@mui/material"
+import { useNavigate } from "react-router-dom";
 import axios from "axios"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import useUserStore from "../../../stores/userStore"
@@ -8,6 +9,7 @@ import {} from "zod"
 import TextInputRHF from "../../../components/input/TextInput/TextInput.rhf"
 import SelectInputRHF from "../../../components/input/SelectInput/SelectInput.rhf"
 import {} from "react"
+import useOrderStore from "../../../stores/orderStore"
 export type AddressData = {
     provincia: string
     city: string
@@ -33,11 +35,17 @@ declare module "@mui/material/Button" {
     }
 }
 export const Address = ({ onNext }: AddressProps) => {
+    const navigate = useNavigate()
     const userStore = useUserStore()
+    const order = useOrderStore()
     const form = useForm<AddressData>({
         mode: "all",
         reValidateMode: "onBlur"
     })
+
+    const handleGoBackToReservedArea =  () => {
+navigate('/reserved-area')
+    }
 
     const getProvince = async (): Promise<IProvince[]> => {
         const response = await axios.get("/province")
@@ -51,6 +59,7 @@ export const Address = ({ onNext }: AddressProps) => {
         }
     })
 
+    console.log(order.total)
     const onSubmit = async (values: AddressData) => {
         const { via, cap, city, provincia, number, name, surname } = values
         userStore.setUserData(provincia, cap, city, via, number, name, surname)
@@ -137,8 +146,11 @@ export const Address = ({ onNext }: AddressProps) => {
                         format={value => value.replaceAll(/\D/g, "").slice(0, 4)}
                     />
                     </div>
-                    <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid}>
+                    <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid || order.total === 0 }>
                         Go to checkout
+                    </Button>
+                    <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid} onClick={handleGoBackToReservedArea}>
+                        Go back to Reserved Area
                     </Button>
                 </form>
             </FormProvider>
