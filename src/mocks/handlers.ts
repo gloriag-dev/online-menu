@@ -4,7 +4,7 @@ export const handlers = [
     http.get("/province", async () => {
         return Response.json([
             {
-                province: "Rome",
+                district: "Rome",
                 code: "RM"
             }
         ])
@@ -46,7 +46,8 @@ export const handlers = [
             {
                 id: 4,
                 name: "Ice Waffle",
-                description: "A delightful treat of crispy, golden waffles served chilled, topped with a scoop of creamy ice cream and drizzled with decadent syrups, creating a refreshing and indulgent dessert.",
+                description:
+                    "A delightful treat of crispy, golden waffles served chilled, topped with a scoop of creamy ice cream and drizzled with decadent syrups, creating a refreshing and indulgent dessert.",
                 category: ["breakfasts", "desserts"],
                 price: 6.99,
                 rating: 4,
@@ -64,7 +65,8 @@ export const handlers = [
             {
                 id: 6,
                 name: "Gourmet Meal",
-                description: "Elevate your dining experience with a gourmet meal crafted with the finest ingredients and culinary expertise, offering a symphony of flavors and textures that will delight your senses and leave you craving more.",
+                description:
+                    "Elevate your dining experience with a gourmet meal crafted with the finest ingredients and culinary expertise, offering a symphony of flavors and textures that will delight your senses and leave you craving more.",
                 category: ["breakfasts"],
                 price: 17.99,
                 rating: 5,
@@ -78,12 +80,11 @@ export const handlers = [
         const categoryId = url.searchParams.get("categoryId")
         if (categoryId) {
             dishes = dishes.filter(singleDish => singleDish.category?.includes(categoryId))
-            
         }
 
         return HttpResponse.json({
             dishes: dishes,
-          selected: categoryId
+            selected: categoryId
         })
     })
 ]

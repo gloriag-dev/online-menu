@@ -44,3 +44,37 @@
     }
 
 }
+
+.main {
+    display: flex;
+    justify-content: center;
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin: 20px;
+        .flexRow{
+            display: flex;
+            justify-content: space-between;
+            gap:10px;
+            .zip{
+                max-width: 100px;
+            }
+        }
+        .select {
+            background-color: var(--color-secondary-light);
+            width: 100px;
+            border-bottom: 2px solid var(--color-main);
+        }
+    }
+    .field {
+        display: flex;
+        flex-direction: column;
+        .textfield {
+            background-color: var(--color-secondary-light);
+            border-bottom: 2px solid var(--color-main);
+        }
+    }
+    
+}

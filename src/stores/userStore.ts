@@ -1,23 +1,23 @@
 import { create } from "zustand"
 
 interface UserStoreType {
-    provincia?: string
-    cap?: string
+    district?: string
+    zip?: string
     city?: string
-    via?: string
+    street?: string
     number?: string
     name?: string
     surname?: string
-    setUserData: (provincia: string, cap: string, city: string, via: string, number: string, name: string, surname: string) => void
+    setUserData: (district: string, zip: string, city: string, street: string, number: string, name: string, surname: string) => void
 }
 
 const useUserStore = create<UserStoreType>()(set => ({
-    setUserData: (provincia: string, cap: string, city: string, via: string, number: string, name: string, surname: string) => {
+    setUserData: (district: string, zip: string, city: string, street: string, number: string, name: string, surname: string) => {
         set({
-            provincia,
-            cap,
+            district,
+            zip,
             city,
-            via,
+            street,
             number,
             name,
             surname
