@@ -25,7 +25,7 @@ declare module "@mui/material/styles" {
 
 // Update the Button's color options to include an ochre option
 
-const theme = createTheme({
+export const theme = createTheme({
     palette: {
         gold: {
             main: "gold",

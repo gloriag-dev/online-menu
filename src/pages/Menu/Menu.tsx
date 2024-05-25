@@ -7,7 +7,7 @@ import useOrderStore from "../../stores/orderStore"
 import { OrderBar } from "../../components/OrderBar/OrderBar"
 import DishCard from "../../components/DishCard/DishCard"
 import Loader from "../Home/components/Loader/Loader"
-import { ReactNode, useState } from "react"
+import { ReactNode, Suspense, useState } from "react"
 import { Selector } from "../../components/Selector/Selector"
 import Breakfasts from "../../components/Icons/Breakfast"
 import Lunches from "../../components/Icons/Lunches"
@@ -106,6 +106,7 @@ export const Menu = () => {
 
     return (
         <>
+        <Suspense fallback={<Loader />}>
             <div className={styles.cover}></div>
 
             <div className={styles.layout}>
@@ -131,6 +132,7 @@ export const Menu = () => {
                 </div>
             </div>
             <OrderBar open={order.length > 0} />
+            </Suspense>
         </>
     )
 }
