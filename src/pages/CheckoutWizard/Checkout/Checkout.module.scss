@@ -35,6 +35,12 @@
         padding: 45px;
         margin-bottom: 100px;
         gap:30px;
+        .label{
+        font-size: 18px;
+        font-weight: bold;
+        color: black;
+        font-family: var(--font-brand);
+        }
         .field {
             display: flex;
             flex-direction: column;

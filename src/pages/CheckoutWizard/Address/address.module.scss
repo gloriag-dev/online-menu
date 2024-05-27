@@ -29,10 +29,13 @@
             border-bottom: 2px solid var(--color-main);
         }
     }
-    .flex{
+    .flexRow{
         display: flex;
-        flex-direction: row;
+        justify-content: space-between;
         gap:10px;
+        .zip{
+            max-width: 100px;
+        }
     }
     
 }

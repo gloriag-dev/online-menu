@@ -8,7 +8,7 @@ export interface GenericInputWrapperProps extends React.HTMLAttributes<HTMLDivEl
     required?: string
     disabled?: boolean
 }
-//
+
 const GenericInputWrapper = ({ children, label, error, required, disabled }: GenericInputWrapperProps) => {
     return (
         <div

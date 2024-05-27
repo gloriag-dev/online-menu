@@ -1,7 +1,7 @@
 import { Controller, FormProvider, useForm } from "react-hook-form"
 import styles from "./Checkout.module.scss"
 import useUserStore from "../../../stores/userStore"
-import { Button, FormLabel} from "@mui/material"
+import { Button, FormLabel } from "@mui/material"
 import TextInputRHF from "../../../components/input/TextInput/TextInput.rhf"
 import DateInput from "../../../components/input/DateInput/DateInput"
 import { useNavigate } from "react-router-dom"
@@ -27,42 +27,42 @@ export const Checkout = ({ onPrevious }: CheckoutProps) => {
         onPrevious()
     }
     const handleComplete = () => {
-navigate("./thank-you")
+        navigate("./thank-you")
     }
-const fullName = `${userStore.name}` + ' ' + `${userStore.surname}`
+    const fullName = `${userStore.name}` + " " + `${userStore.surname}`
     return (
         <div className={styles.main}>
             <div className={styles.addressData}>
                 <h2>{fullName}</h2>
                 <section className={styles.addressCard}>
                     <span className={styles.billingData}>
-                       Address:  {userStore.number}, {userStore.via}
+                        Address: {userStore.number}, {userStore.street}
                     </span>
                     <p className={styles.billingData}>
-                        City: {userStore.cap}, {userStore.city}
+                        City: {userStore.zip}, {userStore.city}
                     </p>
                     <Button variant="contained" type="submit" color="gold" onClick={handleClick} className={styles.backBtn}>
-                       Edit billing address
+                        Edit billing address
                     </Button>
                 </section>
             </div>
             <FormProvider {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className={styles.form}>
-                <Controller
+                    <Controller
                         name="card number"
                         render={({ field }) => (
                             <div className={styles.field}>
                                 <TextInputRHF
-                        name="card number"
-                        label="Card Number"
-                        rules={{
-                            required: "This field is required",
-                            pattern: {
-                                value: /^\d{16}$/
-                            }
-                        }}
-                        format={value => value.replaceAll(/\D/g, "").slice(0, 16)}
-                    />
+                                    name="card number"
+                                    label="Card Number"
+                                    rules={{
+                                        required: "This field is required",
+                                        pattern: {
+                                            value: /^\d{16}$/
+                                        }
+                                    }}
+                                    format={value => value.replaceAll(/\D/g, "").slice(0, 16)}
+                                />
                             </div>
                         )}
                     />
@@ -71,16 +71,16 @@ const fullName = `${userStore.name}` + ' ' + `${userStore.surname}`
                         render={({ field }) => (
                             <div className={styles.field}>
                                 <TextInputRHF
-                        name="cvv"
-                        label="CVV"
-                        rules={{
-                            required: "This field is required",
-                            pattern: {
-                                value: /^\d{3}$/
-                            }
-                        }}
-                        format={value => value.replaceAll(/\D/g, "").slice(0, 3)}
-                    />
+                                    name="cvv"
+                                    label="CVV"
+                                    rules={{
+                                        required: "This field is required",
+                                        pattern: {
+                                            value: /^\d{3}$/
+                                        }
+                                    }}
+                                    format={value => value.replaceAll(/\D/g, "").slice(0, 3)}
+                                />
                             </div>
                         )}
                     />
@@ -88,15 +88,14 @@ const fullName = `${userStore.name}` + ' ' + `${userStore.surname}`
                         name="expiry"
                         render={({ field }) => (
                             <div className={styles.field}>
-                                <FormLabel>Expiry</FormLabel>
-                               <DateInput/>
+                                <FormLabel className={styles.label}>Expiry</FormLabel>
+                                <DateInput />
                             </div>
                         )}
                     />
                     <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid} onClick={handleComplete}>
                         Submit
                     </Button>
-                 
                 </form>
             </FormProvider>
         </div>
