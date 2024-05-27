@@ -37,7 +37,9 @@ export const ReservedArea = () => {
     const handleSave = () => {
         setOpen(false)
     }
-
+    const handleBackdropClose = (reason: string) => {
+        if (reason && reason !== "backdropClick") setOpen(false)
+    }
     console.log(name, surname, number, city, zip, street, "data")
     return (
         <>
@@ -71,7 +73,7 @@ export const ReservedArea = () => {
                 )}
             </div>
 
-            <InfoDialog open={open} onChange={handleSave} />
+            <InfoDialog open={open} onChange={handleSave} handleBackdropClose={handleBackdropClose} />
         </>
     )
 }
@@ -80,6 +82,7 @@ export default ReservedArea
 export interface InfoDialogProps {
     open: boolean
     onChange: () => void
+    handleBackdropClose: (reason: string) => void
 }
 
 function InfoDialog(props: InfoDialogProps) {
@@ -88,6 +91,7 @@ function InfoDialog(props: InfoDialogProps) {
         mode: "all",
         reValidateMode: "onBlur"
     })
+
     const getProvince = async (): Promise<IDistrict[]> => {
         const response = await axios.get("/province")
         return response.data
@@ -106,7 +110,7 @@ function InfoDialog(props: InfoDialogProps) {
         }
     })
     return (
-        <Dialog open={props.open} onChange={props.onChange} className={styles.main}>
+        <Dialog open={props.open} onChange={props.onChange} className={styles.main} onClose={props.handleBackdropClose}>
             <DialogTitle className={styles.title}>Edit your information</DialogTitle>
             <FormProvider {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className={styles.form}>
