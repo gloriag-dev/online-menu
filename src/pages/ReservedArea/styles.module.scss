@@ -48,6 +48,19 @@
 .main {
     display: flex;
     justify-content: center;
+    border-radius: 12px;
+
+    div[role="dialog"] {
+  border-radius: 15px;
+      }
+      
+
+
+    .title {
+        font-family: var(--font-brand);
+        font-weight: bold;
+        font-size: 24px;
+    }
 
     .form {
         display: flex;

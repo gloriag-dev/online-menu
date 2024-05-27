@@ -10,7 +10,8 @@ import { FormProvider, useForm } from "react-hook-form"
 import TextInputRHF from "../../components/input/TextInput/TextInput.rhf"
 import SelectInputRHF from "../../components/input/SelectInput/SelectInput.rhf"
 import axios from "axios"
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery } from "@tanstack/react-query"
+import { handleRequest } from "msw"
 export const ReservedArea = () => {
     const { name, surname, number, city, zip, street } = useUserStore()
     const userArray = [name, surname, number, city, zip, street]
@@ -33,17 +34,16 @@ export const ReservedArea = () => {
     const handleOpenModal = () => {
         setOpen(true)
     }
-    const handleClose = () => {
+    const handleSave = () => {
         setOpen(false)
     }
-    const handleChange = () => {
-        console.log("changed")
-    }
+
+    console.log(name, surname, number, city, zip, street, "data")
     return (
         <>
             <div className={styles.cover}></div>
             <div className={styles.flex}>
-                {!shouldFillUserData ? (
+                {shouldFillUserData ? (
                     <div className={styles.missingInfo}>
                         <h2>Whoops, it looks like you haven't filled in your information yet!</h2>
                         <Button variant="contained" color="gold" onClick={handleOpenModal}>
@@ -71,7 +71,7 @@ export const ReservedArea = () => {
                 )}
             </div>
 
-            <InfoDialog open={open} onClose={handleClose} onChange={handleChange} />
+            <InfoDialog open={open} onChange={handleSave} />
         </>
     )
 }
@@ -79,11 +79,11 @@ export default ReservedArea
 
 export interface InfoDialogProps {
     open: boolean
-    onClose?: () => void
-    onChange?: () => void
+    onChange: () => void
 }
 
 function InfoDialog(props: InfoDialogProps) {
+    const userStore = useUserStore()
     const form = useForm<AddressData>({
         mode: "all",
         reValidateMode: "onBlur"
@@ -94,18 +94,27 @@ function InfoDialog(props: InfoDialogProps) {
     }
     const query = useQuery({ queryKey: ["province"], queryFn: getProvince })
     const onSubmit = async (values: AddressData) => {
-        console.log(values)
+        const { street, zip, city, district, number, name, surname } = values
+        userStore.setUserData(district, zip, city, street, number, name, surname)
+        await mutation.mutateAsync(values)
+        form.reset()
+        props.onChange()
     }
+    const mutation = useMutation({
+        mutationFn: (values: AddressData) => {
+            return axios.post("/address", values)
+        }
+    })
     return (
-        <Dialog open={props.open} onClose={props.onClose} onChange={props.onChange} className={styles.main}>
-            <DialogTitle>Edit your information</DialogTitle>
+        <Dialog open={props.open} onChange={props.onChange} className={styles.main}>
+            <DialogTitle className={styles.title}>Edit your information</DialogTitle>
             <FormProvider {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className={styles.form}>
                     <div className={styles.flexRow}>
                         <TextInputRHF
                             name="name"
                             label="Name "
-                            // defaultValue={userStore.name}
+                            defaultValue={userStore.name}
                             rules={{
                                 required: "This field is required"
                             }}
@@ -114,7 +123,7 @@ function InfoDialog(props: InfoDialogProps) {
                         <TextInputRHF
                             name="surname"
                             label="Surname"
-                            // defaultValue={userStore.surname}
+                            defaultValue={userStore.surname}
                             rules={{
                                 required: "This field is required"
                             }}
@@ -125,7 +134,7 @@ function InfoDialog(props: InfoDialogProps) {
                         <SelectInputRHF
                             name="district"
                             label="District"
-                            // defaultValue={userStore.district}
+                            defaultValue={userStore.district}
                             rules={{
                                 required: "This field is required"
                             }}
@@ -138,7 +147,7 @@ function InfoDialog(props: InfoDialogProps) {
                         />
                         <TextInputRHF
                             name="city"
-                            // defaultValue={userStore.city}
+                            defaultValue={userStore.city}
                             label="City"
                             rules={{
                                 required: "This field is required",
@@ -150,7 +159,7 @@ function InfoDialog(props: InfoDialogProps) {
                             <TextInputRHF
                                 name="zip"
                                 label="Zip code"
-                                // defaultValue={userStore.zip}
+                                defaultValue={userStore.zip}
                                 rules={{
                                     required: "This field is required",
                                     pattern: {
@@ -164,9 +173,9 @@ function InfoDialog(props: InfoDialogProps) {
 
                     <div className={styles.flexRow}>
                         <TextInputRHF
-                            name="via"
+                            name="street"
                             label="Address"
-                            // defaultValue={userStore.street}
+                            defaultValue={userStore.street}
                             rules={{
                                 required: "This field is required"
                             }}
@@ -175,7 +184,7 @@ function InfoDialog(props: InfoDialogProps) {
                         <TextInputRHF
                             name="number"
                             label="Number"
-                            // defaultValue={userStore.number}
+                            defaultValue={userStore.number}
                             rules={{
                                 required: "This field is required"
                             }}
@@ -183,7 +192,7 @@ function InfoDialog(props: InfoDialogProps) {
                         />
                     </div>
                     <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid}>
-                        Go back to Reserved Area
+                        Save
                     </Button>
                 </form>
             </FormProvider>
