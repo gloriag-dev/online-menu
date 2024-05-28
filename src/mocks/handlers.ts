@@ -1,7 +1,7 @@
 import { HttpResponse, delay, http } from "msw"
 
 export const handlers = [
-    http.get("/province", async () => {
+    http.get("/districts", async () => {
         return Response.json([
             {
                 district: "Rome",

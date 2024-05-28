@@ -5,8 +5,10 @@
     border-radius: 8px;
     background-color: var(--color-secondary);
     bottom:300px;
+    gap: 40px;
     @media (max-width: 765px) {
         padding: 15px;
+        flex-direction: column;
     }
 
     .form {
@@ -37,5 +39,4 @@
             max-width: 100px;
         }
     }
-    
 }

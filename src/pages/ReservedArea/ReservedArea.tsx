@@ -12,11 +12,14 @@ import SelectInputRHF from "../../components/input/SelectInput/SelectInput.rhf"
 import axios from "axios"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { handleRequest } from "msw"
+import { DialogContent } from "@mui/material"
 export const ReservedArea = () => {
     const { name, surname, number, city, zip, street } = useUserStore()
     const userArray = [name, surname, number, city, zip, street]
     const [shouldFillUserData, setShouldFillUserData] = useState(false)
     const [open, setOpen] = useState(false)
+
+    console.log("Open", open)
     // const navigate = useNavigate()
 
     useEffect(() => {
@@ -36,9 +39,10 @@ export const ReservedArea = () => {
     }
     const handleSave = () => {
         setOpen(false)
+        console.log("HandleSaveCalled")
     }
     const handleBackdropClose = (reason: string) => {
-        if (reason && reason !== "backdropClick") setOpen(false)
+        // if (reason && reason !== "backdropClick") setOpen(false)
     }
     console.log(name, surname, number, city, zip, street, "data")
     return (
@@ -73,7 +77,7 @@ export const ReservedArea = () => {
                 )}
             </div>
 
-            <InfoDialog open={open} onChange={handleSave} handleBackdropClose={handleBackdropClose} />
+            <InfoDialog open={open} onChange={handleSave} />
         </>
     )
 }
@@ -82,7 +86,7 @@ export default ReservedArea
 export interface InfoDialogProps {
     open: boolean
     onChange: () => void
-    handleBackdropClose: (reason: string) => void
+    // handleBackdropClose: (reason: string) => void
 }
 
 function InfoDialog(props: InfoDialogProps) {
@@ -92,11 +96,11 @@ function InfoDialog(props: InfoDialogProps) {
         reValidateMode: "onBlur"
     })
 
-    const getProvince = async (): Promise<IDistrict[]> => {
-        const response = await axios.get("/province")
+    const getDistricts = async (): Promise<IDistrict[]> => {
+        const response = await axios.get("/districts")
         return response.data
     }
-    const query = useQuery({ queryKey: ["province"], queryFn: getProvince })
+    const query = useQuery({ queryKey: ["districts"], queryFn: getDistricts })
     const onSubmit = async (values: AddressData) => {
         const { street, zip, city, district, number, name, surname } = values
         userStore.setUserData(district, zip, city, street, number, name, surname)
@@ -110,7 +114,7 @@ function InfoDialog(props: InfoDialogProps) {
         }
     })
     return (
-        <Dialog open={props.open} onChange={props.onChange} className={styles.main} onClose={props.handleBackdropClose}>
+        <Dialog open={props.open} className={styles.main} onClose={props.onChange}>
             <DialogTitle className={styles.title}>Edit your information</DialogTitle>
             <FormProvider {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className={styles.form}>

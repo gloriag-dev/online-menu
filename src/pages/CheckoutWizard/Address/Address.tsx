@@ -1,11 +1,16 @@
 import { FormProvider, useForm } from "react-hook-form"
 import style from "./address.module.scss"
 import { Button } from "@mui/material"
+import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import useUserStore from "../../../stores/userStore"
+import {} from "zod"
 import TextInputRHF from "../../../components/input/TextInput/TextInput.rhf"
 import SelectInputRHF from "../../../components/input/SelectInput/SelectInput.rhf"
+import {} from "react"
+import useOrderStore from "../../../stores/orderStore"
+import MapComponent from "../../../components/Map/MapComponent"
 export type AddressData = {
     district: string
     city: string
@@ -31,17 +36,19 @@ declare module "@mui/material/Button" {
     }
 }
 export const Address = ({ onNext }: AddressProps) => {
+    const navigate = useNavigate()
     const userStore = useUserStore()
+    const order = useOrderStore()
     const form = useForm<AddressData>({
         mode: "all",
         reValidateMode: "onBlur"
     })
 
     const getProvince = async (): Promise<IDistrict[]> => {
-        const response = await axios.get("/province")
+        const response = await axios.get("/districts")
         return response.data
     }
-    const query = useQuery({ queryKey: ["province"], queryFn: getProvince })
+    const query = useQuery({ queryKey: ["districts"], queryFn: getProvince })
 
     const mutation = useMutation({
         mutationFn: (values: AddressData) => {
@@ -49,6 +56,7 @@ export const Address = ({ onNext }: AddressProps) => {
         }
     })
 
+    console.log(order.total)
     const onSubmit = async (values: AddressData) => {
         const { street, zip, city, district, number, name, surname } = values
         userStore.setUserData(district, zip, city, street, number, name, surname)
@@ -106,20 +114,19 @@ export const Address = ({ onNext }: AddressProps) => {
                             }}
                             format={value => value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?1234567890]/g, "")}
                         />
-                        <div className={style.zip}>
-                            <TextInputRHF
-                                name="zip"
-                                label="Zip code"
-                                defaultValue={userStore.zip}
-                                rules={{
-                                    required: "This field is required",
-                                    pattern: {
-                                        value: /^\d{5}$/
-                                    }
-                                }}
-                                format={value => value.replaceAll(/\D/g, "").slice(0, 5)}
-                            />
-                        </div>
+
+                        <TextInputRHF
+                            name="zip"
+                            label="CAP"
+                            defaultValue={userStore.zip}
+                            rules={{
+                                required: "This field is required",
+                                pattern: {
+                                    value: /^\d{5}$/
+                                }
+                            }}
+                            format={value => value.replaceAll(/\D/g, "").slice(0, 5)}
+                        />
                     </div>
                     <div className={style.flexRow}>
                         <TextInputRHF
@@ -141,11 +148,14 @@ export const Address = ({ onNext }: AddressProps) => {
                             format={value => value.replaceAll(/\D/g, "").slice(0, 4)}
                         />
                     </div>
-                    <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid}>
+                    <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid || order.total === 0}>
                         Go to checkout
                     </Button>
                 </form>
             </FormProvider>
+            <div className={style.map}>
+                <MapComponent />
+            </div>
         </div>
     )
 }
