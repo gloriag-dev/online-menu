@@ -28,7 +28,7 @@ export const handlers = [
             {
                 id: 2,
                 name: "Fried Egg",
-                category: ["breakfasts"],
+                category: ["fastfoods"],
                 description: "A classic breakfast staple, a fried egg cooked to golden perfection, with a runny yolk that adds a rich and satisfying touch to any meal.",
                 price: 12.99,
                 rating: 4,

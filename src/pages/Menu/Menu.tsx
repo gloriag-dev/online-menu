@@ -16,7 +16,6 @@ import Drinks from "../../components/Icons/Drinks"
 import FastFoods from "../../components/Icons/FastFoods"
 import Desserts from "../../components/Icons/Desserts"
 
-
 export type Category = {
     label: string
     id: string
@@ -46,7 +45,7 @@ const categories = [
     },
     {
         label: "Fast foods",
-        id: "fast foods",
+        id: "fastfoods",
         icon: <FastFoods />
     },
     {
@@ -106,32 +105,32 @@ export const Menu = () => {
 
     return (
         <>
-        <Suspense fallback={<Loader />}>
-            <div className={styles.cover}></div>
+            <Suspense fallback={<Loader />}>
+                <div className={styles.cover}></div>
 
-            <div className={styles.layout}>
-                <div className={styles.centeredWrapper}>
-                    <div className={styles.leftCol}>
-                        <Selector onSetCategory={setCategoryId} categories={categories} categoryId={categoryId}/>
+                <div className={styles.layout}>
+                    <div className={styles.centeredWrapper}>
+                        <div className={styles.leftCol}>
+                            <Selector onSetCategory={setCategoryId} categories={categories} categoryId={categoryId} />
+                        </div>
+
+                        <section className={styles.menu}>
+                            {dishesQuery?.data?.map?.(dish => (
+                                <DishCard
+                                    key={dish.id}
+                                    dish={dish}
+                                    disableRemove={disableRemove}
+                                    favouriteIds={favouriteIds}
+                                    handleAdd={handleAdd(dish)}
+                                    handleRemove={() => handleRemove(dish)}
+                                    starRating={() => starRating(dish.rating)}
+                                    toggleFavouriteDish={toggleFavouriteDish}
+                                />
+                            ))}
+                        </section>
                     </div>
-
-                    <section className={styles.menu}>
-                        {dishesQuery?.data?.map?.(dish => (
-                            <DishCard
-                                key={dish.id}
-                                dish={dish}
-                                disableRemove={disableRemove}
-                                favouriteIds={favouriteIds}
-                                handleAdd={handleAdd(dish)}
-                                handleRemove={() => handleRemove(dish)}
-                                starRating={() => starRating(dish.rating)}
-                                toggleFavouriteDish={toggleFavouriteDish}
-                            />
-                        ))}
-                    </section>
                 </div>
-            </div>
-            <OrderBar open={order.length > 0} />
+                <OrderBar open={order.length > 0} />
             </Suspense>
         </>
     )
