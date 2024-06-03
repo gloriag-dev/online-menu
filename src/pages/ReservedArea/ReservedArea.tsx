@@ -11,20 +11,38 @@ import TextInputRHF from "../../components/input/TextInput/TextInput.rhf"
 import SelectInputRHF from "../../components/input/SelectInput/SelectInput.rhf"
 import axios from "axios"
 import { useMutation, useQuery } from "@tanstack/react-query"
-import { handleRequest } from "msw"
-import { DialogContent } from "@mui/material"
+import { DishComplete } from "../Menu/Menu"
+import OrderCard from "../../components/OrderCard/OrderCard"
+import useDishStore from "../../stores/dishStore"
+import clsx from "clsx"
+import RoundButton from "../../components/RoundButton/RoundButton"
+import AddToFavoritesButton from "../../components/AddToFavoritesButton/AddToFavoritesButton"
+
 export const ReservedArea = () => {
     const { name, surname, number, city, zip, street } = useUserStore()
+    const { favouriteIds, toggleFavouriteDish } = useDishStore()
     const userArray = [name, surname, number, city, zip, street]
     const [shouldFillUserData, setShouldFillUserData] = useState(false)
     const [open, setOpen] = useState(false)
 
-    console.log("Open", open)
-    // const navigate = useNavigate()
-
     useEffect(() => {
         checkForEmptyFields()
     }, [userArray])
+
+    const fetchDishes = async (): Promise<DishComplete[]> => {
+        const res = await axios.get("/dishes")
+        return res.data.dishes
+    }
+
+    const dishesQuery = useQuery({
+        queryKey: ["/dishes"],
+        queryFn: fetchDishes
+    })
+
+    const findDishById = (id: number) => {
+        return dishesQuery.data?.find(singleDish => singleDish.id === id)
+    }
+
     const checkForEmptyFields = () => {
         const hasEmptyField = userArray.some(field => field === undefined || "")
         if (hasEmptyField) {
@@ -39,44 +57,73 @@ export const ReservedArea = () => {
     }
     const handleSave = () => {
         setOpen(false)
-        console.log("HandleSaveCalled")
     }
-    const handleBackdropClose = (reason: string) => {
-        // if (reason && reason !== "backdropClick") setOpen(false)
-    }
-    console.log(name, surname, number, city, zip, street, "data")
+
     return (
         <>
             <div className={styles.cover}></div>
-            <div className={styles.flex}>
-                {shouldFillUserData ? (
-                    <div className={styles.missingInfo}>
-                        <h2>Whoops, it looks like you haven't filled in your information yet!</h2>
-                        <Button variant="contained" color="gold" onClick={handleOpenModal}>
-                            Fill in your information
-                        </Button>
-                    </div>
-                ) : (
-                    <div className={styles.container}>
-                        <h2>
-                            <button className={styles.btn} onClick={handleOpenModal}>
-                                <Pencil />
-                            </button>
-                            Info you shared with us:
-                        </h2>
-                        <h4>
-                            Full Name: {name} {surname}
-                        </h4>
-                        <h4>
-                            Address: {number}, {street}
-                        </h4>
-                        <h4>
-                            City: {city} {zip}
-                        </h4>
-                    </div>
-                )}
-            </div>
+            <section className={styles.wrapper}>
+                <div className={styles.flex}>
+                    {shouldFillUserData ? (
+                        <div className={styles.missingInfo}>
+                            <h2>Whoops, it looks like you haven't filled in your information yet!</h2>
+                            <Button variant="contained" color="gold" onClick={handleOpenModal}>
+                                Fill in your information
+                            </Button>
+                        </div>
+                    ) : (
+                        <div className={styles.container}>
+                            <h2>
+                                <button className={styles.btn} onClick={handleOpenModal}>
+                                    <Pencil />
+                                </button>
+                                Info you shared with us:
+                            </h2>
+                            <h4>
+                                Full Name: {name} {surname}
+                            </h4>
+                            <h4>
+                                Address: {number}, {street}
+                            </h4>
+                            <h4>
+                                City: {city} {zip}
+                            </h4>
+                        </div>
+                    )}
+                </div>
+                <div className={styles.favouritesArea}>
+                    <h2>Favourites</h2>
+                    {favouriteIds.map(id => {
+                        const singleDish = findDishById(id)
 
+                        return (
+                            <section className={styles.cardContainer}>
+                                <div className={clsx("order-card", styles.card)}>
+                                    <div className={styles.inner}>
+                                        <div>
+                                            <img src={singleDish?.imgUrl} className={styles.img} />
+                                        </div>
+
+                                        <div className={styles.info}>
+                                            <span className={styles.infoText}>{singleDish?.name}</span>
+                                            <span className={styles.infoText}>{singleDish?.price}$</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={styles.btnContainer}>
+                                    <AddToFavoritesButton
+                                        clicked={favouriteIds?.includes?.(singleDish?.id as number)}
+                                        onClick={e => {
+                                            toggleFavouriteDish(singleDish?.id as number, e)
+                                        }}
+                                    />
+                                    <RoundButton className={styles.removeItemBtn} children={<span>+</span>}></RoundButton>
+                                </div>
+                            </section>
+                        )
+                    })}
+                </div>
+            </section>
             <InfoDialog open={open} onChange={handleSave} />
         </>
     )
@@ -86,7 +133,6 @@ export default ReservedArea
 export interface InfoDialogProps {
     open: boolean
     onChange: () => void
-    // handleBackdropClose: (reason: string) => void
 }
 
 function InfoDialog(props: InfoDialogProps) {

@@ -19,12 +19,13 @@ export const OrderBar: React.FC<OrderBarProps> = ({ open }) => {
     return (
         <section className={clsx(styles.bar, { [styles.open]: open })}>
             <div className={styles.format}>
-                TOTAL: <p>{orderStore.total.toFixed(2) + "€"}</p>
+                TOTAL: <p>{orderStore.total.toFixed(2) + "$"}</p>
             </div>
-{!location.pathname.includes('/checkout') && <Button onClick={handleClick} className={styles.goToOrderBtn}>
-                COMPLETE ORDER
-            </Button>}
-            
+            {!location.pathname.includes("/checkout") && (
+                <Button onClick={handleClick} className={styles.goToOrderBtn}>
+                    COMPLETE ORDER
+                </Button>
+            )}
         </section>
     )
 }

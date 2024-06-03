@@ -15,6 +15,59 @@
         text-align: center;
     }
 }
+.wrapper {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+
+    .favouritesArea {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .cardContainer{
+            display: flex;
+            gap: 20px;
+            .card {
+                background-color: var(--color-secondary);
+                display: flex;
+                flex: 1;
+                padding-right: 5px;
+                flex-direction: row;
+                border-radius: 10px;
+                width:100%;
+                @media (max-width: 765px) {
+                    max-width: 320px;
+                }
+                .inner {
+                    display: flex;
+                    flex-grow: 1;
+                }
+                img {
+                    padding: 7px;
+                    width: 150px;
+                    border-radius: 20px;
+                }
+                .info {
+                    flex-direction: column;
+                    display: flex;
+                    justify-content: center;
+                    gap: 30px;
+                    span {
+                        font-weight: bold;
+                    }
+                }
+    
+            }
+            .btnContainer {
+                display: flex;
+                align-items: center;
+                gap:10px;
+            }
+        }
+       
+    }
+}
 .flex{
     display: flex;
     justify-content: center;

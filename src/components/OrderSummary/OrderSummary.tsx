@@ -20,7 +20,7 @@ export const OrderSummary = ({ className, shouldDisableCheckoutButton }: OrderSu
         <div className={clsx("order-summary", className, styles.orderSummary)}>
             <div className={styles.layout}>
                 <p>YOUR ORDER:</p>
-                <p>Total: {orderStore.total.toFixed(2)}€</p>
+                <p>Total: {orderStore.total.toFixed(2)}$</p>
                 <Link to="/checkout-wizard">
                     <Button variant="contained" className={styles.btn} onClick={handleClick} disabled={shouldDisableCheckoutButton}>
                         Go to checkout

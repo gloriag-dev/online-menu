@@ -20,7 +20,7 @@ export const Order = () => {
         queryFn: fetchDishes
     })
 
-    const getenrivhedData = (id: number) => {
+    const findDishById = (id: number) => {
         return dishesQuery.data?.find(singleDish => singleDish.id === id)
     }
 
@@ -47,7 +47,7 @@ export const Order = () => {
             <div className={styles.layout}>
                 <div className={styles.cardsContainer}>
                     {orderStore.order.map(single => {
-                        const singleDish = getenrivhedData(single.id)
+                        const singleDish = findDishById(single.id)
 
                         return (
                             <OrderCard
