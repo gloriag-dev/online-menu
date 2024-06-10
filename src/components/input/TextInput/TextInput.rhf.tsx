@@ -6,6 +6,7 @@ export interface ITextInputRHFProps extends ITextInputProps {
     name: string
     rules?: any
     defaultValue?: string
+    message?: string
 }
 
 const TextInputRHF: React.FC<ITextInputRHFProps> = ({ name, rules, disabled, defaultValue, onChange, onBlur, ...props }) => {

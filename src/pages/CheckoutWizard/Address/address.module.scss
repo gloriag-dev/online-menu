@@ -4,8 +4,8 @@
     padding: 40px;
     border-radius: 8px;
     background-color: var(--color-secondary);
-    bottom:300px;
     gap: 40px;
+    min-height: 70vh;
     @media (max-width: 765px) {
         padding: 15px;
         flex-direction: column;
@@ -31,12 +31,15 @@
             border-bottom: 2px solid var(--color-main);
         }
     }
-    .flexRow{
+    .flexRow {
         display: flex;
         justify-content: space-between;
-        gap:10px;
-        .zip{
+        gap: 10px;
+        .zip {
             max-width: 100px;
+        }
+        .district {
+            min-width: 100px;
         }
     }
 }

@@ -1,5 +1,5 @@
-import { AboutRestaurant } from "./components/AboutRestaurant/AboutRestaurant"
 import Hero from "../../components/Hero"
+import { AboutRestaurant } from "./components/AboutRestaurant/AboutRestaurant"
 import { ScrollTicker } from "./components/ScrollTicker/ScrollTicker"
 import { WhyChooseUs } from "./components/WhyChooseUs/WhyChooseUs"
 

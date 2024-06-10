@@ -1,7 +1,7 @@
 import { FormProvider, useForm } from "react-hook-form"
 import style from "./address.module.scss"
 import { Button } from "@mui/material"
-import { useNavigate } from "react-router-dom"
+import {} from "react-router-dom"
 import axios from "axios"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import useUserStore from "../../../stores/userStore"
@@ -10,6 +10,7 @@ import TextInputRHF from "../../../components/input/TextInput/TextInput.rhf"
 import SelectInputRHF from "../../../components/input/SelectInput/SelectInput.rhf"
 import {} from "react"
 import useOrderStore from "../../../stores/orderStore"
+import { DevTool } from "@hookform/devtools"
 import MapComponent from "../../../components/Map/MapComponent"
 export type AddressData = {
     district: string
@@ -36,7 +37,6 @@ declare module "@mui/material/Button" {
     }
 }
 export const Address = ({ onNext }: AddressProps) => {
-    const navigate = useNavigate()
     const userStore = useUserStore()
     const order = useOrderStore()
     const form = useForm<AddressData>({
@@ -64,20 +64,21 @@ export const Address = ({ onNext }: AddressProps) => {
         onNext()
         form.reset()
     }
-
+    console.log(form.watch(), "jwhhw")
     return (
         <div className={style.main}>
             <FormProvider {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className={style.form}>
+                    <DevTool control={form.control} />
                     <div className={style.flexRow}>
                         <TextInputRHF
                             name="name"
-                            label="Name "
+                            label="Name"
                             defaultValue={userStore.name}
                             rules={{
                                 required: "This field is required"
                             }}
-                            format={value => value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, "")}
+                            format={value => value.replaceAll(/[!1234567890@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, "")}
                         />
                         <TextInputRHF
                             name="surname"
@@ -86,43 +87,45 @@ export const Address = ({ onNext }: AddressProps) => {
                             rules={{
                                 required: "This field is required"
                             }}
-                            format={value => value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, "")}
+                            format={value => value.replaceAll(/[!1234567890@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, "")}
                         />
                     </div>
                     <div className={style.flexRow}>
-                        <SelectInputRHF
-                            name="district"
-                            label="District"
-                            defaultValue={userStore.district}
-                            rules={{
-                                required: "This field is required"
-                            }}
-                            values={query.data?.map?.(district => {
-                                return {
-                                    value: district.code,
-                                    label: district.district
-                                }
-                            })}
-                        />
+                        <div className={style.district}>
+                            <SelectInputRHF
+                                name="district"
+                                label="District"
+                                defaultValue={userStore.district}
+                                rules={{
+                                    required: "This field is required"
+                                }}
+                                values={query.data?.map?.(district => {
+                                    return {
+                                        value: district.code,
+                                        label: district.district
+                                    }
+                                })}
+                            />
+                        </div>
                         <TextInputRHF
                             name="city"
                             defaultValue={userStore.city}
                             label="City"
                             rules={{
-                                required: "This field is required",
-                                message: "MESSAGE"
+                                required: "This field is required"
                             }}
-                            format={value => value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?1234567890]/g, "")}
+                            format={value => value.replaceAll(/[!1234567890@#$%^&*()_+\-=[\]{};:"\\|,.<>/?1234567890]/g, "")}
                         />
 
                         <TextInputRHF
                             name="zip"
-                            label="CAP"
+                            label="Zip code"
                             defaultValue={userStore.zip}
                             rules={{
                                 required: "This field is required",
                                 pattern: {
-                                    value: /^\d{5}$/
+                                    value: /^\d{5}$/,
+                                    message: "Must be 5 digits"
                                 }
                             }}
                             format={value => value.replaceAll(/\D/g, "").slice(0, 5)}
@@ -136,7 +139,7 @@ export const Address = ({ onNext }: AddressProps) => {
                             rules={{
                                 required: "This field is required"
                             }}
-                            format={value => value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, "")}
+                            format={value => value.replaceAll(/[!1234567890@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, "")}
                         />
                         <TextInputRHF
                             name="number"
@@ -148,7 +151,7 @@ export const Address = ({ onNext }: AddressProps) => {
                             format={value => value.replaceAll(/\D/g, "").slice(0, 4)}
                         />
                     </div>
-                    <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid || order.total === 0}>
+                    <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid}>
                         Go to checkout
                     </Button>
                 </form>

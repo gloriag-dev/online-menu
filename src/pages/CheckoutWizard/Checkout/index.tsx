@@ -50,7 +50,7 @@ export const Checkout = ({ onPrevious }: CheckoutProps) => {
                 <form onSubmit={form.handleSubmit(onSubmit)} className={styles.form}>
                     <Controller
                         name="card number"
-                        render={({ field }) => (
+                        render={() => (
                             <div className={styles.field}>
                                 <TextInputRHF
                                     name="card number"
@@ -68,7 +68,7 @@ export const Checkout = ({ onPrevious }: CheckoutProps) => {
                     />
                     <Controller
                         name="cvv"
-                        render={({ field }) => (
+                        render={() => (
                             <div className={styles.field}>
                                 <TextInputRHF
                                     name="cvv"
@@ -86,7 +86,7 @@ export const Checkout = ({ onPrevious }: CheckoutProps) => {
                     />
                     <Controller
                         name="expiry"
-                        render={({ field }) => (
+                        render={() => (
                             <div className={styles.field}>
                                 <FormLabel className={styles.label}>Expiry</FormLabel>
                                 <DateInput />
