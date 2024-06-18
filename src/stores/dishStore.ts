@@ -1,4 +1,5 @@
 import { create } from "zustand"
+import { createJSONStorage, persist } from "zustand/middleware"
 
 interface DishStoreType {
     dishes: Dish[]
@@ -12,20 +13,28 @@ export interface Dish {
     quantity: number
 }
 
-const useDishStore = create<DishStoreType>()(set => ({
-    favouriteIds: [],
-    dishes: [],
-    toggleFavouriteDish: (dishId: number, favorite: boolean) => {
-        set(state => {
-            if (favorite) {
-                return { favouriteIds: [...state.favouriteIds, dishId] }
-            } else {
-                return {
-                    favouriteIds: state.favouriteIds.filter(singleDishId => singleDishId != dishId)
-                }
+const useDishStore = create<DishStoreType>()(
+    persist(
+        set => ({
+            favouriteIds: [],
+            dishes: [],
+            toggleFavouriteDish: (dishId: number, favorite: boolean) => {
+                set(state => {
+                    if (favorite) {
+                        return { favouriteIds: [...state.favouriteIds, dishId] }
+                    } else {
+                        return {
+                            favouriteIds: state.favouriteIds.filter(singleDishId => singleDishId != dishId)
+                        }
+                    }
+                })
             }
-        })
-    }
-}))
+        }),
+        {
+            name: "dish-storage",
+            storage: createJSONStorage(() => sessionStorage)
+        }
+    )
+)
 
 export default useDishStore

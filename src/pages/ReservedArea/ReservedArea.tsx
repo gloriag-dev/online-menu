@@ -92,7 +92,8 @@ export const ReservedArea = () => {
                     )}
                 </div>
                 <div className={styles.favouritesArea}>
-                    <h2>Favourites</h2>
+                    {favouriteIds.length > 0 && <h2>Favourites</h2>}
+
                     {favouriteIds.map(id => {
                         const singleDish = findDishById(id)
 
