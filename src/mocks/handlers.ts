@@ -71,6 +71,60 @@ export const handlers = [
                 price: 17.99,
                 rating: 5,
                 imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-6.jpg"
+            },
+            {
+                id: 7,
+                name: "Vegetable Burger",
+                description: "Savor the flavors of our carefully selected vegetables and meet your taste buds with a hearty, succulent burger, perfect for any occasion.",
+                category: ["lunches", "dinners"],
+                price: 21.6,
+                rating: 4,
+                imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-7.jpg"
+            },
+            {
+                id: 8,
+                name: "Bone Steak",
+                description: "Tender and juicy bone-steak marinated in a blend of aromatic herbs and spices, expertly cooked to perfection.",
+                category: ["lunches", "dinners"],
+                price: 31.5,
+                rating: 4,
+                imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-8.jpg"
+            },
+            {
+                id: 9,
+                name: "Cream Sauce",
+                description: "Creamy and delicious cream sauce, perfect for dipping into any dish.",
+                category: ["lunches", "dinners", "fastfoods"],
+                price: 5.78,
+                rating: 5,
+                imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-9.jpg"
+            },
+            {
+                id: 10,
+                name: "Aloo Gobi",
+                description: "Aloo Gobi is a classic North Indian vegetarian dish made with potatoes and cauliflower. It is well-loved for its simple yet rich taste and comforting texture.",
+                category: ["breakfasts", "lunches", "dinners"],
+                price: 13.67,
+                rating: 4,
+                imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-10.jpg"
+            },
+            {
+                id: 11,
+                name: "Noodles",
+                description: "Taste our traditional Chinese noodles, originating from Hunan Province in China. They are rich in protein and healthy in taste.",
+                category: ["lunches", "dinners"],
+                price: 9.21,
+                rating: 3,
+                imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-11.jpg"
+            },
+            {
+                id: 12,
+                name: "Delicious Dosas",
+                description: "Our Dosas are made with only the freshest ingredients, sourced from locally sourced and organic farms. ",
+                category: ["breakfasts", "fastfoods"],
+                price: 11.89,
+                rating: 2,
+                imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-12.jpg"
             }
         ]
 

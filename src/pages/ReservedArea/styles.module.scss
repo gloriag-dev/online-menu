@@ -19,11 +19,22 @@
     display: flex;
     justify-content: space-around;
     margin-bottom: 30px;
-
+    @media (max-width: 765px) {
+        flex-direction: column;
+    }
     .favouritesArea {
         display: flex;
         flex-direction: column;
         gap: 20px;
+        h2 {
+            @media (max-width: 765px) {
+                text-align: center;
+            }
+        }
+        @media (max-width: 765px) {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
         .cardContainer {
             display: flex;
             gap: 20px;

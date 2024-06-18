@@ -1,9 +1,9 @@
 import clsx from "clsx"
-import styles from './DateInput.module.scss'
+import styles from "./DateInput.module.scss"
 import GenericInputWrapper, { GenericInputWrapperProps } from "../GenericInputWrapper.tsx/GenericInputWrapper"
 import { ChangeEvent, useState } from "react"
 import DatePicker from "react-datepicker"
-import "react-datepicker/dist/react-datepicker.css";
+import "react-datepicker/dist/react-datepicker.css"
 
 export interface IDateInputProps extends Omit<GenericInputWrapperProps, "onChange"> {
     value?: string
@@ -15,11 +15,11 @@ export interface IDateInputProps extends Omit<GenericInputWrapperProps, "onChang
     onBlur?: (e: ChangeEvent) => void
 }
 export const DateInput = ({ error, label, disabled, required }: IDateInputProps) => {
-    const [startDate, setStartDate] = useState((new Date()))
-    
+    const [startDate, setStartDate] = useState<Date | null>()
+
     return (
         <GenericInputWrapper error={error} label={label} disabled={disabled} required={required}>
-            <DatePicker selected={startDate}  openToDate={new Date()} onChange={(date: Date) =>setStartDate(date)} dateFormat="MM/dd/yyyy" className={clsx("date-input", styles.root)}/>
+            <DatePicker selected={startDate} onChange={(date: Date) => setStartDate(date)} dateFormat="MM/dd/yyyy" className={clsx("date-input", styles.root)} />
         </GenericInputWrapper>
     )
 }

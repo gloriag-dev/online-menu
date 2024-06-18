@@ -12,7 +12,6 @@ import { Selector } from "../../components/Selector/Selector"
 import Breakfasts from "../../components/Icons/Breakfast"
 import Lunches from "../../components/Icons/Lunches"
 import Dinners from "../../components/Icons/Dinners"
-import Drinks from "../../components/Icons/Drinks"
 import FastFoods from "../../components/Icons/FastFoods"
 import Desserts from "../../components/Icons/Desserts"
 
@@ -37,11 +36,6 @@ const categories = [
         label: "Dinners",
         id: "dinners",
         icon: <Dinners />
-    },
-    {
-        label: "Drinks",
-        id: "drinks",
-        icon: <Drinks />
     },
     {
         label: "Fast foods",
