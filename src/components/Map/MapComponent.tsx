@@ -14,14 +14,12 @@ const MapComponent = () => {
     const position: LatLngExpression = [28.5383, -81.3792, 10] // Coordinates for Orlando, Florida
 
     return (
-        <div className={style.map}>
-            <MapContainer center={position} zoom={13} className={style.leafletContainer}>
-                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' />
-                <Marker position={position}>
-                    <Popup>We are here! Orlando, FL</Popup>
-                </Marker>
-            </MapContainer>
-        </div>
+        <MapContainer center={position} zoom={13} className={style.leafletContainer}>
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' />
+            <Marker position={position}>
+                <Popup>We are here! Orlando, FL</Popup>
+            </Marker>
+        </MapContainer>
     )
 }
 

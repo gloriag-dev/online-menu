@@ -3,10 +3,22 @@ import { HttpResponse, delay, http } from "msw"
 export const handlers = [
     http.get("/districts", async () => {
         return Response.json([
-            {
-                district: "Rome",
-                code: "RM"
-            }
+            { district: "Bologna", code: "BO" },
+            { district: "Firenze", code: "FI" },
+            { district: "Genova", code: "GE" },
+            { district: "Milano", code: "MI" },
+            { district: "Napoli", code: "NA" },
+            { district: "Padova", code: "PD" },
+            { district: "Palermo", code: "PA" },
+            { district: "Perugia", code: "PG" },
+            { district: "Pescara", code: "PE" },
+            { district: "Pordenone", code: "PN" },
+            { district: "Roma", code: "RM" },
+            { district: "Torino", code: "TO" },
+            { district: "Trento", code: "TN" },
+            { district: "Trieste", code: "TS" },
+            { district: "Udine", code: "UD" },
+            { district: "Venezia", code: "VE" }
         ])
     }),
 
@@ -14,7 +26,7 @@ export const handlers = [
         return Response.json({})
     }),
     http.get("/dishes", async ({ request }) => {
-        delay(2000)
+        delay(7000)
         let dishes = [
             {
                 id: 1,

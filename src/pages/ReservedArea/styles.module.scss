@@ -43,7 +43,7 @@
                 border-radius: 10px;
                 width: 100%;
                 @media (max-width: 765px) {
-                    max-width: 320px;
+                    max-width: 280px;
                 }
                 .inner {
                     display: flex;
@@ -68,6 +68,13 @@
                 display: flex;
                 align-items: center;
                 gap: 10px;
+                .removeItemBtn {
+                    margin-right: 0;
+                }
+                @media (max-width: 765px) {
+                    flex-direction: column;
+                    align-items: center;
+                }
             }
         }
     }
@@ -88,7 +95,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border-radius: 10px;
+    border-radius: 25px;
     background-color: var(--color-main);
     min-width: 45vw;
     max-height: 300px;

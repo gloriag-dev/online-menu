@@ -17,6 +17,7 @@ import clsx from "clsx"
 import RoundButton from "../../components/RoundButton/RoundButton"
 import AddToFavoritesButton from "../../components/AddToFavoritesButton/AddToFavoritesButton"
 import { capitalize } from "lodash"
+import AddToCart from "../../components/Icons/AddToCart"
 
 export const ReservedArea = () => {
     const { name, surname, number, city, zip, street } = useUserStore()
@@ -98,7 +99,7 @@ export const ReservedArea = () => {
                         const singleDish = findDishById(id)
 
                         return (
-                            <section className={styles.cardContainer}>
+                            <section className={styles.cardContainer} key={id}>
                                 <div className={clsx("order-card", styles.card)}>
                                     <div className={styles.inner}>
                                         <div>
@@ -118,7 +119,7 @@ export const ReservedArea = () => {
                                             toggleFavouriteDish(singleDish?.id as number, e)
                                         }}
                                     />
-                                    <RoundButton className={styles.removeItemBtn} children={<span>+</span>}></RoundButton>
+                                    <RoundButton className={styles.removeItemBtn} children={<AddToCart />}></RoundButton>
                                 </div>
                             </section>
                         )
@@ -197,7 +198,7 @@ function InfoDialog(props: InfoDialogProps) {
                             values={query.data?.map?.(district => {
                                 return {
                                     value: district.code,
-                                    label: district.district
+                                    label: district.code
                                 }
                             })}
                         />

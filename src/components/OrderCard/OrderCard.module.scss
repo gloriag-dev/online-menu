@@ -1,6 +1,6 @@
-.container{
+.container {
     display: flex;
-    gap:20px;
+    gap: 20px;
     .card {
         background-color: var(--color-secondary);
         display: flex;
@@ -29,8 +29,6 @@
                 font-weight: bold;
             }
         }
-    
-        
     }
     .btnContainer {
         display: flex;
@@ -50,5 +48,3 @@
         }
     }
 }
-
-

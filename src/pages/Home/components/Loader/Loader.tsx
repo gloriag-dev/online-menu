@@ -1,6 +1,20 @@
+import { createPortal } from "react-dom"
+
+import { Logo } from "../../../../components/Icons/Logo"
+
 import styles from "./Loader.module.scss"
 
-export const Loader = () => {
-    return <div className={styles.loader}></div>
+const Loader = () => {
+    return createPortal(
+        <div className={styles.loaderContainer} data-testid="loader_container">
+            <div className={styles.loaderContent}>
+                <Logo className={styles.logo} width={100} height={100} />
+            </div>
+        </div>,
+        document.body
+    )
 }
-export default Loader
+
+Loader.displayName = "Loader"
+
+export { Loader }

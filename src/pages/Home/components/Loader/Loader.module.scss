@@ -1,10 +1,32 @@
-.loader {
-    width: 48px;
-    height: 48px;
-    border: 5px solid #fff;
-    border-bottom-color: var(--color-main);
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
+// styles.scss
+.loaderContainer {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.8); // Equivalent to bg-white/80
+    z-index: 50;
+    pointer-events: auto;
+}
+
+.loaderContent {
+    position: relative;
+    width: 16rem; // Equivalent to w-64
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    animation: beat 1s infinite;
+}
+
+@keyframes beat {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
 }

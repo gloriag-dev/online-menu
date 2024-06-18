@@ -99,7 +99,7 @@ export const Address = ({ onNext }: AddressProps) => {
                                 values={query.data?.map?.(district => {
                                     return {
                                         value: district.code,
-                                        label: district.district
+                                        label: district.code
                                     }
                                 })}
                             />

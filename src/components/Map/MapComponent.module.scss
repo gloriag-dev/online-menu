@@ -1,6 +1,12 @@
-.leafletContainer{
+.leafletContainer {
     height: 300px;
     width: 400px;
-    margin-top: 20px;    
-}
+    margin-top: 20px;
 
+    @media (max-width: 765px) {
+        justify-content: center;
+        display: flex;
+        margin-bottom: 200px;
+        max-width: 85vw;
+    }
+}

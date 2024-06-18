@@ -19,7 +19,7 @@ export const Selector = ({ categories, className, onSetCategory, categoryId }: S
             {categories.map(category => {
                 const isSelected = category.id === categoryId
                 return (
-                    <div className={styles.btn} onClick={() => onSetCategory?.(category.id)}>
+                    <div className={styles.btn} onClick={() => onSetCategory?.(category.id)} key={category.id}>
                         {category.icon}
                         <button key={category.id} onClick={() => onSetCategory?.(category.id)} className={clsx({ [styles.active]: isSelected })}>
                             {category.label}

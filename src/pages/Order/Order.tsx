@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query"
 import useOrderStore from "../../stores/orderStore"
 import { DishComplete } from "../Menu/Menu"
 import { Link } from "react-router-dom"
-import Loader from "../Home/components/Loader/Loader"
+import { Loader } from "../Home/components/Loader/Loader"
 import OrderCard from "../../components/OrderCard/OrderCard"
 import { OrderSummary } from "../../components/OrderSummary/OrderSummary"
 
@@ -51,6 +51,7 @@ export const Order = () => {
 
                         return (
                             <OrderCard
+                                key={single.id}
                                 quantity={single.quantity}
                                 imgAlt={singleDish?.name}
                                 imgUrl={singleDish?.imgUrl}

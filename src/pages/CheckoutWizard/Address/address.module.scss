@@ -17,6 +17,10 @@
         gap: 30px;
         min-width: 350px;
         margin-bottom: 100px;
+        @media (max-width: 765px) {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
         .select {
             background-color: var(--color-secondary-light);
             width: 100px;
@@ -35,11 +39,19 @@
         display: flex;
         justify-content: space-between;
         gap: 10px;
+        @media (max-width: 765px) {
+            flex-direction: column;
+        }
         .zip {
             max-width: 100px;
         }
         .district {
             min-width: 100px;
         }
+    }
+    .map {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

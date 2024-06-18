@@ -8,6 +8,7 @@
     transition: bottom 0.3s ease-in-out;
     display: flex;
     justify-content: space-between;
+    z-index: 9999999999999;
     &.open {
         bottom: 0px;
     }
