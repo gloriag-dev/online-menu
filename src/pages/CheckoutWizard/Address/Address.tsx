@@ -9,9 +9,9 @@ import {} from "zod"
 import TextInputRHF from "../../../components/input/TextInput/TextInput.rhf"
 import SelectInputRHF from "../../../components/input/SelectInput/SelectInput.rhf"
 import {} from "react"
-import useOrderStore from "../../../stores/orderStore"
 import { DevTool } from "@hookform/devtools"
 import MapComponent from "../../../components/Map/MapComponent"
+import { capitalize } from "lodash"
 export type AddressData = {
     district: string
     city: string
@@ -38,7 +38,6 @@ declare module "@mui/material/Button" {
 }
 export const Address = ({ onNext }: AddressProps) => {
     const userStore = useUserStore()
-    const order = useOrderStore()
     const form = useForm<AddressData>({
         mode: "all",
         reValidateMode: "onBlur"
@@ -56,7 +55,6 @@ export const Address = ({ onNext }: AddressProps) => {
         }
     })
 
-    console.log(order.total)
     const onSubmit = async (values: AddressData) => {
         const { street, zip, city, district, number, name, surname } = values
         userStore.setUserData(district, zip, city, street, number, name, surname)
@@ -64,7 +62,6 @@ export const Address = ({ onNext }: AddressProps) => {
         onNext()
         form.reset()
     }
-    console.log(form.watch(), "jwhhw")
     return (
         <div className={style.main}>
             <FormProvider {...form}>
@@ -78,7 +75,7 @@ export const Address = ({ onNext }: AddressProps) => {
                             rules={{
                                 required: "This field is required"
                             }}
-                            format={value => value.replaceAll(/[!1234567890@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, "")}
+                            format={value => capitalize(value.replaceAll(/[!1234567890@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, ""))}
                         />
                         <TextInputRHF
                             name="surname"
@@ -87,7 +84,7 @@ export const Address = ({ onNext }: AddressProps) => {
                             rules={{
                                 required: "This field is required"
                             }}
-                            format={value => value.replaceAll(/[!1234567890@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, "")}
+                            format={value => capitalize(value.replaceAll(/[!1234567890@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, ""))}
                         />
                     </div>
                     <div className={style.flexRow}>
@@ -114,7 +111,7 @@ export const Address = ({ onNext }: AddressProps) => {
                             rules={{
                                 required: "This field is required"
                             }}
-                            format={value => value.replaceAll(/[!1234567890@#$%^&*()_+\-=[\]{};:"\\|,.<>/?1234567890]/g, "")}
+                            format={value => capitalize(value.replaceAll(/[!1234567890@#$%^&*()_+\-=[\]{};:"\\|,.<>/?1234567890]/g, ""))}
                         />
 
                         <TextInputRHF
@@ -128,7 +125,7 @@ export const Address = ({ onNext }: AddressProps) => {
                                     message: "Must be 5 digits"
                                 }
                             }}
-                            format={value => value.replaceAll(/\D/g, "").slice(0, 5)}
+                            format={value => capitalize(value.replaceAll(/\D/g, "").slice(0, 5))}
                         />
                     </div>
                     <div className={style.flexRow}>
@@ -139,7 +136,7 @@ export const Address = ({ onNext }: AddressProps) => {
                             rules={{
                                 required: "This field is required"
                             }}
-                            format={value => value.replaceAll(/[!1234567890@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, "")}
+                            format={value => capitalize(value.replaceAll(/[!1234567890@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, ""))}
                         />
                         <TextInputRHF
                             name="number"

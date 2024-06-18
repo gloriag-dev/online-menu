@@ -2,6 +2,7 @@ import { Navigate, Route, Routes, useNavigate } from "react-router-dom"
 import { Address } from "./Address/Address"
 import { Checkout } from "./Checkout"
 import { Wrapper } from "../../components/Wrapper/Wrapper"
+import { ThankYou } from "./ThankYou/ThankYou"
 
 const Wizard = () => {
     const navigate = useNavigate()
@@ -24,7 +25,7 @@ const Wizard = () => {
         },
         {
             path: "thank-you",
-            element: <div></div>
+            element: <ThankYou />
         }
     ]
 

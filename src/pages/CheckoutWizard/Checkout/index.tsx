@@ -4,7 +4,7 @@ import useUserStore from "../../../stores/userStore"
 import { Button, FormLabel } from "@mui/material"
 import TextInputRHF from "../../../components/input/TextInput/TextInput.rhf"
 import DateInput from "../../../components/input/DateInput/DateInput"
-import { useNavigate } from "react-router-dom"
+import {  } from "react-router-dom"
 
 interface CheckoutData {
     cardNumber: string
@@ -15,10 +15,12 @@ type CheckoutProps = {
     onPrevious: () => void
     onNext: () => void
 }
-export const Checkout = ({ onPrevious }: CheckoutProps) => {
-    const form = useForm<CheckoutData>()
+export const Checkout = ({ onPrevious, onNext }: CheckoutProps) => {
+    const form = useForm<CheckoutData>({
+        mode: "all",
+        reValidateMode: "onBlur"
+    })
     const userStore = useUserStore()
-    const navigate = useNavigate()
     const onSubmit = (values: CheckoutData) => {
         console.log(values)
     }
@@ -27,7 +29,7 @@ export const Checkout = ({ onPrevious }: CheckoutProps) => {
         onPrevious()
     }
     const handleComplete = () => {
-        navigate("./thank-you")
+        onNext()
     }
     const fullName = `${userStore.name}` + " " + `${userStore.surname}`
     return (
@@ -58,7 +60,8 @@ export const Checkout = ({ onPrevious }: CheckoutProps) => {
                                     rules={{
                                         required: "This field is required",
                                         pattern: {
-                                            value: /^\d{16}$/
+                                            value: /^\d{16}$/,
+                                            message: "Must be 16 digits"
                                         }
                                     }}
                                     format={value => value.replaceAll(/\D/g, "").slice(0, 16)}
@@ -76,7 +79,8 @@ export const Checkout = ({ onPrevious }: CheckoutProps) => {
                                     rules={{
                                         required: "This field is required",
                                         pattern: {
-                                            value: /^\d{3}$/
+                                            value: /^\d{3}$/,
+                                            message: "Must be 3 digits"
                                         }
                                     }}
                                     format={value => value.replaceAll(/\D/g, "").slice(0, 3)}

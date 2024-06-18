@@ -1,4 +1,3 @@
-
 .cover {
     background-image: url("../../assets/hero-bg-img-desktop.jpg");
     background-size: cover;
@@ -25,7 +24,7 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
-        .cardContainer{
+        .cardContainer {
             display: flex;
             gap: 20px;
             .card {
@@ -35,7 +34,7 @@
                 padding-right: 5px;
                 flex-direction: row;
                 border-radius: 10px;
-                width:100%;
+                width: 100%;
                 @media (max-width: 765px) {
                     max-width: 320px;
                 }
@@ -57,45 +56,43 @@
                         font-weight: bold;
                     }
                 }
-    
             }
             .btnContainer {
                 display: flex;
                 align-items: center;
-                gap:10px;
+                gap: 10px;
             }
         }
-       
     }
 }
-.flex{
+.flex {
     display: flex;
     justify-content: center;
-    .missingInfo{
+    .missingInfo {
         display: flex;
         flex-direction: column;
         align-items: center;
-        h2{
+        h2 {
             margin-bottom: 20px;
         }
     }
 }
-.container{
+.container {
     display: flex;
     flex-direction: column;
-    align-items:flex-start;
+    align-items: flex-start;
     border-radius: 10px;
     background-color: var(--color-main);
     min-width: 45vw;
-    h2, h4{
+    h2,
+    h4 {
         margin: 20px;
-        .btn{
+        .btn {
             background-color: transparent;
             border: none;
             cursor: pointer;
         }
     }
-
 }
 
 .main {
@@ -104,10 +101,8 @@
     border-radius: 12px;
 
     div[role="dialog"] {
-  border-radius: 15px;
-      }
-      
-
+        border-radius: 15px;
+    }
 
     .title {
         font-family: var(--font-brand);
@@ -120,11 +115,11 @@
         flex-direction: column;
         gap: 30px;
         margin: 20px;
-        .flexRow{
+        .flexRow {
             display: flex;
             justify-content: space-between;
-            gap:10px;
-            .zip{
+            gap: 10px;
+            .zip {
                 max-width: 100px;
             }
         }
@@ -142,5 +137,4 @@
             border-bottom: 2px solid var(--color-main);
         }
     }
-    
 }

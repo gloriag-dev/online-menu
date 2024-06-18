@@ -12,12 +12,14 @@ export type OrderCardProps = {
     id?: number
     handleRemove?: (id: number) => void
 }
-export const OrderCard = ({ imgAlt, imgUrl, name, price, handleRemove, id, quantity }: OrderCardProps) => {
+export const OrderCard = ({ imgAlt, imgUrl, name, price, handleRemove, id, quantity, className }: OrderCardProps) => {
     const onClickOrderCard = () => {
         if (id) handleRemove?.(id)
     }
+    const shouldShowRoundButton = !window.location.pathname.includes("/checkout-wizard/thank-you")
+    console.log(window.location.pathname)
     return (
-        <section className={styles.container}>
+        <section className={clsx(styles.container, className)}>
             <div className={clsx("order-card", styles.card)}>
                 <div className={styles.main}>
                     <div>
@@ -32,9 +34,11 @@ export const OrderCard = ({ imgAlt, imgUrl, name, price, handleRemove, id, quant
                     </div>
                 </div>
             </div>
-            <div className={styles.btnContainer}>
-                <RoundButton className={styles.removeItemBtn} onClick={onClickOrderCard} children={<span>&#45;</span>}></RoundButton>
-            </div>
+            {shouldShowRoundButton && (
+                <div className={styles.btnContainer}>
+                    <RoundButton className={styles.removeItemBtn} onClick={onClickOrderCard} children={<span>&#45;</span>}></RoundButton>
+                </div>
+            )}
         </section>
     )
 }

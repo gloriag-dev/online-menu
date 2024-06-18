@@ -13,7 +13,6 @@ L.Icon.Default.mergeOptions({
 const MapComponent = () => {
     const position: LatLngExpression = [28.5383, -81.3792, 10] // Coordinates for Orlando, Florida
 
-    console.log(style)
     return (
         <div className={style.map}>
             <MapContainer center={position} zoom={13} className={style.leafletContainer}>

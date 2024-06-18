@@ -12,11 +12,11 @@ import SelectInputRHF from "../../components/input/SelectInput/SelectInput.rhf"
 import axios from "axios"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { DishComplete } from "../Menu/Menu"
-import OrderCard from "../../components/OrderCard/OrderCard"
 import useDishStore from "../../stores/dishStore"
 import clsx from "clsx"
 import RoundButton from "../../components/RoundButton/RoundButton"
 import AddToFavoritesButton from "../../components/AddToFavoritesButton/AddToFavoritesButton"
+import { capitalize } from "lodash"
 
 export const ReservedArea = () => {
     const { name, surname, number, city, zip, street } = useUserStore()
@@ -74,7 +74,7 @@ export const ReservedArea = () => {
                     ) : (
                         <div className={styles.container}>
                             <h2>
-                                <button className={styles.btn} onClick={handleOpenModal}>
+                                <button title="Edit" className={styles.btn} onClick={handleOpenModal}>
                                     <Pencil />
                                 </button>
                                 Info you shared with us:
@@ -101,7 +101,7 @@ export const ReservedArea = () => {
                                 <div className={clsx("order-card", styles.card)}>
                                     <div className={styles.inner}>
                                         <div>
-                                            <img src={singleDish?.imgUrl} className={styles.img} />
+                                            <img alt="dish" src={singleDish?.imgUrl} className={styles.img} />
                                         </div>
 
                                         <div className={styles.info}>
@@ -172,7 +172,7 @@ function InfoDialog(props: InfoDialogProps) {
                             rules={{
                                 required: "This field is required"
                             }}
-                            format={value => value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, "")}
+                            format={value => capitalize(value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, ""))}
                         />
                         <TextInputRHF
                             name="surname"
@@ -181,9 +181,10 @@ function InfoDialog(props: InfoDialogProps) {
                             rules={{
                                 required: "This field is required"
                             }}
-                            format={value => value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, "")}
+                            format={value => capitalize(value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, ""))}
                         />
                     </div>
+
                     <div className={styles.flexRow}>
                         <SelectInputRHF
                             name="district"
@@ -207,7 +208,7 @@ function InfoDialog(props: InfoDialogProps) {
                                 required: "This field is required",
                                 message: "MESSAGE"
                             }}
-                            format={value => value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?1234567890]/g, "")}
+                            format={value => capitalize(value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?1234567890]/g, ""))}
                         />
                         <div className={styles.zip}>
                             <TextInputRHF
@@ -233,7 +234,7 @@ function InfoDialog(props: InfoDialogProps) {
                             rules={{
                                 required: "This field is required"
                             }}
-                            format={value => value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, "")}
+                            format={value => capitalize(value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, ""))}
                         />
                         <TextInputRHF
                             name="number"
@@ -242,7 +243,7 @@ function InfoDialog(props: InfoDialogProps) {
                             rules={{
                                 required: "This field is required"
                             }}
-                            format={value => value.replaceAll(/\D/g, "").slice(0, 4)}
+                            format={value => capitalize(value.replaceAll(/\D/g, "").slice(0, 4))}
                         />
                     </div>
                     <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid}>
