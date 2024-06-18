@@ -8,17 +8,13 @@ export const handlers = [
             { district: "Genova", code: "GE" },
             { district: "Milano", code: "MI" },
             { district: "Napoli", code: "NA" },
-            { district: "Padova", code: "PD" },
             { district: "Palermo", code: "PA" },
             { district: "Perugia", code: "PG" },
             { district: "Pescara", code: "PE" },
             { district: "Pordenone", code: "PN" },
             { district: "Roma", code: "RM" },
             { district: "Torino", code: "TO" },
-            { district: "Trento", code: "TN" },
-            { district: "Trieste", code: "TS" },
-            { district: "Udine", code: "UD" },
-            { district: "Venezia", code: "VE" }
+            { district: "Trieste", code: "TS" }
         ])
     }),
 
