@@ -28,9 +28,11 @@ export const OrderCard = ({ imgAlt, imgUrl, name, price, handleRemove, id, quant
 
                     <div className={styles.info}>
                         <span className={styles.infoText}>{name}</span>
-                        <span className={styles.infoText}>
-                            {price}$ {quantity && quantity > 1 && "x" + quantity}
-                        </span>
+                        {price && (
+                            <span className={styles.infoText}>
+                                {price}$ {quantity && quantity > 1 && "x" + quantity}
+                            </span>
+                        )}
                     </div>
                 </div>
             </div>

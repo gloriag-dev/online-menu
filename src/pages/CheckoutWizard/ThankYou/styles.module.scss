@@ -1,7 +1,12 @@
 .main {
     min-height: 80vh;
+    margin-left: 15px;
+    margin-right: 15px;
     .title {
         color: var(--color-main);
+        @media (max-width: 765px) {
+            font-size: 20px;
+        }
     }
     .cardsContainer {
         justify-items: center;
@@ -9,6 +14,10 @@
         display: flex;
         flex-direction: row;
         gap: 30px;
+        margin-bottom: 100px;
+        @media (max-width: 765px) {
+            flex-direction: column;
+        }
 
         .card {
             background-color: white;
@@ -25,5 +34,9 @@
                 margin-left: 10px;
             }
         }
+    }
+    .logoWrapper {
+        display: flex;
+        justify-content: center;
     }
 }
