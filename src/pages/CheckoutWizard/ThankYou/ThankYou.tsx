@@ -29,8 +29,9 @@ export const ThankYou = () => {
             <Box className={styles.logoWrapper}>
                 <Logo width={200} height={200} />
             </Box>
-            <h1 className={styles.title}>{text}</h1>
-
+            <Box className={styles.titleWrapper}>
+                <h1 className={styles.title}>{text}</h1>
+            </Box>
             <Box className={styles.cardsContainer}>
                 {orderStore.order.map(single => {
                     const singleDish = findDishById(single.id)

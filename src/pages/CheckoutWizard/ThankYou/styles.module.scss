@@ -2,12 +2,20 @@
     min-height: 80vh;
     margin-left: 15px;
     margin-right: 15px;
-    .title {
-        color: var(--color-main);
-        @media (max-width: 765px) {
-            font-size: var(--title-size-mobile);
+    .titleWrapper {
+        display: flex;
+        justify-content: center;
+        .title {
+            font-size: var(--title-size);
+            font-weight: bold;
+            color: var(--color-main);
+            margin-bottom: 30px;
+            @media (max-width: 765px) {
+                font-size: var(--title-size-mobile);
+            }
         }
     }
+
     .cardsContainer {
         justify-items: center;
         max-width: 1200px;
