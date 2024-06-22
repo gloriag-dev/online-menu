@@ -131,6 +131,7 @@ export const Address = ({ onNext }: AddressProps) => {
                     <div className={style.flexRow}>
                         <TextInputRHF
                             name="street"
+                            className={style.street}
                             label="Address"
                             defaultValue={userStore.street}
                             rules={{

@@ -31,11 +31,17 @@
         font-size: 70px;
         font-weight: 600;
         margin: 0;
+        @media (max-width: 765px) {
+            font-size: var(--title-size);
+        }
     }
     p {
         margin: 0 20px;
         margin-bottom: 20px;
         text-align: center;
+        @media (max-width: 765px) {
+            font-size: 14px;
+        }
     }
     .downArrow {
         position: absolute;

@@ -5,14 +5,12 @@
     max-height: 240px;
     .layout {
         padding: 30px;
-        p{
-            
-                font-family: var(--font-brand);
-                font-weight: bold;
-                font-size: 20px;
-            
+        p {
+            font-family: var(--font-brand);
+            font-weight: bold;
+            font-size: var(--title-size-mobile);
         }
-        a{
+        a {
             padding-bottom: 20px;
         }
     }

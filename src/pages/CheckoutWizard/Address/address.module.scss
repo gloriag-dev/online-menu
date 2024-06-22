@@ -48,6 +48,9 @@
         .district {
             min-width: 100px;
         }
+        .street {
+            text-transform: capitalize;
+        }
     }
     .map {
         @media (max-width: 765px) {

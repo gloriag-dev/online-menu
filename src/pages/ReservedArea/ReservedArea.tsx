@@ -83,7 +83,7 @@ export const ReservedArea = () => {
                             <h4>
                                 Full Name: {name} {surname}
                             </h4>
-                            <h4>
+                            <h4 className={styles.address}>
                                 Address: {number}, {street}
                             </h4>
                             <h4>

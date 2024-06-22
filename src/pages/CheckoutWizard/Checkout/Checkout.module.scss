@@ -11,22 +11,23 @@
         max-height: 25vh;
         border-radius: 8px;
         margin-top: 50px;
-        h2{
+        h2 {
             text-transform: capitalize;
         }
         @media (max-width: 765px) {
             width: 80vw;
-           }
-        .billingData{
+        }
+        .billingData {
             font-family: var(--font-brand);
-            font-size: 20px;
+            font-size: var(--title-size-mobile);
             font-weight: bold;
             margin-bottom: 30px;
+            text-transform: capitalize;
         }
-        .backBtn{
+        .backBtn {
             @media (max-width: 765px) {
-               margin-bottom: 30px;
-               }
+                margin-bottom: 30px;
+            }
         }
     }
     .form {
@@ -34,19 +35,19 @@
         flex-direction: column;
         padding: 45px;
         margin-bottom: 100px;
-        gap:30px;
-        .label{
-        font-size: 18px;
-        font-weight: bold;
-        color: black;
-        font-family: var(--font-brand);
+        gap: 30px;
+        .label {
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            font-family: var(--font-brand);
         }
         .field {
             display: flex;
             flex-direction: column;
             width: 414px;
             @media (max-width: 765px) {
-             width: 80vw;
+                width: 80vw;
             }
             .textfield {
                 background-color: var(--color-secondary-light);
