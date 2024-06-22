@@ -1,5 +1,5 @@
 import { MenuItem, Select, SelectChangeEvent } from "@mui/material"
-import GenericInputWrapper from "../GenericInputWrapper.tsx/GenericInputWrapper"
+import GenericInputWrapper from "../GenericInputWrapper/GenericInputWrapper"
 import { ChangeEvent } from "react"
 import clsx from "clsx"
 import styles from "./SelectInput.module.scss"

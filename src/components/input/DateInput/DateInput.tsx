@@ -1,6 +1,6 @@
 import clsx from "clsx"
 import styles from "./DateInput.module.scss"
-import GenericInputWrapper, { GenericInputWrapperProps } from "../GenericInputWrapper.tsx/GenericInputWrapper"
+import GenericInputWrapper, { GenericInputWrapperProps } from "../GenericInputWrapper/GenericInputWrapper"
 import { ChangeEvent, useState } from "react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"

@@ -1,4 +1,4 @@
-import GenericInputWrapper, { GenericInputWrapperProps } from "../GenericInputWrapper.tsx/GenericInputWrapper"
+import GenericInputWrapper, { GenericInputWrapperProps } from "../GenericInputWrapper/GenericInputWrapper"
 import { ChangeEvent } from "react"
 import { TextField } from "@mui/material"
 import clsx from "clsx"
