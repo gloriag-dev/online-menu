@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 import { Loader } from "../Home/components/Loader/Loader"
 import OrderCard from "../../components/OrderCard/OrderCard"
 import { OrderSummary } from "../../components/OrderSummary/OrderSummary"
+import { Box } from "../../components/Box/Box"
 
 export const Order = () => {
     const orderStore = useOrderStore()
@@ -26,11 +27,11 @@ export const Order = () => {
 
     if (orderStore.total <= 0) {
         return (
-            <div>
-                <div className={styles.cover}></div>
+            <Box>
+                <Box className={styles.cover}></Box>
                 <p>EFFETTUA UN ORDINE PRIMA DI ENTRARE QUI</p>
                 <Link to="/menu">Menu</Link>
-            </div>
+            </Box>
         )
     }
     if (dishesQuery.isLoading) {
@@ -42,10 +43,10 @@ export const Order = () => {
     }
     return (
         <>
-            <div className={styles.cover}></div>
+            <Box className={styles.cover}></Box>
 
-            <div className={styles.layout}>
-                <div className={styles.cardsContainer}>
+            <Box className={styles.layout}>
+                <Box className={styles.cardsContainer}>
                     {orderStore.order.map(single => {
                         const singleDish = findDishById(single.id)
 
@@ -62,9 +63,9 @@ export const Order = () => {
                             />
                         )
                     })}
-                </div>
+                </Box>
                 <OrderSummary />
-            </div>
+            </Box>
         </>
     )
 }

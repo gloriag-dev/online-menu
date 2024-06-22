@@ -12,6 +12,7 @@ import {} from "react"
 import { DevTool } from "@hookform/devtools"
 import MapComponent from "../../../components/Map/MapComponent"
 import { capitalize } from "lodash"
+import { Box } from "../../../components/Box/Box"
 export type AddressData = {
     district: string
     city: string
@@ -63,11 +64,11 @@ export const Address = ({ onNext }: AddressProps) => {
         form.reset()
     }
     return (
-        <div className={style.main}>
+        <Box className={style.main}>
             <FormProvider {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className={style.form}>
                     <DevTool control={form.control} />
-                    <div className={style.flexRow}>
+                    <Box className={style.flexRow}>
                         <TextInputRHF
                             name="name"
                             label="Name"
@@ -86,9 +87,9 @@ export const Address = ({ onNext }: AddressProps) => {
                             }}
                             format={value => capitalize(value.replaceAll(/[!1234567890@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, ""))}
                         />
-                    </div>
-                    <div className={style.flexRow}>
-                        <div className={style.district}>
+                    </Box>
+                    <Box className={style.flexRow}>
+                        <Box className={style.district}>
                             <SelectInputRHF
                                 name="district"
                                 label="District"
@@ -103,7 +104,7 @@ export const Address = ({ onNext }: AddressProps) => {
                                     }
                                 })}
                             />
-                        </div>
+                        </Box>
                         <TextInputRHF
                             name="city"
                             defaultValue={userStore.city}
@@ -127,8 +128,8 @@ export const Address = ({ onNext }: AddressProps) => {
                             }}
                             format={value => capitalize(value.replaceAll(/\D/g, "").slice(0, 5))}
                         />
-                    </div>
-                    <div className={style.flexRow}>
+                    </Box>
+                    <Box className={style.flexRow}>
                         <TextInputRHF
                             name="street"
                             className={style.street}
@@ -148,15 +149,15 @@ export const Address = ({ onNext }: AddressProps) => {
                             }}
                             format={value => value.replaceAll(/\D/g, "").slice(0, 4)}
                         />
-                    </div>
+                    </Box>
                     <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid}>
                         Go to checkout
                     </Button>
                 </form>
             </FormProvider>
-            <div className={style.map}>
+            <Box className={style.map}>
                 <MapComponent />
-            </div>
-        </div>
+            </Box>
+        </Box>
     )
 }

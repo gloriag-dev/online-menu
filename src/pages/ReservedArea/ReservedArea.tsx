@@ -18,6 +18,7 @@ import RoundButton from "../../components/RoundButton/RoundButton"
 import AddToFavoritesButton from "../../components/AddToFavoritesButton/AddToFavoritesButton"
 import { capitalize } from "lodash"
 import AddToCart from "../../components/Icons/AddToCart"
+import { Box } from "../../components/Box/Box"
 
 export const ReservedArea = () => {
     const { name, surname, number, city, zip, street } = useUserStore()
@@ -62,18 +63,18 @@ export const ReservedArea = () => {
 
     return (
         <>
-            <div className={styles.cover}></div>
+            <Box className={styles.cover}></Box>
             <section className={styles.wrapper}>
-                <div className={styles.flex}>
+                <Box className={styles.flex}>
                     {shouldFillUserData ? (
-                        <div className={styles.missingInfo}>
+                        <Box className={styles.missingInfo}>
                             <h2>Whoops, it looks like you haven't filled in your information yet!</h2>
                             <Button variant="contained" color="gold" onClick={handleOpenModal}>
                                 Fill in your information
                             </Button>
-                        </div>
+                        </Box>
                     ) : (
-                        <div className={styles.container}>
+                        <Box className={styles.container}>
                             <h2>
                                 <button title="Edit" className={styles.btn} onClick={handleOpenModal}>
                                     <Pencil />
@@ -89,10 +90,10 @@ export const ReservedArea = () => {
                             <h4>
                                 City: {city} {zip}
                             </h4>
-                        </div>
+                        </Box>
                     )}
-                </div>
-                <div className={styles.favouritesArea}>
+                </Box>
+                <Box className={styles.favouritesArea}>
                     {favouriteIds.length > 0 && <h2>Favourites</h2>}
 
                     {favouriteIds.map(id => {
@@ -100,19 +101,19 @@ export const ReservedArea = () => {
 
                         return (
                             <section className={styles.cardContainer} key={id}>
-                                <div className={clsx("order-card", styles.card)}>
-                                    <div className={styles.inner}>
-                                        <div>
+                                <Box className={clsx("order-card", styles.card)}>
+                                    <Box className={styles.inner}>
+                                        <Box>
                                             <img alt="dish" src={singleDish?.imgUrl} className={styles.img} />
-                                        </div>
+                                        </Box>
 
-                                        <div className={styles.info}>
+                                        <Box className={styles.info}>
                                             <span className={styles.infoText}>{singleDish?.name}</span>
                                             <span className={styles.infoText}>{singleDish?.price}$</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={styles.btnContainer}>
+                                        </Box>
+                                    </Box>
+                                </Box>
+                                <Box className={styles.btnContainer}>
                                     <AddToFavoritesButton
                                         clicked={favouriteIds?.includes?.(singleDish?.id as number)}
                                         onClick={e => {
@@ -120,11 +121,11 @@ export const ReservedArea = () => {
                                         }}
                                     />
                                     <RoundButton className={styles.removeItemBtn} children={<AddToCart />}></RoundButton>
-                                </div>
+                                </Box>
                             </section>
                         )
                     })}
-                </div>
+                </Box>
             </section>
             <InfoDialog open={open} onChange={handleSave} />
         </>
@@ -166,7 +167,7 @@ function InfoDialog(props: InfoDialogProps) {
             <DialogTitle className={styles.title}>Edit your information</DialogTitle>
             <FormProvider {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className={styles.form}>
-                    <div className={styles.flexRow}>
+                    <Box className={styles.flexRow}>
                         <TextInputRHF
                             name="name"
                             label="Name "
@@ -185,9 +186,9 @@ function InfoDialog(props: InfoDialogProps) {
                             }}
                             format={value => capitalize(value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?]/g, ""))}
                         />
-                    </div>
+                    </Box>
 
-                    <div className={styles.flexRow}>
+                    <Box className={styles.flexRow}>
                         <SelectInputRHF
                             name="district"
                             label="District"
@@ -212,7 +213,7 @@ function InfoDialog(props: InfoDialogProps) {
                             }}
                             format={value => capitalize(value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?1234567890]/g, ""))}
                         />
-                        <div className={styles.zip}>
+                        <Box className={styles.zip}>
                             <TextInputRHF
                                 name="zip"
                                 label="Zip code"
@@ -225,10 +226,10 @@ function InfoDialog(props: InfoDialogProps) {
                                 }}
                                 format={value => value.replaceAll(/\D/g, "").slice(0, 5)}
                             />
-                        </div>
-                    </div>
+                        </Box>
+                    </Box>
 
-                    <div className={styles.flexRow}>
+                    <Box className={styles.flexRow}>
                         <TextInputRHF
                             name="street"
                             label="Address"
@@ -247,7 +248,7 @@ function InfoDialog(props: InfoDialogProps) {
                             }}
                             format={value => capitalize(value.replaceAll(/\D/g, "").slice(0, 4))}
                         />
-                    </div>
+                    </Box>
                     <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid}>
                         Save
                     </Button>

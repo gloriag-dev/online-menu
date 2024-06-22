@@ -1,6 +1,7 @@
 import clsx from "clsx"
 import styles from "./OrderCard.module.scss"
 import RoundButton from "../RoundButton/RoundButton"
+import { Box } from "../Box/Box"
 
 export type OrderCardProps = {
     imgAlt?: string
@@ -20,26 +21,26 @@ export const OrderCard = ({ imgAlt, imgUrl, name, price, handleRemove, id, quant
     console.log(window.location.pathname)
     return (
         <section className={clsx(styles.container, className)}>
-            <div className={clsx("order-card", styles.card)}>
-                <div className={styles.main}>
-                    <div>
+            <Box className={clsx("order-card", styles.card)}>
+                <Box className={styles.main}>
+                    <Box>
                         <img alt={imgAlt} src={imgUrl} className={styles.img} />
-                    </div>
+                    </Box>
 
-                    <div className={styles.info}>
+                    <Box className={styles.info}>
                         <span className={styles.infoText}>{name}</span>
                         {price && (
                             <span className={styles.infoText}>
                                 {price}$ {quantity && quantity > 1 && "x" + quantity}
                             </span>
                         )}
-                    </div>
-                </div>
-            </div>
+                    </Box>
+                </Box>
+            </Box>
             {shouldShowRoundButton && (
-                <div className={styles.btnContainer}>
+                <Box className={styles.btnContainer}>
                     <RoundButton className={styles.removeItemBtn} onClick={onClickOrderCard} children={<span>&#45;</span>}></RoundButton>
-                </div>
+                </Box>
             )}
         </section>
     )

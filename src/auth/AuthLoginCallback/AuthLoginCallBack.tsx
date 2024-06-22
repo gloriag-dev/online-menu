@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { getUrl } from "../utils"
+import { Box } from "../../components/Box/Box"
 
 export const AuthLoginCallback = () => {
     const navigate = useNavigate()
@@ -23,5 +24,5 @@ export const AuthLoginCallback = () => {
         navigateToRoute()
     }, [])
 
-    return <div>Redirecting...</div>
+    return <Box>Redirecting...</Box>
 }

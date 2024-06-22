@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { Logo } from "../Icons/Logo"
 import styles from "./Navbar.module.scss"
+import { Box } from "../Box/Box"
 export const Navbar = () => {
     const navigate = useNavigate()
 
@@ -8,15 +9,15 @@ export const Navbar = () => {
         navigate("./home")
     }
     return (
-        <div className={styles.navRoot}>
-            <div className={styles.stickyWrapper}>
-                <div className={styles.sticky}>
-                    <div className={styles.nav}>
-                        <div className={styles.logo} onClick={handleNavigateHome}>
+        <Box className={styles.navRoot}>
+            <Box className={styles.stickyWrapper}>
+                <Box className={styles.sticky}>
+                    <Box className={styles.nav}>
+                        <Box className={styles.logo} onClick={handleNavigateHome}>
                             <Logo width={106} height={80} />
-                        </div>
+                        </Box>
 
-                        <div className={styles.links}>
+                        <Box className={styles.links}>
                             <Link to="/home" className={styles.link}>
                                 Home
                             </Link>
@@ -28,10 +29,10 @@ export const Navbar = () => {
                             <Link to="/reserved-area" className={styles.link}>
                                 Reserved Area
                             </Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        </Box>
+                    </Box>
+                </Box>
+            </Box>
+        </Box>
     )
 }

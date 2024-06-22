@@ -6,6 +6,7 @@ import TextInputRHF from "../../../components/Input/TextInput/TextInput.rhf"
 import DateInput from "../../../components/Input/DateInput/DateInput"
 import {} from "react-router-dom"
 import {} from "lodash"
+import { Box } from "../../../components/Box/Box"
 
 interface CheckoutData {
     cardNumber: string
@@ -34,8 +35,8 @@ export const Checkout = ({ onPrevious, onNext }: CheckoutProps) => {
     }
     const fullName = `${userStore.name}` + " " + `${userStore.surname}`
     return (
-        <div className={styles.main}>
-            <div className={styles.addressData}>
+        <Box className={styles.main}>
+            <Box className={styles.addressData}>
                 <h2>{fullName}</h2>
                 <section className={styles.addressCard}>
                     <span className={styles.billingData}>
@@ -48,13 +49,13 @@ export const Checkout = ({ onPrevious, onNext }: CheckoutProps) => {
                         Edit billing address
                     </Button>
                 </section>
-            </div>
+            </Box>
             <FormProvider {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className={styles.form}>
                     <Controller
                         name="card number"
                         render={() => (
-                            <div className={styles.field}>
+                            <Box className={styles.field}>
                                 <TextInputRHF
                                     name="card number"
                                     label="Card Number"
@@ -67,13 +68,13 @@ export const Checkout = ({ onPrevious, onNext }: CheckoutProps) => {
                                     }}
                                     format={value => value.replaceAll(/\D/g, "").slice(0, 16)}
                                 />
-                            </div>
+                            </Box>
                         )}
                     />
                     <Controller
                         name="cvv"
                         render={() => (
-                            <div className={styles.field}>
+                            <Box className={styles.field}>
                                 <TextInputRHF
                                     name="cvv"
                                     label="CVV"
@@ -86,16 +87,16 @@ export const Checkout = ({ onPrevious, onNext }: CheckoutProps) => {
                                     }}
                                     format={value => value.replaceAll(/\D/g, "").slice(0, 3)}
                                 />
-                            </div>
+                            </Box>
                         )}
                     />
                     <Controller
                         name="expiry"
                         render={() => (
-                            <div className={styles.field}>
+                            <Box className={styles.field}>
                                 <FormLabel className={styles.label}>Expiry</FormLabel>
                                 <DateInput />
-                            </div>
+                            </Box>
                         )}
                     />
                     <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid} onClick={handleComplete}>
@@ -103,6 +104,6 @@ export const Checkout = ({ onPrevious, onNext }: CheckoutProps) => {
                     </Button>
                 </form>
             </FormProvider>
-        </div>
+        </Box>
     )
 }

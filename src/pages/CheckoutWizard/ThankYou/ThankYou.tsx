@@ -6,6 +6,7 @@ import { DishComplete } from "../../Menu/Menu"
 import styles from "./styles.module.scss"
 import { Logo } from "../../../components/Icons/Logo"
 import useUserStore from "../../../stores/userStore"
+import { Box } from "../../../components/Box/Box"
 
 export const ThankYou = () => {
     const orderStore = useOrderStore()
@@ -24,19 +25,19 @@ export const ThankYou = () => {
     }
     const text = `Thank you ${userStore.name}! Your delicious order is on its way!`
     return (
-        <div className={styles.main}>
-            <div className={styles.logoWrapper}>
+        <Box className={styles.main}>
+            <Box className={styles.logoWrapper}>
                 <Logo width={200} height={200} />
-            </div>
+            </Box>
             <h1 className={styles.title}>{text}</h1>
 
-            <div className={styles.cardsContainer}>
+            <Box className={styles.cardsContainer}>
                 {orderStore.order.map(single => {
                     const singleDish = findDishById(single.id)
                     return <OrderCard imgAlt={singleDish?.name} imgUrl={singleDish?.imgUrl} name={singleDish?.name} id={singleDish?.id} />
                 })}
-            </div>
-        </div>
+            </Box>
+        </Box>
     )
 }
 

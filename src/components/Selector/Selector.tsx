@@ -2,6 +2,7 @@ import clsx from "clsx"
 import { Category } from "../../pages/Menu/Menu"
 import styles from "./styles.module.scss"
 import AllDishes from "../Icons/AllDishes"
+import { Box } from "../Box/Box"
 
 type SelectorProps = {
     categories: Category[]
@@ -19,12 +20,12 @@ export const Selector = ({ categories, className, onSetCategory, categoryId }: S
             {categories.map(category => {
                 const isSelected = category.id === categoryId
                 return (
-                    <div className={styles.btn} onClick={() => onSetCategory?.(category.id)} key={category.id}>
+                    <Box className={styles.btn} onClick={() => onSetCategory?.(category.id)} key={category.id}>
                         {category.icon}
                         <button key={category.id} onClick={() => onSetCategory?.(category.id)} className={clsx({ [styles.active]: isSelected })}>
                             {category.label}
                         </button>
-                    </div>
+                    </Box>
                 )
             })}
         </section>

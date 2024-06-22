@@ -14,6 +14,7 @@ import Lunches from "../../components/Icons/Lunches"
 import Dinners from "../../components/Icons/Dinners"
 import FastFoods from "../../components/Icons/FastFoods"
 import Desserts from "../../components/Icons/Desserts"
+import { Box } from "../../components/Box/Box"
 
 export type Category = {
     label: string
@@ -84,7 +85,7 @@ export const Menu = () => {
                 </span>
             )
         }
-        return <div>{stars}</div>
+        return <Box>{stars}</Box>
     }
     const handleAdd = (dish: DishComplete) => () => {
         addToOrder(dish.id, dish.price, dish.name)
@@ -100,13 +101,13 @@ export const Menu = () => {
     return (
         <>
             <Suspense fallback={<Loader />}>
-                <div className={styles.cover}></div>
+                <Box className={styles.cover}></Box>
 
-                <div className={styles.layout}>
-                    <div className={styles.centeredWrapper}>
-                        <div className={styles.leftCol}>
+                <Box className={styles.layout}>
+                    <Box className={styles.centeredWrapper}>
+                        <Box className={styles.leftCol}>
                             <Selector onSetCategory={setCategoryId} categories={categories} categoryId={categoryId} />
-                        </div>
+                        </Box>
 
                         <section className={styles.menu}>
                             {dishesQuery?.data?.map?.(dish => (
@@ -122,8 +123,8 @@ export const Menu = () => {
                                 />
                             ))}
                         </section>
-                    </div>
-                </div>
+                    </Box>
+                </Box>
                 <OrderBar open={order.length > 0} />
             </Suspense>
         </>
