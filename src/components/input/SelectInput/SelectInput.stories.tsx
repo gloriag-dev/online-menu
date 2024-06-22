@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import SelectInput, { ISelectInputProps } from './SelectInput';
 import { useState } from 'react';
+import { SelectChangeEvent } from '@mui/material';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<typeof SelectInput> = {
@@ -34,7 +35,7 @@ const Template : React.FC<ISelectInputProps> = () =>{
             value: "2"
           }
         ]}
-        onChange={(event : any) =>{
+        onChange={(event : SelectChangeEvent) =>{
           setValue(event.target.value)
         }}
     />

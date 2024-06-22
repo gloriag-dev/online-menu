@@ -1,10 +1,10 @@
-import { Controller, useFormContext } from "react-hook-form"
+import { Controller, RegisterOptions, useFormContext } from "react-hook-form"
 import SelectInput, { ISelectInputProps } from "./SelectInput"
 import { ChangeEvent } from "react"
 
 export interface ISelectInputRHFProps extends Omit<ISelectInputProps, "value"> {
     name: string
-    rules?: any
+    rules?: RegisterOptions
     defaultValue?: string
 }
 

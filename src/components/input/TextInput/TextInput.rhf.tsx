@@ -1,10 +1,10 @@
-import { Controller, useFormContext } from "react-hook-form"
+import { Controller, RegisterOptions, useFormContext } from "react-hook-form"
 import TextInput, { ITextInputProps } from "./TextInput"
 import { ChangeEvent } from "react"
 
 export interface ITextInputRHFProps extends ITextInputProps {
     name: string
-    rules?: any
+    rules?: RegisterOptions
     defaultValue?: string
     message?: string
 }

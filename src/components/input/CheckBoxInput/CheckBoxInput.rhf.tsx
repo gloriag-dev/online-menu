@@ -1,10 +1,10 @@
-import { Controller, useFormContext } from "react-hook-form"
+import { Controller, RegisterOptions, useFormContext } from "react-hook-form"
 import CheckBoxInput, { ICheckBoxProps } from "./CheckBoxInput"
 import {} from "react"
 
 export interface ICheckBoxInputRHFProps extends Omit<ICheckBoxProps, "value"> {
     name: string
-    rules?: any
+    rules?: RegisterOptions
     defaultValue?: boolean
     disabled?: boolean
 }

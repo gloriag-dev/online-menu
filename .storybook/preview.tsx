@@ -1,4 +1,4 @@
-import React, { StrictMode, Suspense } from 'react'
+import { StrictMode, Suspense } from 'react'
 import type { Preview } from "@storybook/react"
 import "../src/index.css"
 import { ThemeProvider, createTheme } from "@mui/material/styles"
@@ -29,7 +29,7 @@ const preview: Preview = {
         (Story) => (
             <StrictMode>
              <ThemeProvider theme={theme}>
-                <Suspense>
+                <Suspense fallback={null}>
                     <Story />   
                 </Suspense>
              </ThemeProvider>

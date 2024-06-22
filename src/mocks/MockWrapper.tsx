@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-const MockWrapper: React.FC<any> = ({ children }) => {
+const MockWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [started, setStarted] = useState<boolean>(false)
 
     async function enableMocking() {
