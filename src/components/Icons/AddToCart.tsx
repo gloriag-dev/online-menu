@@ -1,6 +1,6 @@
 export const AddToCart = () => {
     return (
-        <svg height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" fill="#000000">
+        <svg height="18px" width="18px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" fill="#000000">
             <g id="SVGRepo_bgCarrier" strokeWidth="0" />
 
             <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />

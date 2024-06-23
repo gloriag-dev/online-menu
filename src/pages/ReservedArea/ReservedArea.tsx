@@ -19,10 +19,14 @@ import AddToFavoritesButton from "../../components/AddToFavoritesButton/AddToFav
 import { capitalize } from "lodash"
 import AddToCart from "../../components/Icons/AddToCart"
 import { Box } from "../../components/Box/Box"
+import Wishlist from "../../components/Icons/WishList"
+import useOrderStore from "../../stores/orderStore"
+import { OrderBar } from "../../components/OrderBar/OrderBar"
 
 export const ReservedArea = () => {
     const { name, surname, number, city, zip, street } = useUserStore()
     const { favouriteIds, toggleFavouriteDish } = useDishStore()
+    const { addToOrder, order } = useOrderStore()
     const userArray = [name, surname, number, city, zip, street]
     const [shouldFillUserData, setShouldFillUserData] = useState(false)
     const [open, setOpen] = useState(false)
@@ -60,11 +64,14 @@ export const ReservedArea = () => {
     const handleSave = () => {
         setOpen(false)
     }
+    const handleAddToCart = (dish: DishComplete) => {
+        addToOrder(dish?.id, dish?.price, dish?.name)
+    }
 
     return (
         <>
             <Box className={styles.cover}></Box>
-            <section className={styles.wrapper}>
+            <Box as="section" className={styles.wrapper}>
                 <Box className={styles.flex}>
                     {shouldFillUserData ? (
                         <Box className={styles.missingInfo}>
@@ -94,7 +101,12 @@ export const ReservedArea = () => {
                     )}
                 </Box>
                 <Box className={styles.favouritesArea}>
-                    {favouriteIds.length > 0 && <h2>Favourites</h2>}
+                    {favouriteIds.length > 0 && (
+                        <Box className={styles.header}>
+                            <Wishlist width={24} />
+                            <h2>Favourites</h2>
+                        </Box>
+                    )}
 
                     {favouriteIds.map(id => {
                         const singleDish = findDishById(id)
@@ -120,13 +132,14 @@ export const ReservedArea = () => {
                                             toggleFavouriteDish(singleDish?.id as number, e)
                                         }}
                                     />
-                                    <RoundButton className={styles.removeItemBtn} children={<AddToCart />}></RoundButton>
+                                    <RoundButton onClick={() => handleAddToCart(singleDish as DishComplete)} className={styles.removeItemBtn} children={<AddToCart />}></RoundButton>
                                 </Box>
                             </section>
                         )
                     })}
                 </Box>
-            </section>
+                <OrderBar open={order.length > 0} />
+            </Box>
             <InfoDialog open={open} onChange={handleSave} />
         </>
     )
@@ -208,8 +221,7 @@ function InfoDialog(props: InfoDialogProps) {
                             defaultValue={userStore.city}
                             label="City"
                             rules={{
-                                required: "This field is required",
-                                message: "MESSAGE"
+                                required: "This field is required"
                             }}
                             format={value => capitalize(value.replaceAll(/[!@#$%^&*()_+\-=[\]{};:"\\|,.<>/?1234567890]/g, ""))}
                         />
@@ -221,7 +233,8 @@ function InfoDialog(props: InfoDialogProps) {
                                 rules={{
                                     required: "This field is required",
                                     pattern: {
-                                        value: /^\d{5}$/
+                                        value: /^\d{5}$/,
+                                        message: "Must be at least 5 digits"
                                     }
                                 }}
                                 format={value => value.replaceAll(/\D/g, "").slice(0, 5)}
