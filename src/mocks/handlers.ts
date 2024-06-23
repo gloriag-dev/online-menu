@@ -31,7 +31,7 @@ export const handlers = [
                 categories: ["lunches", "dinners"],
                 price: 25.99,
                 rating: 1,
-                imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-1.jpg"
+                imgUrl: "./menu-1.jpg"
             },
             {
                 id: 2,
@@ -40,7 +40,7 @@ export const handlers = [
                 description: "A classic breakfast staple, a fried egg cooked to golden perfection, with a runny yolk that adds a rich and satisfying touch to any meal.",
                 price: 12.99,
                 rating: 4,
-                imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-2.jpg"
+                imgUrl: "./menu-2.jpg"
             },
             {
                 id: 3,
@@ -49,7 +49,7 @@ export const handlers = [
                 category: ["lunches", "dinners"],
                 price: 23.99,
                 rating: 3,
-                imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-3.jpg"
+                imgUrl: "./menu-3.jpg"
             },
             {
                 id: 4,
@@ -59,7 +59,7 @@ export const handlers = [
                 category: ["breakfasts", "desserts"],
                 price: 6.99,
                 rating: 4,
-                imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-4.jpg"
+                imgUrl: "./menu-4.jpg"
             },
             {
                 id: 5,
@@ -68,7 +68,7 @@ export const handlers = [
                 category: ["breakfasts"],
                 price: 10.99,
                 rating: 5,
-                imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-5.jpg"
+                imgUrl: "./menu-5.jpg"
             },
             {
                 id: 6,
@@ -78,7 +78,7 @@ export const handlers = [
                 category: ["breakfasts"],
                 price: 17.99,
                 rating: 5,
-                imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-6.jpg"
+                imgUrl: "./menu-6.jpg"
             },
             {
                 id: 7,
@@ -87,7 +87,7 @@ export const handlers = [
                 category: ["lunches", "dinners"],
                 price: 21.6,
                 rating: 4,
-                imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-7.jpg"
+                imgUrl: "./menu-7.jpg"
             },
             {
                 id: 8,
@@ -96,7 +96,7 @@ export const handlers = [
                 category: ["lunches", "dinners"],
                 price: 31.5,
                 rating: 4,
-                imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-8.jpg"
+                imgUrl: "./menu-8.jpg"
             },
             {
                 id: 9,
@@ -105,7 +105,7 @@ export const handlers = [
                 category: ["lunches", "dinners", "fastfoods"],
                 price: 5.78,
                 rating: 5,
-                imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-9.jpg"
+                imgUrl: "./menu-9.jpg"
             },
             {
                 id: 10,
@@ -114,7 +114,7 @@ export const handlers = [
                 category: ["breakfasts", "lunches", "dinners"],
                 price: 13.67,
                 rating: 4,
-                imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-10.jpg"
+                imgUrl: "./menu-10.jpg"
             },
             {
                 id: 11,
@@ -123,7 +123,7 @@ export const handlers = [
                 category: ["lunches", "dinners"],
                 price: 9.21,
                 rating: 3,
-                imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-11.jpg"
+                imgUrl: "./menu-11.jpg"
             },
             {
                 id: 12,
@@ -132,7 +132,7 @@ export const handlers = [
                 category: ["breakfasts", "fastfoods"],
                 price: 11.89,
                 rating: 2,
-                imgUrl: "https://demo.awaikenthemes.com/html-preview/fwizz/html/images/menu-12.jpg"
+                imgUrl: "./menu-12.jpg"
             }
         ]
 
