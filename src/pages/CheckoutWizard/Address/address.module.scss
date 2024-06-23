@@ -53,6 +53,18 @@
         }
     }
     .map {
+        .flexCol {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            .row {
+                display: flex;
+                gap: 10px;
+            }
+        }
+        .title {
+            font-family: var(--font-brand);
+        }
         @media (max-width: 765px) {
             display: flex;
             justify-content: center;

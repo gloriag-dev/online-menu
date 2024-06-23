@@ -156,7 +156,10 @@ export const Address = ({ onNext }: AddressProps) => {
                 </form>
             </FormProvider>
             <Box className={style.map}>
-                <MapComponent />
+                <Box className={style.flex}>
+                    <h2 className={style.title}>We are here!</h2>
+                    <MapComponent />
+                </Box>
             </Box>
         </Box>
     )

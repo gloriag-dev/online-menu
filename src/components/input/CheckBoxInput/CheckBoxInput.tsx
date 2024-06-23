@@ -1,5 +1,5 @@
 import { Checkbox } from "@mui/material"
-import GenericInputWrapper from "../GenericInputWrapper.tsx/GenericInputWrapper"
+import GenericInputWrapper from "../GenericInputWrapper/GenericInputWrapper"
 import { ChangeEvent } from "react"
 
 export interface ICheckBoxProps {
