@@ -100,7 +100,7 @@ export const Checkout = ({ onPrevious, onNext }: CheckoutProps) => {
                         )}
                     />
                     <Button variant="contained" type="submit" color="gold" disabled={!form.formState.isValid} onClick={handleComplete}>
-                        Submit
+                        Submit and pay
                     </Button>
                 </form>
             </FormProvider>
