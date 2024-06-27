@@ -9,7 +9,6 @@ export const AuthLoginCallback = () => {
     const navigateToRoute = async () => {
         try {
             const url = getUrl()
-            console.log(url)
             if (url) {
                 navigate(url)
             } else {
