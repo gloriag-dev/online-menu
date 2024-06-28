@@ -13,7 +13,7 @@ type SelectorProps = {
 
 export const Selector = ({ categories, className, onSetCategory, categoryId }: SelectorProps) => {
     return (
-        <section className={clsx(styles.selector, className)}>
+        <Box as="section" className={clsx(styles.selector, className)}>
             <button className={styles.allDishesBtn} onClick={() => onSetCategory?.("")}>
                 <AllDishes /> All Dishes
             </button>
@@ -28,6 +28,6 @@ export const Selector = ({ categories, className, onSetCategory, categoryId }: S
                     </Box>
                 )
             })}
-        </section>
+        </Box>
     )
 }

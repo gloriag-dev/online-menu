@@ -38,7 +38,7 @@ export const Checkout = ({ onPrevious, onNext }: CheckoutProps) => {
         <Box className={styles.main}>
             <Box className={styles.addressData}>
                 <h2>{fullName}</h2>
-                <section className={styles.addressCard}>
+                <Box as="section" className={styles.addressCard}>
                     <span className={styles.billingData}>
                         Address: {userStore.number}, {userStore.street}
                     </span>
@@ -48,7 +48,7 @@ export const Checkout = ({ onPrevious, onNext }: CheckoutProps) => {
                     <Button variant="contained" type="submit" color="gold" onClick={handleClick} className={styles.backBtn}>
                         Edit billing address
                     </Button>
-                </section>
+                </Box>
             </Box>
             <FormProvider {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className={styles.form}>

@@ -20,7 +20,7 @@ export const OrderCard = ({ imgAlt, imgUrl, name, price, handleRemove, id, quant
     const shouldShowRoundButton = !window.location.pathname.includes("/checkout-wizard/thank-you")
     console.log(window.location.pathname)
     return (
-        <section className={clsx(styles.container, className)}>
+        <Box as="section" className={clsx(styles.container, className)}>
             <Box className={clsx("order-card", styles.card)}>
                 <Box className={styles.main}>
                     <Box>
@@ -42,7 +42,7 @@ export const OrderCard = ({ imgAlt, imgUrl, name, price, handleRemove, id, quant
                     <RoundButton className={styles.removeItemBtn} onClick={onClickOrderCard} children={<span>&#45;</span>}></RoundButton>
                 </Box>
             )}
-        </section>
+        </Box>
     )
 }
 

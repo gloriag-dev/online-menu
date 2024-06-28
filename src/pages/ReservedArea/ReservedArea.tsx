@@ -112,7 +112,7 @@ export const ReservedArea = () => {
                         const singleDish = findDishById(id)
 
                         return (
-                            <section className={styles.cardContainer} key={id}>
+                            <Box as="section" className={styles.cardContainer} key={id}>
                                 <Box className={clsx("order-card", styles.card)}>
                                     <Box className={styles.inner}>
                                         <Box>
@@ -134,7 +134,7 @@ export const ReservedArea = () => {
                                     />
                                     <RoundButton onClick={() => handleAddToCart(singleDish as DishComplete)} className={styles.removeItemBtn} children={<AddToCart />}></RoundButton>
                                 </Box>
-                            </section>
+                            </Box>
                         )
                     })}
                 </Box>

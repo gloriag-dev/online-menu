@@ -109,7 +109,7 @@ export const Menu = () => {
                             <Selector onSetCategory={setCategoryId} categories={categories} categoryId={categoryId} />
                         </Box>
 
-                        <section className={styles.menu}>
+                        <Box as="section" className={styles.menu}>
                             {dishesQuery?.data?.map?.(dish => (
                                 <DishCard
                                     key={dish.id}
@@ -122,7 +122,7 @@ export const Menu = () => {
                                     toggleFavouriteDish={toggleFavouriteDish}
                                 />
                             ))}
-                        </section>
+                        </Box>
                     </Box>
                 </Box>
                 <OrderBar open={order.length > 0} />

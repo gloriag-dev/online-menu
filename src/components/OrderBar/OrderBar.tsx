@@ -18,7 +18,7 @@ export const OrderBar: React.FC<OrderBarProps> = ({ open }) => {
     }
     const location = useLocation()
     return (
-        <section className={clsx(styles.bar, { [styles.open]: open })}>
+        <Box as="section" className={clsx(styles.bar, { [styles.open]: open })}>
             <Box className={styles.format}>
                 TOTAL: <p>{orderStore.total.toFixed(2) + "$"}</p>
             </Box>
@@ -27,6 +27,6 @@ export const OrderBar: React.FC<OrderBarProps> = ({ open }) => {
                     COMPLETE ORDER
                 </Button>
             )}
-        </section>
+        </Box>
     )
 }
