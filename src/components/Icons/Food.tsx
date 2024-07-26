@@ -1,4 +1,8 @@
-export const Food = ({ className }) => {
+type IconProps = {
+    className?: string
+}
+
+export const Food = ({ className }: IconProps) => {
     return (
         <svg width="81" height="81" viewBox="0 0 81 81" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
