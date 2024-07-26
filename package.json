@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "format": "prettier . --write 'src//**/*.{js,jsx,json,ts,tsx}'",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
