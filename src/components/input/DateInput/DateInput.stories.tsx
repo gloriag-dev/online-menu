@@ -19,7 +19,7 @@ type Story = StoryObj<typeof DateInput>;
 
 const Template : React.FC<IDateInputProps> = (props) =>{
 
-    const [value, setValue] = useState<string>()
+    const [value, setValue] = useState<Date>()
 
     return <DateInput
         {...props}

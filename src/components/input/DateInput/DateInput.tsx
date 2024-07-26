@@ -6,11 +6,11 @@ import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 
 export interface IDateInputProps extends Omit<GenericInputWrapperProps, "onChange"> {
-    value?: string
+    value?: Date
     label?: string
     placeholder?: string
     format?: (value: string) => string
-    onChange?: (value: string, e: ChangeEvent<HTMLInputElement>) => void
+    onChange?: (date: Date, e: ChangeEvent<HTMLInputElement>) => void
     onClick?: () => void
     onBlur?: (e: ChangeEvent) => void
 }
@@ -19,7 +19,7 @@ export const DateInput = ({ error, label, disabled, required }: IDateInputProps)
 
     return (
         <GenericInputWrapper error={error} label={label} disabled={disabled} required={required}>
-            <DatePicker selected={startDate} onChange={(date: Date) => setStartDate(date)} dateFormat="MM/dd/yyyy" className={clsx("date-input", styles.root)} />
+            <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} dateFormat="MM/dd/yyyy" className={clsx("date-input", styles.root)} />
         </GenericInputWrapper>
     )
 }
