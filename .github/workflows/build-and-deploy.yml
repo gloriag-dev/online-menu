@@ -27,6 +27,8 @@ jobs:
 
             - run: npm install
 
+            - run: npm ci
+
             - run: npm run build-ci
               env:
                   VITE_PUBLIC_PATH: '/online-menu'
