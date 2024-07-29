@@ -60,7 +60,7 @@ export interface DishComplete {
 }
 
 export const Menu = () => {
-    const [categoryId, setCategoryId] = useState<string>("")
+    const [categoryId, setCategoryId] = useState<string>()
     const { favouriteIds, toggleFavouriteDish } = useDishStore()
     const { addToOrder, removeFromOrder, order } = useOrderStore()
     const fetchDishes = async (): Promise<DishComplete[]> => {

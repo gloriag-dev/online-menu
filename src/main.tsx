@@ -7,6 +7,7 @@ import MockWrapper from "./mocks/MockWrapper.tsx"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { Auth0Wrapper } from "./auth/Auth0Wrapper/Auth0Wrapper.tsx"
 import { ThemeProvider, createTheme } from "@mui/material/styles"
+import axios from "axios"
 
 const queryClient = new QueryClient()
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
@@ -37,6 +38,8 @@ export const theme = createTheme({
         }
     }
 })
+
+axios.defaults.baseURL = import.meta.env.VITE_PUBLIC_PATH || "/"
 
 root.render(
     <React.StrictMode>

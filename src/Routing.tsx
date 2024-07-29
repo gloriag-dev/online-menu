@@ -14,7 +14,7 @@ const Routing = () => {
             <Route path="/menu" element={<Menu />} />
             <Route path="/order" element={<Order />} />
             <Route path="/reserved-area" element={<ReservedArea />} />
-            <Route path="/checkout-wizard*" element={<Wizard />} />
+            <Route path="/checkout-wizard/*" element={<Wizard />} />
         </Routes>
     )
 }

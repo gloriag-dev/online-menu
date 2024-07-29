@@ -9,7 +9,12 @@ const MockWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             return
         }*/
         const { worker } = await import("./browser")
-        await worker.start()
+        await worker.start({
+            waitUntilReady: true,
+            serviceWorker: {
+                url: import.meta.env.BASE_URL + "/mockServiceWorker.js"
+            }
+        })
         setStarted(true)
     }
 
