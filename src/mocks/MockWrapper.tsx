@@ -4,10 +4,10 @@ const MockWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [started, setStarted] = useState<boolean>(false)
 
     async function enableMocking() {
-        if (process.env.NODE_ENV !== "development") {
+        /*if (process.env.NODE_ENV !== "development") {
             setStarted(true)
             return
-        }
+        }*/
         const { worker } = await import("./browser")
         await worker.start()
         setStarted(true)
