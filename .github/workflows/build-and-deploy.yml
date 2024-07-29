@@ -32,6 +32,10 @@ jobs:
                   VITE_PUBLIC_PATH: '/online-menu'
                   CI: false
 
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3.0.1
+              with:
+                path: ./dist
     deploy:
       runs-on: ubuntu-latest
       # Add a dependency to the build job
