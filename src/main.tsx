@@ -43,7 +43,7 @@ root.render(
         <Auth0Wrapper>
             <MockWrapper>
                 <QueryClientProvider client={queryClient}>
-                    <BrowserRouter>
+                    <BrowserRouter basename={import.meta.env.VITE_PUBLIC_PATH || "/"}>
                         <ThemeProvider theme={theme}>
                             <App />
                         </ThemeProvider>
